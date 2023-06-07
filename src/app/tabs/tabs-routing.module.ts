@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'messages',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule)
       },
       {
         path: 'profil',

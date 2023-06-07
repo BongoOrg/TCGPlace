@@ -57,7 +57,7 @@
     <div class="btnActions">
       <div *ngIf="!isOwner">
         <ion-button class="filled-btn" expand="block" (click)="openModulePayment(salePost)">Acheter<ion-icon slot="end" name="cart-outline"></ion-icon></ion-button>
-        <ion-button expand="block" fill="outline">Faire une offre<ion-icon slot="end" name="pricetag-outline"></ion-icon></ion-button>
+        <ion-button expand="block" (click)="redirectToOfferPage(salePost.id)" fill="outline">Faire une offre<ion-icon slot="end" name="pricetag-outline"></ion-icon></ion-button>
         <ion-button expand="block" fill="outline">Proposer un échange<ion-icon slot="end" name="swap-horizontal"></ion-icon></ion-button>
         <div class="group-buttons">
           <button>Favoris<ion-icon name="heart-outline"></ion-icon></button>

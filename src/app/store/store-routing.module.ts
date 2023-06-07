@@ -4,6 +4,7 @@ import { ViewSalePostComponent } from './sale/view-sale-post/view-sale-post.comp
 
 import { StorePage } from './store.page';
 import {ViewSearchPostComponent} from "./search/view-search-post/view-search-post.component";
+import { OfferComponent } from './sale/offer/offer.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
     component: StorePage
   },
   {
-    path: 'sale/:id',
+    path: 'sale/offer/:id',
+    component: OfferComponent
+  },
+  {
+    path: 'sale/view/:id',
     component: ViewSalePostComponent
   },
   {

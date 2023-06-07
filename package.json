@@ -29,12 +29,14 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic/angular": "^6.7.4",
     "@ionic/pwa-elements": "^3.1.1",
+    "@microsoft/signalr": "^7.0.5",
     "date-fns": "^2.30.0",
     "ionic": "^5.4.16",
     "ionicons": "^6.0.3",
     "rxjs": "~7.5.0",
     "swiper": "^9.1.1",
     "tslib": "^2.3.0",
+    "uuid": "^9.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

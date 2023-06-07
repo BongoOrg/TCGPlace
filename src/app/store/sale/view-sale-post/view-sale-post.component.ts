@@ -122,4 +122,9 @@ export class ViewSalePostComponent {
       this.location.back()
     })
   }
+
+  redirectToOfferPage(idSalePost: string){
+    this.router.navigateByUrl(`/tabs/store/sale/offer/${idSalePost}` );
+  }
+
 }

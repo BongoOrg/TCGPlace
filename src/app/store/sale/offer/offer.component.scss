@@ -1,0 +1,21 @@
+.displayButton {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.offerSubmitButton {
+    width: 75%;
+    margin-top: 20px;
+}
+
+ion-content {
+    height: 100%;
+}
+
+
+.no-border ion-item {
+    --border-width: 0;
+    --border-style: none;
+  }
+  

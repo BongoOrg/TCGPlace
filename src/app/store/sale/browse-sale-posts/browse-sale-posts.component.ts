@@ -114,6 +114,9 @@ export class BrowseSalePostsComponent implements OnInit, OnDestroy {
     )
   }
 
+  redirectToAddPost(sale_post_id: string) {
+    this.router.navigateByUrl(`/tabs/store/sale/view/${sale_post_id}`);
+  }
   handleRefresh(event: any) {
     setTimeout(() => {
       this.isLoading = true;

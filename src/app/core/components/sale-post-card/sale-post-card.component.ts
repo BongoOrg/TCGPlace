@@ -28,8 +28,7 @@ export class SalePostCardComponent implements OnInit {
     this.likedSalePostService.UnLikeSalePost(salePostId).subscribe()
   }
 
-
   redirectToAddPost(sale_post_id: string) {
-    this.router.navigateByUrl(`/tabs/store/sale/${sale_post_id}`);
+    this.router.navigateByUrl(`/tabs/store/sale/view/${sale_post_id}`);
   }
 }

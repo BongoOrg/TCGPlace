@@ -29,7 +29,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./profile/login/login.module').then(m => m.LoginPageModule)
-  }
+    },
+    {
+        path: 'messages',
+        loadChildren: () => import('./messages/messages.module').then(m => m.MessagesPageModule)
+    }
 ];
 @NgModule({
   imports: [

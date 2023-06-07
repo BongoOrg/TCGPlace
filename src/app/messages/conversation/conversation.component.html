@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="conversation.users[0].id !== currentUserId">
+      {{conversation.users[0].userName}}
+    </ion-title>
+    <ion-title *ngIf="conversation.users[1].id !== currentUserId">
+      {{conversation.users[1].userName}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content *ngIf="!loading">
+  <ion-list #messageList class="no-border" lines="none">
+    <ion-item *ngFor="let message of conversation.messages" [class]="getMessageClass(message.idUserEnvoi)">
+      <div class="message-container">
+        <div *ngIf="message.texte != ''" class="message-text">{{ message.texte }}</div>
+        <div *ngIf="message.offre != undefined || message.offre != null" class="message-text">
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: row; justify-content: space-between;">
+              <div style="font-weight: bold;">{{message.offre.prixPropose}}€</div>
+              <div style="text-decoration: line-through;">{{this.salePostPrice}}€</div>
+            </div>
+            <div *ngIf="message.offre.etat == 'A'">Annulée</div>
+            <div *ngIf="message.offre.etat == 'C'">
+              <div *ngIf="message.idUserEnvoi == currentUserId">
+                En cours
+              </div>
+              <div *ngIf="message.idUserEnvoi != currentUserId">
+                <ion-button *ngIf="!updateOfferLoading" (click)="updateOffer(message, 'Y')">Accepter</ion-button>
+                <ion-button *ngIf="!updateOfferLoading" (click)="updateOffer(message, 'N')">Refuser</ion-button>
+                <ion-spinner *ngIf="updateOfferLoading" name="circular"></ion-spinner>
+              </div>
+            </div>
+            <div *ngIf="message.offre.etat == 'N'">Refusée</div>
+            <div *ngIf="message.offre.etat == 'Y'">Acceptée</div>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-spinner *ngIf="loading" name="circular"></ion-spinner>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)]="newMessage" placeholder="Saisissez votre message..."></ion-input>
+    <ion-button expand="block" (click)="sendMessage()">Envoyer</ion-button>
+  </ion-toolbar>
+</ion-footer>
