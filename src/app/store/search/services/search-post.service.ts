@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {SearchPostModel} from "../../../core/models/search-post.model";
 import {Observable, map} from "rxjs";
-import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 import {POST_URL} from "../../../../../config";
 import {ExtensionModel} from "../../../home/components/extension-card-slider/models/extension.model";
 import {GradingModel} from "../../../core/models/grading.model";
@@ -43,4 +43,11 @@ export class SearchPostService{
     return this.http.get<SearchPostModel[]>(`${this.apiURL}/SearchPost/user/${userId}/${nbMax}`,{observe: 'response'})
   }
 
+  switchIsPublic(searchPostId: any, token:string): Observable<HttpResponse<any>> {
+    const headers = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      Authorization: `Bearer ${token}`
+    })
+    return this.http.put<any>(`${this.apiURL}/SearchPost/public/${searchPostId}`, {headers, observe: 'response' });
+  }
 }

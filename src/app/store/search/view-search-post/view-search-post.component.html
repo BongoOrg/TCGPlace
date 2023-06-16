@@ -38,8 +38,8 @@
         </div>
         <div *ngIf="isOwner">
           <ion-button expand="block">Modifier<ion-icon slot="end" name="pencil-outline"></ion-icon></ion-button>
-          <ion-button *ngIf="searchPost.isPublic" expand="block" fill="outline">Passer en privé<ion-icon slot="end" name="lock-closed-outline"></ion-icon></ion-button>
-          <ion-button *ngIf="!searchPost.isPublic" expand="block" fill="outline">Passer en public<ion-icon slot="end" name="lock-open-outline"></ion-icon></ion-button>
+          <ion-button *ngIf="searchPost.isPublic" (click)="switchIsPublic()" expand="block" fill="outline">Passer en privé<ion-icon slot="end" name="lock-closed-outline"></ion-icon></ion-button>
+          <ion-button *ngIf="!searchPost.isPublic" (click)="switchIsPublic()" expand="block" fill="outline">Passer en public<ion-icon slot="end" name="lock-open-outline"></ion-icon></ion-button>
           <ion-button expand="block" fill="outline" color="medium">Partager<ion-icon slot="end" name="share-outline"></ion-icon></ion-button>
           <ion-button expand="block" color="danger">Supprimer<ion-icon slot="end" name="trash-outline"></ion-icon></ion-button>
         </div>
