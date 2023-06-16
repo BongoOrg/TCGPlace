@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {combineLatest, concat, filter, map, Observable, of, ReplaySubject, Subject, switchMap, take, tap} from "rxjs";
 import {PokemonItemReferenceModel} from "../../../core/models/pokemon-item-reference.model";
@@ -23,11 +23,15 @@ export class ViewSalePostComponent {
               private route:ActivatedRoute,
               private modalCtrl: ModalController,
               private userService:UserService,
-              private router:Router) {
+              private router:Router,
+              private renderer: Renderer2) {
   }
 
   isDisabled:boolean = true;
   isOwner: boolean = false;
+  searchPostId: string = this.route.snapshot.params['id'];
+
+  accessToken = localStorage.getItem('access_token');
 
   private userId$ = new ReplaySubject<number>();
 
@@ -103,5 +107,13 @@ export class ViewSalePostComponent {
 
   redirectToProfile(userId: number) {
     this.router.navigateByUrl(`/tabs/profil/${userId}`)
+  }
+
+  switchIsPublic() {
+    if (this.accessToken !== null) {
+    this.salePostService.switchIsPublic((this.route.snapshot.params['id']), this.accessToken).subscribe(() => {
+      this.renderer.setProperty(window, 'location', this.router.url); //refresh la page
+    });
+    }
   }
 }
