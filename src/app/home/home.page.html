@@ -1,11 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar style="padding-top: 15px" mode="ios"></ion-searchbar>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <ion-img src="./assets/img/logo-navigateur.png"></ion-img>
+        </ion-col>
+        <ion-col size="8">
+          <div class="title">
+            TCGPlace
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-searchbar mode="ios"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<app-home-banner-slider></app-home-banner-slider>
-<app-extension-card-slider></app-extension-card-slider>
-<app-lastest-sale-post-slider></app-lastest-sale-post-slider>
+  <app-home-banner-slider></app-home-banner-slider>
+  <app-extension-card-slider></app-extension-card-slider>
+  <app-lastest-sale-post-slider></app-lastest-sale-post-slider>
 </ion-content>

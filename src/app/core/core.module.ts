@@ -4,11 +4,12 @@ import {SkeletonGridComponent} from "./components/skeleton-grid/skeleton-grid.co
 import {IonicModule} from "@ionic/angular";
 import { FullScreenImageComponent } from './components/full-screen-image/full-screen-image.component';
 import { FullScreenImageSliderComponent } from './components/full-screen-image-slider/full-screen-image-slider.component';
+import {LoadingPageComponent} from "./components/loading-page/loading-page.component";
 
 
 
 @NgModule({
-  declarations: [SkeletonGridComponent, FullScreenImageComponent, FullScreenImageSliderComponent],
+  declarations: [SkeletonGridComponent, FullScreenImageComponent, FullScreenImageSliderComponent, LoadingPageComponent],
   exports: [
     SkeletonGridComponent
   ],

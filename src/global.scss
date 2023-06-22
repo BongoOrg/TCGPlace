@@ -25,13 +25,50 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
 @font-face {
-  font-family: 'Lato';    //This is what we are going to call
+  font-family: 'Orbitron';
+  src: url('./assets/fonts/Orbitron-Medium.ttf');
+  font-weight: 400; /* Light */
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Thin.ttf');
+  font-weight: 200; /* Light */
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Light.ttf');
+  font-weight: 300; /* Light */
+}
+
+/* Pour Lato Regular */
+@font-face {
+  font-family: 'Lato';
   src: url('./assets/fonts/Lato-Regular.ttf');
+  font-weight: 400; /* Regular */
+}
+
+/* Pour Lato Bold */
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Bold.ttf');
+  font-weight: 500; /* Bold */
+}
+
+/* Pour Lato Bold */
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Black.ttf');
+  font-weight: 600; /* Bold */
 }
 
 * {
   font-family: 'Lato' !important;
+  margin: 0;
+  padding: 0
 }
 
 .flex-center{
@@ -42,12 +79,52 @@
   height: 100%;
 }
 
-.pb-3 {
-    padding-bottom: 3em;
+ion-title{
+  text-align: center;
+}
+
+ion-button{
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+h2{
+  color : #171717;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+}
+
+h3{
+  color : #4D4D4D; /* Dark gray */
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  letter-spacing: 0.5px;
+  line-height: 18px;
+}
+
+h4{
+  color : #3880ff; /* Medium gray */
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 16px;
 }
 
 .pb-2 {
   padding-bottom: 2em;
+}
+
+.pb-3 {
+  padding-bottom: 3em;
 }
 
 .pb-1 {

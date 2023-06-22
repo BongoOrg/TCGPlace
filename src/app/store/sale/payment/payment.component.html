@@ -12,103 +12,101 @@
 <ion-content class="payment-modal">
   <div *ngIf="!loading; else pageLoading">
     <div class="image-container">
-    <ion-img [src]="post?.salePicturePosts" class="payment-image"></ion-img>
-  </div>
-  <ion-card class="ion-no-margin ion-no-padding card-payment">
-    <ion-grid>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle class="info-text">Commande</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">{{post?.price}} €</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle class="info-text">Frai vérification</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">2.00 €</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle class="info-text">Envoi</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">{{selectedValue}} €</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start total">
-        <ion-col size="6">
-          <ion-card-subtitle class="important-text"><b>Total</b></ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="important-text">{{totalPrice}} €</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+      <ion-img [src]="post?.salePicturePosts" class="payment-image"></ion-img>
+    </div>
+    <ion-item>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <h3>Commande</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>{{post?.price}} €</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <h3>Frais vérification</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>2.00 €</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center last-row">
+          <ion-col size="6">
+            <h3>Envoi</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>{{selectedValue}} €</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center last-row">
+          <ion-col size="6">
+            <h2>Total</h2>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h2>{{totalPrice}} €</h2>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
 
-  <ion-card class="ion-no-margin ion-no-padding card-payment">
-    <ion-grid>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="12">
-          <ion-card-subtitle class="sub-text">Adresse</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle class="info-text">Nom</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">{{currentUser?.lastname}}</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle class="info-text">Adresse</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">{{currentUser?.adress}}</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle>Code postal</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">{{currentUser?.postalCode}}</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-padding-start">
-        <ion-col size="6">
-          <ion-card-subtitle class="info-text">Ville</ion-card-subtitle>
-        </ion-col>
-        <ion-col size="6" class="ion-text-right ion-padding-end">
-          <ion-card-subtitle class="info-text">{{currentUser?.city}}</ion-card-subtitle>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+    <ion-item>
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-margin-top">
+          <ion-col size="12">
+            <h4>Adresse</h4>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <h3>Nom</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>{{currentUser?.lastname}}</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <h3>Adresse</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>{{currentUser?.adress}}</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <h3>Code postal</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>{{currentUser?.postalCode}}</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center last-row">
+          <ion-col size="6">
+            <h3>Ville</h3>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <h3>{{currentUser?.city}}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
 
-  <ion-card class="ion-no-margin ion-no-padding card-payment">
     <ion-grid>
       <ion-list>
         <ion-radio-group (ionChange)="onRadioChange($event)" [value]="deliveryOptions[0].price">
           <ion-item *ngFor="let option of deliveryOptions; let i = index">
             <ion-icon class="ion-margin-end" name="{{option.icon}}"></ion-icon>
             <div class="livraison-container">
-              <ion-label>{{option.label}}</ion-label>
-              <ion-label><p>Pour {{option.price}} euros</p></ion-label>
+              <h3>{{option.label}}</h3>
+              <h4>Pour {{option.price}} euros</h4>
             </div>
             <ion-radio slot="end" value="{{option.price}}"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
     </ion-grid>
-  </ion-card>
   </div>
   <ng-template #pageLoading>
     <div class="pageSpin"><ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner></div>

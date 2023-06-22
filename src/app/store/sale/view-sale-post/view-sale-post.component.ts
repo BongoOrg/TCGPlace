@@ -32,11 +32,10 @@ export class ViewSalePostComponent {
   searchPostId: string = this.route.snapshot.params['id'];
 
   accessToken = localStorage.getItem('access_token');
-
   private userId$ = new ReplaySubject<number>();
 
   ngOnInit() {
-   this.userId$.pipe(take(1)).subscribe(userId => {
+    this.userId$.pipe(take(1)).subscribe(userId => {
       this.DefineOwner(userId);
       this.initUserSalePost$();
     });
@@ -104,16 +103,15 @@ export class ViewSalePostComponent {
     });
     return await modal.present();
   }
-
   redirectToProfile(userId: number) {
     this.router.navigateByUrl(`/tabs/profil/${userId}`)
   }
 
   switchIsPublic() {
     if (this.accessToken !== null) {
-    this.salePostService.switchIsPublic((this.route.snapshot.params['id']), this.accessToken).subscribe(() => {
-      this.renderer.setProperty(window, 'location', this.router.url); //refresh la page
-    });
+      this.salePostService.switchIsPublic((this.route.snapshot.params['id']), this.accessToken).subscribe(() => {
+        this.renderer.setProperty(window, 'location', this.router.url); //refresh la page
+      });
     }
   }
 }

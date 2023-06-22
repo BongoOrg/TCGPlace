@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit, OnDestroy{
     },
     {
       icon: "home-outline",
-      label: "Point relais",
+      label: "Domicile",
       price: 3
     }
   ];

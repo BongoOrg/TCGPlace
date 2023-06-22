@@ -2,8 +2,21 @@ swiper-slide{
   max-width: 60%;
 }
 
+.tile-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  align-items: center;
+}
+
+h2{
+  line-height: 34px !important;
+  color : #171717 !important;
+}
+
 a{
-  color: #058ED9;
-  margin-top: 0;
-  font-weight: bold;
+  color: #3880ff;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
 }

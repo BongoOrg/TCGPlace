@@ -5,6 +5,7 @@ import { ProfilePage } from './profile.page';
 import {LikesComponent} from "./components/likes/likes.component";
 import {AuthGuard} from "../core/guards/auth.guard";
 import {ViewProfileComponent} from "./components/view-profile/view-profile.component";
+import {TransactionsComponent} from "./components/transactions/transactions.component";
 
 const routes: Routes = [
   {
@@ -17,9 +18,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'transactions',
+    component : TransactionsComponent
+  },
+  {
     path: ':id',
     component: ViewProfileComponent
-  }
+  },
 ];
 
 @NgModule({

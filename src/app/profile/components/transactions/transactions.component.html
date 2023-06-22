@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mes transactions</ion-title>
+    <ion-segment value="achat" mode="md" >
+      <ion-segment-button (click)="saleSelected = true" value="achat">
+        <ion-label>Achat</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="saleSelected = false" value="vente">
+        <ion-label>Vente</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-buyed-transactions *ngIf="saleSelected"></app-buyed-transactions>
+</ion-content>

@@ -1,17 +1,21 @@
-<ion-card (click)="ViewSearchPost()">
-  <img src="{{searchPost.image}}"/>
-  <ion-card-header>
-    <p>{{searchPost.name}}</p>
-    <p>{{searchPost.price}} €</p>
-  </ion-card-header>
+<ion-card class="container" (click)="ViewSearchPost()">
+  <img [src]=searchPost.image />
   <ion-card-content>
-    <div>
-      <p>{{searchPost.itemExtension}}</p>
-      <p>{{searchPost.grading.name}}</p>
-    </div>
-    <div>
-      <ion-icon *ngIf="!this.searchPost.liked" name="heart-outline" size="large" (click)="LikeSearchPost(this.searchPost.id, $event)"></ion-icon>
-      <ion-icon *ngIf="this.searchPost.liked" name="heart" color="danger" size="large" (click)="UnLikeSearchPost(this.searchPost.id, $event)"></ion-icon>
-    </div>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="9">
+          <h2>{{searchPost.price}} €</h2>
+          <h3>{{searchPost.name}}</h3>
+        </ion-col>
+        <ion-col size="3">
+          <div>
+            <ion-icon *ngIf="!this.searchPost.liked" name="heart-outline" size="large" (click)="LikeSearchPost(this.searchPost.id, $event)"></ion-icon>
+            <ion-icon *ngIf="this.searchPost.liked" name="heart" color="danger" size="large" (click)="UnLikeSearchPost(this.searchPost.id, $event)"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-badge><p>{{searchPost.grading.name}}</p></ion-badge>
   </ion-card-content>
 </ion-card>
+

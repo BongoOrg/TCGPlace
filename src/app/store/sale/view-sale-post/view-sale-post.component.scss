@@ -1,74 +1,104 @@
-.formBackgrounf{
-    background-color: red;
+.container{
+  padding: 0.5em;
 }
 
 .spin{
-    position: relative;
-    left: 45%;
-  }
-  .pageSpin{
-    position: relative;
-    left: 45%;
-    top: 50%;
-  }
-
-.ion-label-paragraphe{
-    color:black;
-    font-size: 14px;
+  position: relative;
+  left: 45%;
+}
+.pageSpin{
+  position: relative;
+  left: 45%;
+  top: 50%;
 }
 
-.btnActions{
-    -webkit-padding-start: 4.5%;
-    -webkit-padding-end: 4.5%;
-    --padding-bottom: 5%px;
-  }
-
-.btnActionsTop{
-    margin-top: 0%;
-  }
-
-.card{
-    margin-left: 5%;
-    margin-right: 5%;
-  }
-
-.cardMainInformations{
-  padding-left: 5%;
-  padding-right: 5%;
+.mail{
+  color: #3880ff;
 }
 
-swiper-container{
-  padding-left: 5%;
-  padding-right: 5%;
+.fav-signal{
+  padding: 0px;
 }
 
-ion-button{
-  padding-bottom: 1.5%;
-  --border-radius: 4px;
+.group-buttons{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #dedede;
 }
 
-ion-item-divider {
-  --background: #f4f5f8;
+button{
+  display: flex;
+  padding: 0 2em;
+  align-items: center;
+  justify-content: space-evenly;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  width: 50%;
+  background-color: transparent;
+}
+
+button ion-icon{
+  font-size: 25px;
+}
+
+.swiper-container{
+  display: flex;
+  margin: 0.5em 0;
+}
+
+ion-avatar{
+  margin-right: 0.5em;
 }
 
 ion-item{
-  --padding-top:5%;
-  --padding-bottom:2%;
-  --padding-left:5%;
-  --padding-right: 5%;
+  border-top: 1px solid #dedede;
 }
 
-.line-1 {
-  border-bottom: 1px solid rgb(175, 175, 175);
-  width: 90%;
-  margin: auto;
+ion-grid{
+  margin-top: 0.5em;
+  padding: 0.5em;
 }
 
-.otherUserPosts{
-  margin-left: 5%;
-  margin-right: 5%;
+.divider{
+  padding: 0.3em;
+  border-bottom: 1px solid #dedede;
 }
 
-.otherUserPosts p{
-  font-size: 1.3em;
+.vertical-divider{
+    padding: 1em 0;
+    border-left: 1px solid #dedede;
+}
+
+.btnActions{
+  padding: 0.5em;
+}
+
+ion-button{
+  margin-bottom: 0.4em;
+}
+
+.tile-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+h2{
+  font-weight: 400 !important;
+}
+
+h4{
+  margin-top: 0.5em !important;
+}
+
+a{
+  color: #3880ff;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
 }

@@ -15,6 +15,10 @@ import { ViewSearchPostComponent } from './store/search/view-search-post/view-se
 import { ViewSalePostComponent } from './store/sale/view-sale-post/view-sale-post.component';
 import { FilterModalComponent } from './core/components/filter-modal/filter-modal.component';
 import {ViewProfileComponent} from "./profile/components/view-profile/view-profile.component";
+import {TransactionsComponent} from "./profile/components/transactions/transactions.component";
+import {
+    BuyedTransactionsComponent
+} from "./profile/components/transactions/buyed-transactions/buyed-transactions.component";
 
 @NgModule({
     declarations: [
@@ -23,7 +27,9 @@ import {ViewProfileComponent} from "./profile/components/view-profile/view-profi
         ViewSearchPostComponent,
         ViewSalePostComponent,
         FilterModalComponent,
-        ViewProfileComponent
+        ViewProfileComponent,
+        TransactionsComponent,
+        BuyedTransactionsComponent
     ],
     imports: [
         BrowserModule,

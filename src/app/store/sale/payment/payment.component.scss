@@ -1,12 +1,14 @@
-/* iOS places the subtitle above the title */
-ion-card-header.ios {
-  display: flex;
-  flex-flow: column-reverse;
-}
-
 .payment-image{
   width: 150px;
   height: auto;
+}
+
+ion-row{
+  margin: 3px 0;
+}
+
+.last-row{
+  margin-bottom: 10px;
 }
 
 .image-container{
@@ -16,29 +18,6 @@ ion-card-header.ios {
   height: 20%;
   margin-top: 10%;
   margin-bottom: 5%;
-}
-
-.info-text{
-  font-size: 14px;
-
-}
-
-.card-payment{
-  margin: 2%;
-}
-
-.total{
-  margin-top: 10px;
-}
-
-.important-text{
-  font-size: large;
-}
-
-.sub-text{
-  font-weight: 100;
-  margin-bottom: 10px;
-  font-size: x-small;
 }
 
 .livraison-container{
