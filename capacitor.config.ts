@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'tcg-poc',
+  appId: 'com.tcgplace.app',
+  appName: 'TCGPlace',
   webDir: 'www',
   bundledWebRuntime: false
 };
