@@ -27,8 +27,6 @@ export class BrowseSearchPostsComponent implements OnInit {
   private subscription: Subscription = new Subscription();
   private idReferenceSubject = new BehaviorSubject<string | undefined>(undefined);
 
-  searchPosts$: Observable<SearchPostModel[] | null> = of([])
-
 
   constructor(private searchPostService:SearchPostService) {
     /*this.searchPosts$ = this.idReferenceSubject.pipe(
