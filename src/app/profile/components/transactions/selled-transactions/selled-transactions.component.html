@@ -6,9 +6,9 @@
   </ng-container>
 
   <ng-template #loaded>
-    <ng-container *ngIf="(buyedTransaction$ | async) as buyerTransaction">
-      <ion-grid class="grid-container" *ngIf="buyerTransaction.length > 0; else noTransactions">
-        <ion-row class="row-divider" *ngFor="let transaction of buyedTransaction$ | async">
+    <ng-container *ngIf="(sellerTransaction$ | async) as sellerTransaction">
+      <ion-grid class="grid-container" *ngIf="sellerTransaction.length > 0; else noTransactions">
+        <ion-row class="row-divider" *ngFor="let transaction of sellerTransaction$ | async">
           <ion-col size="2">
             <ion-img src="{{transaction.merchPostNamePhotos[0]}}"></ion-img>
           </ion-col>
@@ -42,11 +42,6 @@
     </ng-container>
     <ng-template #noTransactions>
       <p>Il n'y a pas de transactions à afficher.</p>
-    </ng-template>
-    <ng-template #loading>
-      <div class="spin">
-        <ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
-      </div>
     </ng-template>
   </ng-template>
 </ion-content>

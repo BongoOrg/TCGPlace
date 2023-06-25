@@ -19,6 +19,9 @@ import {TransactionsComponent} from "./profile/components/transactions/transacti
 import {
     BuyedTransactionsComponent
 } from "./profile/components/transactions/buyed-transactions/buyed-transactions.component";
+import {
+  SelledTransactionsComponent
+} from "./profile/components/transactions/selled-transactions/selled-transactions.component";
 
 @NgModule({
     declarations: [
@@ -29,7 +32,8 @@ import {
         FilterModalComponent,
         ViewProfileComponent,
         TransactionsComponent,
-        BuyedTransactionsComponent
+        BuyedTransactionsComponent,
+        SelledTransactionsComponent
     ],
     imports: [
         BrowserModule,

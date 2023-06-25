@@ -17,6 +17,13 @@ export class TransactionService {
   getBuyerTransaction(buyerId : number): Observable<HttpResponse<OrderModel[]>>{
     var params = new HttpParams()
     params = params.append('buyerId', buyerId);
-    return this.httpClient.get<OrderModel[]>(`${this.apiURL}/Order`,{params : params,observe: 'response'})
+    return this.httpClient.get<OrderModel[]>(`${this.apiURL}/Order/transaction/buyer`,{params : params,observe: 'response'})
   }
+
+  getSellerTransaction(sellerId : number): Observable<HttpResponse<OrderModel[]>>{
+    var params = new HttpParams()
+    params = params.append('sellerId', sellerId);
+    return this.httpClient.get<OrderModel[]>(`${this.apiURL}/Order/transaction/seller`,{params : params,observe: 'response'})
+  }
+
 }

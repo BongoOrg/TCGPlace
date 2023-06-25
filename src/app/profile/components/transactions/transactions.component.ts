@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from "../../../core/services/UserService/user.service";
 
 @Component({
   selector: 'app-transactions',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsComponent implements OnInit {
   saleSelected : boolean = true
-  constructor() { }
+  idUser!: number
+  constructor(private userService : UserService) { }
 
   ngOnInit() {
+    this.idUser = this.userService.GetCurrentUserID()
   }
 
 }

@@ -12,5 +12,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <app-buyed-transactions *ngIf="saleSelected"></app-buyed-transactions>
+  <app-buyed-transactions [idUser]="idUser" *ngIf="saleSelected"></app-buyed-transactions>
+  <app-selled-transactions [idUser]="idUser" *ngIf="!saleSelected"></app-selled-transactions>
 </ion-content>
