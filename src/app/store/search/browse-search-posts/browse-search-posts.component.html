@@ -1,27 +1,41 @@
-<ion-grid [fixed]="true">
-  <ion-grid>
-    <ng-container *ngIf="SearchPostlist && SearchPostlist.length; else noPosts">
-      <ion-row *ngIf="SearchPostlist.length; else noPosts">
-        <ion-col size="6" *ngFor="let post of SearchPostlist; index as position">
-          <app-search-post-card [searchPost]="post"></app-search-post-card>
-        </ion-col>
-      </ion-row>
-    </ng-container>
-    <ion-infinite-scroll *ngIf="!loading" threshold="100px" (ionInfinite)="onIonInfinite($event)">
-      <ion-infinite-scroll-content
-        loading-spinner="bubbles"
-        loading-text="Loading ..">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-  </ion-grid>
+<ion-content>
+  <ion-refresher mode="ios" slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200"  (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content pullingIcon="refresh-outline"></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid [fixed]="true">
+    <ion-grid>
+      <ng-container *ngIf="SearchPostlist && SearchPostlist.length; else noPosts">
+        <ion-row *ngIf="SearchPostlist.length; else noPosts">
+          <ion-col size="6" *ngFor="let post of SearchPostlist; index as position">
+            <app-search-post-card [searchPost]="post"></app-search-post-card>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      <ion-infinite-scroll *ngIf="!loading" threshold="100px" (ionInfinite)="onIonInfinite($event)">
+        <ion-infinite-scroll-content
+          loading-spinner="bubbles"
+          loading-text="Loading ..">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-grid>
 
-  <ng-template #noPosts>
-    <div *ngIf="!loading">
-      Aucune annonce trouvée.
+    <ng-template #noPosts>
+      <div *ngIf="!loading && !errorOccurred">
+        Aucune annonce trouvée.
+      </div>
+    </ng-template>
+  </ion-grid>
+  <ng-template [ngIf]="loading && !errorOccurred">
+    <app-skeleton-grid></app-skeleton-grid>
+  </ng-template>
+
+  <ng-template [ngIf]="errorOccurred">
+    <div class="error-occurred">
+      <img src="https://pbs.twimg.com/media/D5WVXQHXkAE_Wzn.png" width="150px">
+      <p>Une erreur est survenue</p>
+      <ion-button (click)="refresh()">Recharger la page</ion-button>
     </div>
   </ng-template>
-</ion-grid>
-<ng-template [ngIf]="loading">
-  <app-skeleton-grid></app-skeleton-grid>
-</ng-template>
+</ion-content>
+
 

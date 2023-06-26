@@ -6,7 +6,7 @@ import {ExtensionModel} from "../../../home/components/extension-card-slider/mod
 import {GradingModel} from "../../../core/models/grading.model";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {HttpResponse} from "@angular/common/http";
-import {SalePostModel} from "../../../core/models/sale-post.model";
+import {ErrorStateService} from "../../../core/services/error-state.service";
 
 @Component({
   selector: 'app-browse-search-posts',
@@ -24,27 +24,30 @@ export class BrowseSearchPostsComponent implements OnInit {
   SearchPostlist : SearchPostModel[] = []
   skeletons = [0,0,0,0]
 
+
   private subscription: Subscription = new Subscription();
   private idReferenceSubject = new BehaviorSubject<string | undefined>(undefined);
+  private errorSubscription!: Subscription;
 
+  errorOccurred: boolean = false;
   searchPosts$: Observable<SearchPostModel[] | null> = of([])
 
 
-  constructor(private searchPostService:SearchPostService) {
-    /*this.searchPosts$ = this.idReferenceSubject.pipe(
-      switchMap(id => this.searchPostService.getPublicSearchPosts(this.idReference, this.extensions, this.gradings)), // Exécute une nouvelle requête à chaque changement
-      tap(_ => this.loading = false),
-      map(response => response.body)
-    ); */
-  }
+
+  constructor(private searchPostService:SearchPostService, private errorStateService: ErrorStateService) { }
 
   ngOnInit() {
+    this.errorSubscription = this.errorStateService.errorState$.subscribe(
+      errorState => {
+        this.errorOccurred = errorState;
+      }
+    );
+
     this.subscription.add(
       this.idReferenceSubject.pipe(
         switchMap(() => this.getSearch())
       ).subscribe()
     );
-    this.idReferenceSubject.next(this.idReference);
   }
 
   ngOnDestroy() {
@@ -74,23 +77,42 @@ export class BrowseSearchPostsComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['idReference'] && !changes['idReference'].isFirstChange()) {
+      this.loading = true;
       this.currentPage = 1;
       this.SearchPostlist = [];
-      this.loading = true;
       this.idReferenceSubject.next(changes['idReference'].currentValue);
-    }
-    if (changes['extensions'] && !changes['extensions'].isFirstChange()) {
-      this.currentPage = 1;
-      this.SearchPostlist = [];
-      this.loading = true;
-      this.idReferenceSubject.next(changes['extensions'].currentValue);
-    }
-    if (changes['gradings'] && !changes['gradings'].isFirstChange()) {
-      this.currentPage = 1;
-      this.SearchPostlist = [];
-      this.loading = true;
-      this.idReferenceSubject.next(changes['gradings'].currentValue);
+    }else{
+      if (changes['extensions'] && !changes['extensions'].isFirstChange()) {
+        this.loading = true;
+        this.currentPage = 1;
+        this.SearchPostlist = [];
+        this.idReferenceSubject.next(changes['extensions'].currentValue);
+      }else{
+        if (changes['gradings'] && !changes['gradings'].isFirstChange()) {
+          this.loading = true;
+          this.currentPage = 1;
+          this.SearchPostlist = [];
+          this.idReferenceSubject.next(changes['gradings'].currentValue);
+        }
+      }
     }
   }
 
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      this.loading = true;
+      this.currentPage = 1;
+      this.SearchPostlist = [];
+      this.idReferenceSubject.next(this.idReference);
+      event.target.complete();
+    }, 0);
+  }
+
+  refresh() {
+    this.errorStateService.setErrorState(false)
+    this.loading = true;
+    this.currentPage = 1;
+    this.SearchPostlist = [];
+    this.idReferenceSubject.next(this.idReference);
+  }
 }

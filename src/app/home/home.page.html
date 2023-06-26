@@ -17,7 +17,16 @@
 </ion-header>
 
 <ion-content>
-  <app-home-banner-slider></app-home-banner-slider>
-  <app-extension-card-slider></app-extension-card-slider>
-  <app-lastest-sale-post-slider></app-lastest-sale-post-slider>
+  <div *ngIf="!errorOccurred" style="height: 100%">
+    <app-home-banner-slider></app-home-banner-slider>
+    <app-extension-card-slider></app-extension-card-slider>
+    <app-lastest-sale-post-slider></app-lastest-sale-post-slider>
+  </div>
+  <ng-template [ngIf]="errorOccurred">
+    <div class="error-occurred">
+      <img src="https://pbs.twimg.com/media/D5WVXQHXkAE_Wzn.png" width="150px">
+      <p>Une erreur est survenue</p>
+      <ion-button (click)="refresh()">Recharger la page</ion-button>
+    </div>
+  </ng-template>
 </ion-content>

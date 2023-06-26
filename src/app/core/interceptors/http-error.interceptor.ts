@@ -9,6 +9,7 @@ import {
 import {Injectable} from "@angular/core";
 import {catchError, Observable, of} from "rxjs";
 import {ToastService} from "../services/toast.service";
+import {ErrorStateService} from "../services/error-state.service";
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   private readonly ERROR_INVALID_CREDENTIALS = "Mauvais email ou mot de passe";
   private readonly ERROR_SERVER_UNREACHABLE = "Serveur inatteignable";
 
-  constructor(private toastService: ToastService) {}
+  constructor(private toastService: ToastService, private errorStateService: ErrorStateService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Add Bearer token to the request headers if it exists
@@ -41,9 +42,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             switch (err.status) {
               case 500:
                 this.toastService.presentToastError(this.ERROR_INTERNAL_SERVER);
+                this.errorStateService.setErrorState(true);
                 break;
               case 400:
                 this.toastService.presentToastError(this.ERROR_BAD_REQUEST);
+                this.errorStateService.setErrorState(true);
                 break;
               case 409:
                 this.toastService.presentToastAlreadyExist(this.ERROR_USER_EXISTS);
@@ -53,9 +56,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                 break;
               default:
                 this.toastService.presentToastError(this.ERROR_SERVER_UNREACHABLE);
+                this.errorStateService.setErrorState(true);
             }
           } catch (e) {
             this.toastService.presentToastError(this.ERROR_SERVER_UNREACHABLE);
+            this.errorStateService.setErrorState(true);
           }
         }
         return of(err);

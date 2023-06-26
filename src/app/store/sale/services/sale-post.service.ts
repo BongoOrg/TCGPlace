@@ -51,4 +51,8 @@ export class SalePostService {
     })
     return this.http.put<any>(`${this.apiURL}/SalePost/public/${salePostId}`, {headers, observe: 'response' });
   }
+
+  deleteSalePost(salePostId:string):Observable<HttpResponse<any>>{
+    return this.http.delete<any>(`${this.apiURL}/SalePost/${salePostId}`, {observe: 'response' });
+  }
 }

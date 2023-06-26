@@ -1,5 +1,6 @@
 import {Component, OnInit, Renderer2} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import { Location } from '@angular/common'
 import {combineLatest, concat, filter, map, Observable, of, ReplaySubject, Subject, switchMap, take, tap} from "rxjs";
 import {PokemonItemReferenceModel} from "../../../core/models/pokemon-item-reference.model";
 import {SalePostModel} from "../../../core/models/sale-post.model";
@@ -24,7 +25,8 @@ export class ViewSalePostComponent {
               private modalCtrl: ModalController,
               private userService:UserService,
               private router:Router,
-              private renderer: Renderer2) {
+              private renderer: Renderer2,
+              private location: Location) {
   }
 
   isDisabled:boolean = true;
@@ -113,5 +115,11 @@ export class ViewSalePostComponent {
         this.renderer.setProperty(window, 'location', this.router.url); //refresh la page
       });
     }
+  }
+
+  deleteSalePost(id: string) {
+    this.salePostService.deleteSalePost(id).subscribe(() => {
+      this.location.back()
+    })
   }
 }

@@ -13,6 +13,7 @@ import {ExtensionCardComponent} from "./components/extension-card-slider/extensi
 import {ExtensionCardSliderComponent} from "./components/extension-card-slider/extension-card-slider.component";
 import {LastestSalePostSliderComponent} from "./components/lastest-sale-post-slider/lastest-sale-post-slider.component";
 import {StorePageModule} from "../store/store.module";
+import {CoreModule} from "../core/core.module";
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {StorePageModule} from "../store/store.module";
         FormsModule,
         IonicModule,
         HomePageRoutingModule,
-        StorePageModule
+        StorePageModule,
+        CoreModule
     ],
   declarations: [HomePage, HomeBannerComponent, HomeBannerSliderComponent, ExtensionCardComponent, ExtensionCardSliderComponent, LastestSalePostSliderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

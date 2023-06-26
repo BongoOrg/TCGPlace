@@ -5,6 +5,7 @@ import {SearchPostModel} from "../../../core/models/search-post.model";
 import {filter, map, Observable, of, ReplaySubject, switchMap, take, tap} from "rxjs";
 import {HttpResponse} from "@angular/common/http";
 import {UserService} from "../../../core/services/UserService/user.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-view-search-post',
@@ -20,7 +21,8 @@ export class ViewSearchPostComponent {
               private route:ActivatedRoute,
               private userService:UserService,
               private router:Router,
-              private renderer: Renderer2) {
+              private renderer: Renderer2,
+              private location: Location) {
 
   }
 
@@ -89,5 +91,11 @@ export class ViewSearchPostComponent {
         this.renderer.setProperty(window, 'location', this.router.url); //refresh la page
       });
     }
+  }
+
+  deleteSearchPost(id: string) {
+    this.searchPostService.deleteSearchPost(id).subscribe(() => {
+      this.location.back()
+    })
   }
 }

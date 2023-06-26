@@ -22,5 +22,4 @@ export class AddReferencePostComponent {
   SelectReference(reference:PokemonItemReferenceModel){
     this.selectRef.emit(reference.idCard);
   }
-
 }

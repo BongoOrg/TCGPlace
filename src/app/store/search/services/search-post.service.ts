@@ -50,4 +50,8 @@ export class SearchPostService{
     })
     return this.http.put<any>(`${this.apiURL}/SearchPost/public/${searchPostId}`, {headers, observe: 'response' });
   }
+
+  deleteSearchPost(searchPostId:string):Observable<HttpResponse<any>>{
+    return this.http.delete<any>(`${this.apiURL}/SearchPost/${searchPostId}`, {observe: 'response' });
+  }
 }

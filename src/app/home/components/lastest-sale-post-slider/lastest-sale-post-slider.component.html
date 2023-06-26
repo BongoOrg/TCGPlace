@@ -2,8 +2,10 @@
   <h2>Dernières annonces de vente</h2>
   <a (click)="navigateTo()">Tout voir →</a>
 </div>
-<swiper-container slides-per-view="auto" free-mode="true">
+<swiper-container slides-per-view="auto" free-mode="true" *ngIf="!isLoading">
   <swiper-slide *ngFor="let post of salePost | async; index as position">
     <app-sale-post-card [salePost]="post"></app-sale-post-card>
   </swiper-slide>
 </swiper-container>
+
+<app-skeleton-grid [nbSkeletons]="2" *ngIf="isLoading" ></app-skeleton-grid>

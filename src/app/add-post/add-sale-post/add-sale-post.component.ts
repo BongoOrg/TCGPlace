@@ -68,6 +68,7 @@ export class AddSalePostComponent implements OnInit {
     this.addSalePostService.PostSalePost(salePost).subscribe({
       next: (response) => {
         if(response.status == 201){
+          this.photoService.photos = []
           this.toastService.presentToastSuccess("Annonce crée")
           this.loading = false;
           this.router.navigateByUrl("/tabs/store")
@@ -94,9 +95,9 @@ export class AddSalePostComponent implements OnInit {
       componentProps: {
         imageUrl: imageUrl
       }
-      
+
     });
     return await modal.present();
   }
-   
+
 }

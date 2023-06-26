@@ -20,7 +20,7 @@ import {SearchReferenceComponent} from "./add-reference-post/search-reference/se
         ReactiveFormsModule,
         IonicModule,
         AddPostPageRoutingModule,
-        CoreModule
+        CoreModule,
     ],
   exports: [
     AddReferencePostComponent,
@@ -28,6 +28,6 @@ import {SearchReferenceComponent} from "./add-reference-post/search-reference/se
     AddSearchPostComponent,
     SearchReferenceComponent
   ],
-  declarations: [AddPostPage, AddSalePostComponent, AddSearchPostComponent, AddReferencePostComponent, SearchReferenceComponent]
+  declarations: [AddPostPage, AddSalePostComponent, AddSearchPostComponent, AddReferencePostComponent, SearchReferenceComponent],
 })
 export class AddPostPageModule {}

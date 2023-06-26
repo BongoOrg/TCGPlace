@@ -4,13 +4,26 @@ import {ItemModel} from "../../../core/models/item.model";
 import {PictureModel} from "../../../core/models/picture.model";
 import { Router } from '@angular/router';
 import {SalePostService} from "../services/sale-post.service";
-import {BehaviorSubject, filter, map, Observable, of, scan, Subscription, switchMap, tap} from "rxjs";
+import {
+  BehaviorSubject,
+  catchError,
+  filter,
+  map,
+  Observable,
+  of,
+  scan,
+  Subscription,
+  switchMap,
+  tap,
+  throwError
+} from "rxjs";
 import {SearchPostModel} from "../../../core/models/search-post.model";
 import {da, ta, th} from "date-fns/locale";
 import {InfiniteScrollCustomEvent} from "@ionic/angular";
-import {HttpResponse} from "@angular/common/http";
+import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {ExtensionModel} from "../../../home/components/extension-card-slider/models/extension.model";
 import {GradingModel} from "../../../core/models/grading.model";
+import {ErrorStateService} from "../../../core/services/error-state.service";
 
 @Component({
   selector: 'app-browse-sale-posts',
@@ -23,21 +36,32 @@ export class BrowseSalePostsComponent implements OnInit, OnDestroy {
   @Input() gradings!: GradingModel[] | undefined
   @Input() idUser!: string | undefined
 
+
+
   pictures: PictureModel[] = []
   isLoading : boolean = true
   currentPage : number = 1
   list : SalePostModel[] = []
+
   private subscription: Subscription = new Subscription();
   private idReferenceSubject = new BehaviorSubject<string | undefined>(undefined);
+  private errorSubscription!: Subscription;
+  errorOccurred: boolean = false;
 
-  constructor(private router:Router, private saleService : SalePostService) { }
+  constructor(private router:Router, private saleService : SalePostService, private errorStateService: ErrorStateService) { }
   ngOnInit() {
+
+    this.errorSubscription = this.errorStateService.errorState$.subscribe(
+      errorState => {
+        this.errorOccurred = errorState;
+      }
+    );
+
     this.subscription.add(
       this.idReferenceSubject.pipe(
-        switchMap(() => this.getSales())
+        switchMap(() => this.getSales()),
       ).subscribe()
     );
-    this.idReferenceSubject.next(this.idReference);
   }
 
   ngOnDestroy() {
@@ -50,19 +74,23 @@ export class BrowseSalePostsComponent implements OnInit, OnDestroy {
       this.currentPage = 1;
       this.list = [];
       this.idReferenceSubject.next(changes['idReference'].currentValue);
+    }else{
+      if (changes['extensions'] && !changes['extensions'].isFirstChange()) {
+        this.isLoading = true;
+        this.currentPage = 1;
+        this.list = [];
+        this.idReferenceSubject.next(changes['extensions'].currentValue);
+      }else{
+        if (changes['gradings'] && !changes['gradings'].isFirstChange()) {
+          this.isLoading = true;
+          this.currentPage = 1;
+          this.list = [];
+          this.idReferenceSubject.next(changes['gradings'].currentValue);
+        }
+      }
     }
-    if (changes['extensions'] && !changes['extensions'].isFirstChange()) {
-      this.isLoading = true;
-      this.currentPage = 1;
-      this.list = [];
-      this.idReferenceSubject.next(changes['extensions'].currentValue);
-    }
-    if (changes['gradings'] && !changes['gradings'].isFirstChange()) {
-      this.isLoading = true;
-      this.currentPage = 1;
-      this.list = [];
-      this.idReferenceSubject.next(changes['gradings'].currentValue);
-    }
+
+
   }
 
   onIonInfinite(ev : any) {
@@ -82,10 +110,27 @@ export class BrowseSalePostsComponent implements OnInit, OnDestroy {
         if(val.body !== null){
           this.list = this.list.concat(val.body);
         }
-      }),
+      })
     )
   }
 
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      this.isLoading = true;
+      this.currentPage = 1;
+      this.list = [];
+      this.idReferenceSubject.next(this.idReference);
+      event.target.complete();
+    }, 0);
+  }
+
+  refresh() {
+    this.errorStateService.setErrorState(false)
+    this.isLoading = true;
+    this.currentPage = 1;
+    this.list = [];
+    this.idReferenceSubject.next(this.idReference);
+  }
 }
 
 

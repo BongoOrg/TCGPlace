@@ -18,3 +18,11 @@ ion-toolbar{
 ion-searchbar{
   padding: 0 0.5em;
 }
+
+.error-occurred{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 50%;
+}

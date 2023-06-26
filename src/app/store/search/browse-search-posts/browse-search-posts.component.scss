@@ -7,3 +7,11 @@ ion-item {
   --margin: 0;
   --padding: 0;
 }
+
+.error-occurred{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 50%;
+}

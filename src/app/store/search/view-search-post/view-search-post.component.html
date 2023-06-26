@@ -44,7 +44,7 @@
 
     <div class="btnActions">
       <div *ngIf="!isOwner">
-        <ion-button class="filled-btn" expand="block">Acheter<ion-icon slot="end" name="cart-outline"></ion-icon></ion-button>
+        <ion-button class="filled-btn" expand="block">Vendez lui la votre<ion-icon slot="end" name="cart-outline"></ion-icon></ion-button>
         <ion-button expand="block" fill="outline">Faire une offre<ion-icon slot="end" name="pricetag-outline"></ion-icon></ion-button>
         <ion-button expand="block" fill="outline">Proposer un échange<ion-icon slot="end" name="swap-horizontal"></ion-icon></ion-button>
         <div class="group-buttons">
@@ -60,7 +60,7 @@
         <div class="group-buttons">
           <button>Favoris<ion-icon name="heart-outline"></ion-icon></button>
           <div class="vertical-divider"></div>
-          <button>Supprimer<ion-icon color="danger" name="trash-outline"></ion-icon></button>
+          <button (click)="deleteSearchPost(searchPost.id)">Supprimer<ion-icon color="danger" name="trash-outline"></ion-icon></button>
         </div>
       </div>
     </div>
