@@ -11,6 +11,18 @@
   z-index: 1;
 }
 
+ion-chip{
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  padding: 0.5em 0.7em;
+  background-color: rgba(56, 128, 255, 0.3);
+}
+
+ion-chip ion-icon{
+  padding-left: 0.3em;
+}
+
 .searchMessage{
   display: flex;
   justify-content: center;

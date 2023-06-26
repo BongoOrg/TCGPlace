@@ -4,15 +4,25 @@
         <ion-col size="6" *ngFor="let reference of SearchedReferences">
           <ion-card (click)="SelectReference(reference)">
             <ion-img src="{{reference.image}}"></ion-img>
-            <ion-card-header>
-              <div style="display: flex; flex-direction: row; align-items: center;">
-                <ion-img class="img-drapeau-france" src="../../../assets/img/drapeau-france.png" />
-                <p>{{reference.name}}</p>
-              </div>
-              <div style="display: flex; justify-content: flex-end;">
-                <p>{{reference.idExtension}}</p>
-              </div>
-            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-align-items-center" style="margin-bottom: 0.3em">
+                  <ion-col size="2">
+                    <ion-img class="img-drapeau-france" src="../../../assets/img/drapeau-france.png" />
+                  </ion-col>
+                  <ion-col style="display: flex; justify-content: center;" size="10">
+                    <h3>{{reference.name}}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                  <ion-col>
+                    <ion-badge style="width: 100%;">
+                      <p>{{reference.libelleExtension}}</p>
+                    </ion-badge>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
           </ion-card>
         </ion-col>
       </ion-row>
