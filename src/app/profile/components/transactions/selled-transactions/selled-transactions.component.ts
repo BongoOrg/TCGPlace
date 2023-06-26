@@ -3,6 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import {OrderModel} from "../../../../core/models/order.model";
 import {TransactionService} from "../../services/TransactionService/transaction.service";
 import {UserService} from "../../../../core/services/UserService/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-selled-transactions',
@@ -13,7 +14,7 @@ export class SelledTransactionsComponent implements OnInit {
   @Input() idUser!: number
   isLoading$ = new BehaviorSubject<boolean>(true); // set loading to true initially
   sellerTransaction$ = new BehaviorSubject<OrderModel[]>([])
-  constructor(private transactionService : TransactionService) { }
+  constructor(private transactionService : TransactionService, private router : Router) { }
 
   ngOnInit() {
 
@@ -29,6 +30,10 @@ export class SelledTransactionsComponent implements OnInit {
         this.isLoading$.next(false);
       }
     )
+  }
+
+  onTransactionClick(transaction: OrderModel) {
+    this.router.navigate(['tabs/profil/transactions', transaction.id, 'sell']);
   }
 
 }

@@ -1,0 +1,127 @@
+.container{
+  padding: 0.5em;
+}
+
+ion-chip{
+  padding: 0.5em 1.5em;
+}
+
+.info-commande{
+  display: flex;
+  width: 100%;
+  padding: 0.5em 1em;
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.badge{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+.spin{
+  position: relative;
+  left: 45%;
+}
+.pageSpin{
+  position: relative;
+  left: 45%;
+  top: 50%;
+}
+
+.mail{
+  color: #3880ff;
+}
+
+.fav-signal{
+  padding: 0px;
+}
+
+.group-buttons{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #dedede;
+}
+
+button{
+  display: flex;
+  padding: 0 2em;
+  align-items: center;
+  justify-content: space-evenly;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  width: 50%;
+  background-color: transparent;
+}
+
+button ion-icon{
+  font-size: 25px;
+}
+
+.swiper-container{
+  display: flex;
+  margin: 0.5em 0;
+}
+
+ion-avatar{
+  margin-right: 0.5em;
+}
+
+ion-item{
+  border-top: 1px solid #dedede;
+}
+
+ion-grid{
+  margin-top: 0.5em;
+  padding: 0.5em;
+}
+
+.divider{
+  padding: 0.3em;
+  border-bottom: 1px solid #dedede;
+}
+
+.vertical-divider{
+  padding: 1em 0;
+  border-left: 1px solid #dedede;
+}
+
+.btnActions{
+  padding: 0.5em;
+}
+
+ion-button{
+  margin-bottom: 0.4em;
+}
+
+.tile-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+h2{
+  font-weight: 400 !important;
+}
+
+h4{
+  margin-top: 0.5em !important;
+}
+
+a{
+  color: #3880ff;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}

@@ -10,5 +10,7 @@ export class OrderModel{
   shipAddress!: string
   merchPostName!: string
   merchPostId!: number;
+  totalWithShip!: number;
+  username!: string;
   merchPostNamePhotos! : string[]
 }

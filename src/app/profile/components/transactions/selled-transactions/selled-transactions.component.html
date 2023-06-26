@@ -8,7 +8,7 @@
   <ng-template #loaded>
     <ng-container *ngIf="(sellerTransaction$ | async) as sellerTransaction">
       <ion-grid class="grid-container" *ngIf="sellerTransaction.length > 0; else noTransactions">
-        <ion-row class="row-divider" *ngFor="let transaction of sellerTransaction$ | async">
+        <ion-row class="row-divider" *ngFor="let transaction of sellerTransaction$ | async" (click)="onTransactionClick(transaction)">
           <ion-col size="2">
             <ion-img src="{{transaction.merchPostNamePhotos[0]}}"></ion-img>
           </ion-col>

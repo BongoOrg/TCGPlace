@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content >
   <ng-container *ngIf="isLoading$ | async; else loaded">
     <div class="spin">
       <ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
@@ -8,7 +8,7 @@
   <ng-template #loaded>
     <ng-container *ngIf="(buyedTransaction$ | async) as buyerTransaction">
       <ion-grid class="grid-container" *ngIf="buyerTransaction.length > 0; else noTransactions">
-        <ion-row class="row-divider" *ngFor="let transaction of buyedTransaction$ | async">
+        <ion-row class="row-divider" *ngFor="let transaction of buyedTransaction$ | async" (click)="onTransactionClick(transaction)">
           <ion-col size="2">
             <ion-img src="{{transaction.merchPostNamePhotos[0]}}"></ion-img>
           </ion-col>
@@ -24,7 +24,8 @@
               </ion-row>
               <ion-row>
                 <ion-col>
-                  <h3>Commandé</h3>
+                  <h3 *ngIf="!transaction.received">Commandé</h3>
+                  <h3 *ngIf="transaction.received">Livré</h3>
                 </ion-col>
               </ion-row>
               <ion-row>
