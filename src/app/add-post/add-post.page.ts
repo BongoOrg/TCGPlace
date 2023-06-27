@@ -113,10 +113,6 @@ export class AddPostPage implements OnDestroy {
     }
   }
 
-  changeResults($event: Observable<PokemonItemReferenceModel[]>) {
-
-  }
-
   unSelectExtension(extension: ExtensionModel) {
     this.selectedExtensions = this.selectedExtensions?.filter(ex => ex.id !== extension.id)
   }

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ExtensionCardSliderComponent implements OnInit {
 
   extensions$!: Observable<ExtensionModel[]>
+  skeletons = [0,0];
   constructor(private router:Router, private http: HttpClient, private extensionCardService: ExtensionCardService) { }
 
   ngOnInit() {

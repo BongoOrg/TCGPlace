@@ -27,7 +27,7 @@ export class PhotoService {
 
     // Save the picture and add it to photo collection
     const savedImageFile = await this.savePicture(capturedPhoto);
-    this.photos.unshift(<UserPhoto>savedImageFile);
+    this.photos.push(<UserPhoto>savedImageFile);
     await Preferences.set({
       key: this.PHOTO_STORAGE,
       value: JSON.stringify(this.photos),
@@ -57,7 +57,6 @@ export class PhotoService {
   private async savePicture(photo: Photo) {
     // Convert photo to base64 format, required by Filesystem API to save
     const base64Data = await this.readAsBase64(photo);
-
     // Write the file to the data directory
     const fileName = new Date().getTime() + '.jpeg';
     const savedFile = await Filesystem.writeFile({
@@ -99,13 +98,13 @@ export class PhotoService {
         path: photo.filepath,
         directory: Directory.Data
       });
-  
+
       // Supprime la photo de la collection
       const index = this.photos.findIndex((p) => p.filepath === photo.filepath);
       if (index !== -1) {
         this.photos.splice(index, 1);
       }
-  
+
       // Met à jour les préférences de stockage avec la nouvelle collection
       await Preferences.set({
         key: this.PHOTO_STORAGE,
@@ -115,7 +114,7 @@ export class PhotoService {
       console.error("Une erreur s'est produite lors de la suppression de la photo :", error);
     }
   }
-  
+
   public async CreatePicture(): Promise<PictureModel[]> {
     var pictures:PictureModel[] = [];
 
@@ -142,7 +141,7 @@ export class PhotoService {
       const pic = new PictureModel(nomFic, base64);
 
       pictures.push(pic);
-      
+
     }
    return pictures;
   }

@@ -10,6 +10,7 @@ import {UserService} from "../../core/services/UserService/user.service";
 import {ToastService} from "../../core/services/toast.service";
 import { ModalController } from '@ionic/angular';
 import { FullScreenImageComponent } from 'src/app/core/components/full-screen-image/full-screen-image.component';
+import {PhotoService} from "../../core/services/photo.service";
 
 
 @Component({
@@ -45,7 +46,7 @@ export class AddSearchPostComponent implements OnInit {
     this.ionicForm = this.formBuilder.group({
       price: ['', [Validators.required, Validators.min(0.5)]],
       grading: ['', [Validators.required]],
-      remarks: ['', [Validators.required]],
+      remarks: [''],
       public: [true],
       refId: this.route.snapshot.params['id'],
     });
@@ -60,7 +61,7 @@ export class AddSearchPostComponent implements OnInit {
         if(response.status == 201){
           this.toastService.presentToastSuccess("Annonce crée")
           this.loading = false;
-          this.router.navigateByUrl("/tabs/store")
+          this.router.navigateByUrl("/tabs/add")
         }
       }
     })

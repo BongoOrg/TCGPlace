@@ -12,6 +12,8 @@ import { AddSalePostService } from '../services/add-sale-post.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { UserService } from 'src/app/core/services/UserService/user.service';
 import { UserPhoto } from '../../core/services/photo.service';
+import {finished} from "stream";
+import {destroyView} from "@ionic/angular/directives/navigation/stack-utils";
 
 @Component({
   selector: 'app-add-sale-post',
@@ -54,7 +56,7 @@ export class AddSalePostComponent implements OnInit {
     this.ionicForm = this.formBuilder.group({
       price: ['', [Validators.required, Validators.min(0.5)]],
       grading: ['', [Validators.required]],
-      remarks: ['', [Validators.required]],
+      remarks: [''],
       public: [true],
       refId: this.route.snapshot.params['id']
     });
@@ -71,7 +73,7 @@ export class AddSalePostComponent implements OnInit {
           this.photoService.photos = []
           this.toastService.presentToastSuccess("Annonce crée")
           this.loading = false;
-          this.router.navigateByUrl("/tabs/store")
+          this.router.navigateByUrl("/tabs/add")
         }
       }
     })
@@ -98,6 +100,10 @@ export class AddSalePostComponent implements OnInit {
 
     });
     return await modal.present();
+  }
+
+  isPhotoNotEmpty(){
+    return this.photoService.photos.length > 0;
   }
 
 }

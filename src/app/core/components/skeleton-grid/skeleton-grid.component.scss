@@ -8,8 +8,10 @@ ion-item {
   --padding: 0;
 }
 .postCard{
+  margin: 5px;
   padding: 5px;
-  background-color: #dfece9;
+  //background-color: #dfece9;
+  background-color: #efefef;
 }
 :host{
   width: 50%;

@@ -111,6 +111,7 @@
     <ion-button
       type="submit"
       (click)="submitForm()"
+      [disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
       expand="full"
       size="large"
       color="primary"
