@@ -8,6 +8,9 @@ import { Conversation } from '../models/conversation.model'
 import { UserService } from 'src/app/core/services/UserService/user.service'
 import { MESSAGERIE_URL } from 'config'
 import { OfferService } from 'src/app/store/sale/services/OfferService/offer.service'
+import { Offre } from '../models/offre.model'
+import {ActivatedRoute, Router} from "@angular/router";
+import {ViewSalePostComponent} from "../../store/sale/view-sale-post/view-sale-post.component";
 
 @Component({
   selector: 'app-conversation',
@@ -43,7 +46,7 @@ export class ConversationComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.currentUserId = this.userService.GetCurrentUserID()
-  
+
     this.subscription.add(
       this.conversationSubject.pipe(
         switchMap(() => this.getConversation()),
@@ -52,11 +55,11 @@ export class ConversationComponent implements OnInit {
           this.content.scrollToBottom();
         })
       ).subscribe()
-    );    
-  
+    );
+
     this.startHubConnection()
   }
-  
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
@@ -129,7 +132,7 @@ export class ConversationComponent implements OnInit {
     this.updateOfferId = offerId
     this.updateOfferLoading = true
     if (offerId != undefined && offerStateId != undefined) {
-      this.offerService.updateOffer(offerId, offerStateId).subscribe(() => {
+      this.offerService.updateOffer(offerId, offerStateId).subscribe(response => {
         if (this.conversation != undefined && this.conversation.messages != undefined) {
           this.conversation.messages.forEach(msg => {
             if (msg != undefined && msg.offre != undefined && msg.offre.id == offerId) {
@@ -176,7 +179,7 @@ export class ConversationComponent implements OnInit {
         dateEnvoi: new Date(),
         texte: this.newMessage,
       }
-  
+
       this.hubConnectionBuilder
         .invoke(
           'SendMessageInConversation',
@@ -200,5 +203,13 @@ export class ConversationComponent implements OnInit {
         });
     }
   }
-  
+
+  async redirectToSalePost(id: string) {
+    const modal = await this.modalCtrl.create({
+      component: ViewSalePostComponent, // Remplacez par le composant que vous souhaitez ouvrir dans le modal
+      componentProps: { paramSearchPostId: id }
+    });
+
+    return await modal.present();
+  }
 }

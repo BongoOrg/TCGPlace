@@ -15,7 +15,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-header style="padding-top: 10px">
-    <ion-item>
+    <ion-item (click)="redirectToSalePost(conversation.merchPost.id)">
       <img [src]="conversation.merchPost.image" style="width: 60px; padding-bottom: 10px"/>
       <ion-label style="padding-left: 10%">
         <p>{{conversation.merchPost.name}} | {{conversation.merchPost.libelleExtension}}</p>

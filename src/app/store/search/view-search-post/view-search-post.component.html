@@ -48,7 +48,9 @@
         <ion-button expand="block" fill="outline">Faire une offre<ion-icon slot="end" name="pricetag-outline"></ion-icon></ion-button>
         <ion-button expand="block" fill="outline">Proposer un échange<ion-icon slot="end" name="swap-horizontal"></ion-icon></ion-button>
         <div class="group-buttons">
-          <button>Favoris<ion-icon name="heart-outline"></ion-icon></button>
+          <button *ngIf="loadingLike">Favoris<ion-spinner name="circular"></ion-spinner></button>
+          <button *ngIf="!searchPost.liked && !loadingLike" (click)="LikeSearchPost(this.searchPost.id, $event)">Favoris<ion-icon name="heart-outline"></ion-icon></button>
+          <button *ngIf="searchPost.liked && !loadingLike" (click)="UnlikeSearchPost(this.searchPost.id, $event)">Favoris<ion-icon name="heart" color="danger"></ion-icon></button>
           <div class="vertical-divider"></div>
           <button>Signaler<ion-icon color="danger" name="warning"></ion-icon></button>
         </div>
