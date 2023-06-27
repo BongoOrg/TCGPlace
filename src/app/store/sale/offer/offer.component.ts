@@ -21,8 +21,8 @@ export class OfferComponent implements OnInit {
 
   salePost!: SalePostModel | null
   SalePost$: Observable<SalePostModel | null> = of(new SalePostModel())
-  loading: boolean = true;
-  form!: FormGroup;
+  loading: boolean = true
+  form!: FormGroup
 
   ngOnInit() {
     const idSalePost = this.route.snapshot.params['id']
@@ -31,10 +31,11 @@ export class OfferComponent implements OnInit {
       tap(_ => this.loading = false),
       map(response => response.body),
     )
-    this.form = this.createForm();
+    this.form = this.createForm()
   }
+
   async dismiss() {
-    await this.navCtrl.back();
+    await this.navCtrl.back()
   }
 
   createForm(): FormGroup {
@@ -46,7 +47,7 @@ export class OfferComponent implements OnInit {
   validatePositiveNumber(control: FormControl) {
     const value = control.value;
     if (value < 0 || (typeof value === 'string' && value.startsWith('-'))) {
-      return { negativeNumber: true };
+      return { negativeNumber: true }
     }
     return null;
   }
@@ -57,9 +58,9 @@ export class OfferComponent implements OnInit {
     this.offerService.createOffer(salePost.id, this.userService.GetCurrentUserID(), price).subscribe({
       next: async (response: HttpResponse<any>) => {
         if (response.status == 201) {
-          this.toastService.presentToastSuccess("Offre créé")
+          this.toastService.presentToastSuccess("Offre créée")
           this.loading = false;
-          //this.router.navigateByUrl("/tabs/messages")
+          this.router.navigateByUrl("/tabs/messages")
           const modal = await this.modalController.create({
             component: ConversationComponent,
             componentProps: { salePostId: salePost.id, idUser: salePost.userId, salePostPrice: salePost.price }

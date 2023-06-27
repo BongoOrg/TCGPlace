@@ -2,14 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { ModalController } from '@ionic/angular'
 import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
 import { Message } from '../models/message.model'
-import { Subject, BehaviorSubject, Subscription, switchMap, Observable, tap } from 'rxjs'
+import { BehaviorSubject, Subscription, switchMap, Observable, tap } from 'rxjs'
 import { MessagesService } from '../services/messagesService'
 import { Conversation } from '../models/conversation.model'
 import { UserService } from 'src/app/core/services/UserService/user.service'
 import { MESSAGERIE_URL } from 'config'
-import { SalePostModel } from 'src/app/core/models/sale-post.model'
 import { OfferService } from 'src/app/store/sale/services/OfferService/offer.service'
-import { Offre } from '../models/offre.model'
 
 @Component({
   selector: 'app-conversation',
@@ -45,16 +43,20 @@ export class ConversationComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.currentUserId = this.userService.GetCurrentUserID()
-
+  
     this.subscription.add(
-      this.conversationSubject.pipe(switchMap(() => this.getConversation())).subscribe(() => {
-        this.loading= false
-      })
-    )
-
+      this.conversationSubject.pipe(
+        switchMap(() => this.getConversation()),
+        tap(() => {
+          this.loading = false;
+          this.content.scrollToBottom();
+        })
+      ).subscribe()
+    );    
+  
     this.startHubConnection()
-
   }
+  
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
@@ -80,6 +82,9 @@ export class ConversationComponent implements OnInit {
                 if (currentConversation) {
                   this.conversation.messages.push(message) // Ajout du nouveau message à la liste de messages de la conversation
                   //this.conversationSubject.next(this.conversation) // Mise à jour de conversationSubject avec la nouvelle conversations
+                  setTimeout(() => {
+                    this.content.scrollToBottom(); // Fait défiler vers le bas après l'ajout d'un nouveau message
+                  }, 600)
                 }
               }
             })
@@ -124,7 +129,7 @@ export class ConversationComponent implements OnInit {
     this.updateOfferId = offerId
     this.updateOfferLoading = true
     if (offerId != undefined && offerStateId != undefined) {
-      this.offerService.updateOffer(offerId, offerStateId).subscribe(response => {
+      this.offerService.updateOffer(offerId, offerStateId).subscribe(() => {
         if (this.conversation != undefined && this.conversation.messages != undefined) {
           this.conversation.messages.forEach(msg => {
             if (msg != undefined && msg.offre != undefined && msg.offre.id == offerId) {
@@ -171,7 +176,7 @@ export class ConversationComponent implements OnInit {
         dateEnvoi: new Date(),
         texte: this.newMessage,
       }
-
+  
       this.hubConnectionBuilder
         .invoke(
           'SendMessageInConversation',
@@ -186,12 +191,14 @@ export class ConversationComponent implements OnInit {
         })
         .then(() => {
           if (this.conversation) {
-            this.conversation.messages.push(message)
-            this.content.scrollToBottom()
-            //this.conversationSubject.next(this.conversation) // Mettre à jour conversationSubject
+            this.conversation.messages.push(message);
+            setTimeout(() => {
+              this.content.scrollToBottom(); // Fait défiler vers le bas après l'ajout d'un nouveau message
+            }, 100);
           }
-          this.newMessage = ""
-        })
+          this.newMessage = "";
+        });
     }
   }
+  
 }

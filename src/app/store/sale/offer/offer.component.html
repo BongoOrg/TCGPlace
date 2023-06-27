@@ -25,7 +25,8 @@
             </ion-item>
               
             <div class="displayButton">
-                <ion-button class="offerSubmitButton" type="submit" [disabled]="!form.valid">Valider</ion-button>
+                <ion-button *ngIf="!loading" class="offerSubmitButton" type="submit" [disabled]="!form.valid">Valider</ion-button>
+                <ion-spinner *ngIf="loading" style="margin-top: 5px;" name="circular"></ion-spinner>
             </div>
               
         </form>
