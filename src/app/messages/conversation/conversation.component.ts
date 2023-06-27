@@ -43,14 +43,17 @@ export class ConversationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.currentUserId = this.userService.GetCurrentUserID()
 
     this.subscription.add(
-      this.conversationSubject.pipe(switchMap(() => this.getConversation())).subscribe()
+      this.conversationSubject.pipe(switchMap(() => this.getConversation())).subscribe(() => {
+        this.loading= false
+      })
     )
 
     this.startHubConnection()
-    this.loading= false
+
   }
 
   ngOnDestroy() {

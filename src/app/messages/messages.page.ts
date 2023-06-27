@@ -29,14 +29,16 @@ export class MessagesPage implements OnInit {
 
   ngOnInit(): void {
     this.currentUserId = this.userService.GetCurrentUserID()
-    this.conversations$ = this.messagesService.GetAllConversationByUserId(this.currentUserId)
+    this.conversations$ = this.messagesService.GetAllConversationByUserId(this.currentUserId).pipe(
+      tap(r => console.log(r))
+    )
   }
 
   async showConv(conversation: Conversation, idUser: number) {
     //const salePost = await this.salePostService.getSingleSalePost(conversation.merchPostId)
     const modal = await this.modalCtrl.create({
       component: ConversationComponent,
-      componentProps: { salePostId: conversation.merchPostId, idUser: idUser, salePostPrice: 2 }
+      componentProps: { salePostId: conversation.merchPostId, idUser: idUser }
     });
     await modal.present();
   }
