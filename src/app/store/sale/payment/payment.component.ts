@@ -23,12 +23,12 @@ export class PaymentComponent implements OnInit, OnDestroy{
     {
       icon: "location-outline",
       label: "Point relais",
-      price: 10
+      price: 2
     },
     {
       icon: "home-outline",
       label: "Domicile",
-      price: 3
+      price: 10
     }
   ];
   selectedValue?: number = 0;

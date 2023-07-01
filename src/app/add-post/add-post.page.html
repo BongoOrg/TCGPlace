@@ -1,24 +1,18 @@
+<ion-header>
+  <app-search-reference [DefaultResults]="true" [Extensions]="selectedExtensions" ></app-search-reference>
+  <ion-toolbar>
+    <ion-segment value="sale" mode="md">
+      <ion-segment-button (click)="saleSelected = true" value="sale">
+        <ion-label>Vente</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="saleSelected = false" value="search">
+        <ion-label>Recherche</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true" id="main-content">
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="openModal()">
-      <ion-icon name="funnel"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-header>
-    <app-search-reference [DefaultResults]="true" [Extensions]="selectedExtensions" ></app-search-reference>
-  </ion-header>
-  <ion-header>
-    <ion-toolbar>
-      <ion-segment value="sale" mode="md">
-        <ion-segment-button (click)="saleSelected = true" value="sale">
-          <ion-label>Vente</ion-label>
-        </ion-segment-button>
-        <ion-segment-button (click)="saleSelected = false" value="search">
-          <ion-label>Recherche</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-  </ion-header>
   <ion-chip *ngFor="let extension of selectedExtensions">{{extension.id}}<ion-icon name="close-circle" (click)="unSelectExtension(extension)"></ion-icon></ion-chip>
   <app-add-reference-post (selectRef)="redirectToAddPost($event)" [SearchedReferences]="searchedReferencesList"  [loading]="this.loading"></app-add-reference-post>
   <ion-infinite-scroll *ngIf="!loading" threshold="100px" (ionInfinite)="onIonInfinite($event)">
@@ -28,3 +22,9 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="openModal()">
+    <ion-icon name="funnel"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
