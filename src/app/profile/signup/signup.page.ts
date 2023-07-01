@@ -55,6 +55,7 @@ export class SignupPage implements OnInit {
       city: ['', [Validators.required]],
       countryId : ['', Validators.required],
       postalCode: ['', [Validators.required]],
+      conditions: [false, [Validators.requiredTrue]],
     });
   }
 
@@ -70,6 +71,7 @@ export class SignupPage implements OnInit {
       city : this.form.value.city,
       countryId : this.form.value.countryId,
       postalCode : this.form.value.postalCode,
+      conditions : this.form.value.conditions,
     }
     this.userService.RegisterUser(user).subscribe(
       response => {

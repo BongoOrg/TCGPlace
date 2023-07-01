@@ -7,9 +7,17 @@
       </ion-button>
     </ion-buttons>
     <ion-title>RGPD</ion-title>
+    <ion-back-button slot="end" fill="clear" text=""></ion-back-button>
   </ion-toolbar>
 
   <ion-list lines="full" *ngIf="menuVisible">
+
+    <ion-item routerLink="/">
+      <ion-label>Acceuil</ion-label>
+      <ion-button slot="end" fill="clear" routerLink="/">
+      </ion-button>
+    </ion-item>
+
     <ion-item routerLink="/rgpd/politique-de-confidentialite">
       <ion-label>Politique de confidentialité</ion-label>
       <ion-button slot="end" fill="clear" routerLink="/rgpd/politique-de-confidentialite">
