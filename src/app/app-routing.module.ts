@@ -33,7 +33,11 @@ const routes: Routes = [
     {
         path: 'messages',
         loadChildren: () => import('./messages/messages.module').then(m => m.MessagesPageModule)
-    }
+    },
+  {
+    path: 'rgpd',
+    loadChildren: () => import('./rgpd/rgpd.module').then( m => m.RgpdPageModule)
+  }
 ];
 @NgModule({
   imports: [
