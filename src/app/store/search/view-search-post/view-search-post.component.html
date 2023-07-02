@@ -44,8 +44,7 @@
 
     <div class="btnActions">
       <div *ngIf="!isOwner">
-        <ion-button class="filled-btn" expand="block">Vendez lui la votre<ion-icon slot="end" name="cart-outline"></ion-icon></ion-button>
-        <ion-button expand="block" fill="outline">Faire une offre<ion-icon slot="end" name="pricetag-outline"></ion-icon></ion-button>
+        <ion-button class="filled-btn" expand="block" (click)="OpenAddSalePost(searchPost)">Vendez lui la votre<ion-icon slot="end" name="cart-outline"></ion-icon></ion-button>
         <ion-button expand="block" fill="outline">Proposer un échange<ion-icon slot="end" name="swap-horizontal"></ion-icon></ion-button>
         <div class="group-buttons">
           <button *ngIf="loadingLike">Favoris<ion-spinner name="circular"></ion-spinner></button>
@@ -83,7 +82,7 @@
     <div class="divider"></div>
 
     <div class="tile-container">
-      <h2>Dernières annonces de vente</h2>
+      <h2>Dernières annonces de recherche</h2>
       <a>Tout voir →</a>
     </div>
     <swiper-container slides-per-view="auto" free-mode="true" class="pb-5">

@@ -186,6 +186,8 @@ export class ConversationComponent implements OnInit {
       const message: Message = {
         id: "",
         idUserEnvoi: this.userService.GetCurrentUserID(),
+        sellerId: 0,
+        buyerId: 0,
         dateEnvoi: new Date(),
         texte: this.newMessage,
       }

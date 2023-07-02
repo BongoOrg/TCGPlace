@@ -43,20 +43,45 @@
                 <div *ngIf="message.idUserEnvoi == currentUserId">
                   En cours
                 </div>
-                <div *ngIf="message.idUserEnvoi != currentUserId">
                   <ion-button *ngIf="!updateOfferLoading" (click)="updateOffer(message, 'Y')">Accepter</ion-button>
                   <ion-button *ngIf="!updateOfferLoading" style="margin-left: 10px;" (click)="updateOffer(message, 'N')">Refuser</ion-button>
                   <ion-spinner *ngIf="updateOfferLoading" style="display: flex; margin:auto;" name="circular"></ion-spinner>
                 </div>
-              </div>
               <div *ngIf="message.offre.etat == 'N'">Refusée</div>
-              <div *ngIf="message.offre.etat == 'Y'">
-                <p>Acceptée</p>
-              <ion-button (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+             <!-- <p>CurrentUserId : {{currentUserId}}</p>
+              <p>idUserEnvoi : {{message.idUserEnvoi}}</p>
+              <p>sellerId : {{message.sellerId}}</p> -->
+              <div *ngIf="message.offre.etat == 'Y'"> <!-- offre acceptée -->
+                Acceptée
+                <div *ngIf="message.sellerId !== message.idUserEnvoi"> <!-- offre d'un sale post -->
+                  <div *ngIf="message.idUserEnvoi === currentUserId"> <!-- offre provenant du current user -->
+                    <ion-button (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+                  </div>
+                  <div *ngIf="message.idUserEnvoi !== currentUserId"> <!-- offre provenant de l'autre user -->
+
+                  </div>
+                </div>
+                <div *ngIf="message.sellerId === message.idUserEnvoi"><!-- offre d'un search post -->
+                  <div *ngIf="message.idUserEnvoi === currentUserId"> <!-- offre provenant du current user -->
+
+                  </div>
+                  <div *ngIf="message.idUserEnvoi !== currentUserId"> <!-- offre provenant de l'autre user -->
+                    <ion-button (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+                  </div>
+                </div>
               </div>
               <div *ngIf="message.offre.etat == 'S'">
                 Payée
               </div>
+              <!--<div *ngIf="message.offre.etat == 'Y' && message.sellerId !== currentUserId ">
+                <p>Acceptée</p>
+
+              </div>
+              <div *ngIf="message.offre.etat == 'Y' &&  currentUserId && message.sellerId === currentUserId ">
+                <p>Acceptée</p>
+                <ion-button (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+              </div> -->
+
             </div>
           </div>
         </div>

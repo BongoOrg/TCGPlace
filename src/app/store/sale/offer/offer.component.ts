@@ -55,7 +55,7 @@ export class OfferComponent implements OnInit {
   onSubmit(salePost: SalePostModel) {
     const price: number = this.form.value.price
     this.loading = true
-    this.offerService.createOffer(salePost.id, this.userService.GetCurrentUserID(), price).subscribe({
+    this.offerService.createOffer(salePost.id, "null", this.userService.GetCurrentUserID(), price).subscribe({
       next: async (response: HttpResponse<any>) => {
         if (response.status == 201) {
           this.toastService.presentToastSuccess("Offre créée")
@@ -67,7 +67,6 @@ export class OfferComponent implements OnInit {
           });
           await modal.present();*/
           await this.router.navigate(['/tabs/messages/conversation'], {queryParams: {salePostId: salePost.id, idUser: salePost.userId}});
-
         }
       }
     })

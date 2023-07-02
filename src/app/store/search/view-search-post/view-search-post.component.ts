@@ -8,6 +8,8 @@ import {UserService} from "../../../core/services/UserService/user.service";
 import {Location} from "@angular/common";
 import {ActionSheetController, ModalController} from "@ionic/angular";
 import {LikedSearchPostService} from "../../../core/services/LikedSearchPostService/liked-search-post.service";
+import {FilterModalComponent} from "../../../core/components/filter-modal/filter-modal.component";
+import {AddSalePostComponent} from "../../../add-post/add-sale-post/add-sale-post.component";
 
 @Component({
   selector: 'app-view-search-post',
@@ -158,4 +160,16 @@ export class ViewSearchPostComponent {
 
     return role === 'confirm';
   };
+
+  async OpenAddSalePost(searchPost:SearchPostModel) {
+    const modalSale = await this.modalCtrl.create({
+      component: AddSalePostComponent,
+      componentProps:{
+        idBuyer: searchPost.userId,
+        searchPost: searchPost,
+      }
+    });
+    await modalSale.present();
+    const { data, role } = await modalSale.onDidDismiss();
+  }
 }

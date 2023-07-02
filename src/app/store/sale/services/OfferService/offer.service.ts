@@ -13,8 +13,8 @@ export class OfferService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createOffer(salePostId: string, buyerId: number, price: number): Observable<HttpResponse<any>> {
-    const data = { "SalePostId": salePostId, "BuyerId": buyerId, "Price": price };
+  createOffer(salePostId: string, searchPostId:string, buyerId: number, price: number): Observable<HttpResponse<any>> {
+    const data = { "SalePostId": salePostId, "SearchPostId": searchPostId, "BuyerId": buyerId, "Price": price };
     return this.httpClient.post(`${this.apiURL}/Offer/add`, data, { observe: 'response' });
   }
 

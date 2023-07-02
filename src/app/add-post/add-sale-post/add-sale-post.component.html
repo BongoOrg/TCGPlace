@@ -28,8 +28,10 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-input formControlName="price" type="number" inputmode="decimal"
+              <ion-input *ngIf="!searchPost" formControlName="price" type="number" inputmode="decimal"
                          placeholder="0.00">{{'' | number: '1.0-3'}}</ion-input>
+              <ion-input *ngIf="searchPost" formControlName="price" type="number" inputmode="decimal"
+                         [placeholder]="searchPost.price">{{'' | number: '1.0-3'}}</ion-input>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -72,7 +74,7 @@
 
       <ion-item>
         <ion-label class="ion-padding-start">Annonce visible</ion-label>
-        <ion-checkbox formControlName="public" slot="start"></ion-checkbox>
+        <ion-checkbox formControlName="public" slot="start" *ngIf="!searchPost"></ion-checkbox>
       </ion-item>
 
     </form>
@@ -108,7 +110,7 @@
 
 <ion-footer>
   <ion-toolbar *ngIf="!loading">
-    <ion-button
+    <ion-button *ngIf="!searchPost"
       type="submit"
       (click)="submitForm()"
       [disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
@@ -117,6 +119,17 @@
       color="primary"
       class="ion-activatable ripple-parent rectangle">
       Envoyer
+      <ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="searchPost"
+                type="submit"
+                (click)="submitOffer()"
+                [disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
+                expand="full"
+                size="large"
+                color="primary"
+                class="ion-activatable ripple-parent rectangle">
+      Proposer
       <ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
