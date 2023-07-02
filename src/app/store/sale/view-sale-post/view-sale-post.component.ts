@@ -11,6 +11,7 @@ import { FullScreenImageSliderComponent } from 'src/app/core/components/full-scr
 import {PaymentComponent} from "../payment/payment.component";
 import {SalePostService} from "../services/sale-post.service";
 import {LikedSalePostService} from "../../../core/services/LikedSalePostService/liked-sale-post.service";
+import {ToastService} from "../../../core/services/toast.service";
 
 @Component({
   selector: 'app-view-sale-post',
@@ -30,7 +31,8 @@ export class ViewSalePostComponent {
               private renderer: Renderer2,
               private location: Location,
               private  likedSalePostService:LikedSalePostService,
-              private actionSheetCtrl: ActionSheetController) {
+              private actionSheetCtrl: ActionSheetController,
+              private toastService: ToastService) {
   }
   loading: boolean = true;
   loadingLike: boolean = false;
@@ -191,4 +193,7 @@ export class ViewSalePostComponent {
     return role === 'confirm';
   };
 
+  notAvailable() {
+    this.toastService.presentToastNotAvailable();
+  }
 }

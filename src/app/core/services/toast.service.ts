@@ -21,6 +21,17 @@ export class ToastService {
     await toast.present();
   }
 
+  public async presentToastNotAvailable(duration: number = 2000) {
+    const toast = await this.toastController.create({
+      message: "Cette fonctionnalité n'est pas encore disponnible",
+      duration: duration,
+      position: 'middle',
+      color: 'warning',
+      icon: 'checkmark-circle'
+    });
+    await toast.present();
+  }
+
   public async presentToastAlreadyExist(message: string, duration: number = 2000) {
     const toast = await this.toastController.create({
       message: message,

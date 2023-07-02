@@ -10,6 +10,7 @@ import {ActionSheetController, ModalController} from "@ionic/angular";
 import {LikedSearchPostService} from "../../../core/services/LikedSearchPostService/liked-search-post.service";
 import {FilterModalComponent} from "../../../core/components/filter-modal/filter-modal.component";
 import {AddSalePostComponent} from "../../../add-post/add-sale-post/add-sale-post.component";
+import {ToastService} from "../../../core/services/toast.service";
 
 @Component({
   selector: 'app-view-search-post',
@@ -30,7 +31,8 @@ export class ViewSearchPostComponent {
               private location: Location,
               private  likedSearchPostService:LikedSearchPostService,
               private actionSheetCtrl: ActionSheetController,
-              private modalCtrl: ModalController,) {
+              private modalCtrl: ModalController,
+              private toastService:ToastService) {
 
   }
 
@@ -171,5 +173,9 @@ export class ViewSearchPostComponent {
     });
     await modalSale.present();
     const { data, role } = await modalSale.onDidDismiss();
+  }
+
+  notAvailable() {
+    this.toastService.presentToastNotAvailable();
   }
 }

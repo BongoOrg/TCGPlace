@@ -4,6 +4,7 @@ import { UserModel } from '../core/models/user.model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {HomePage} from "../home/home.page";
+import {ToastService} from "../core/services/toast.service";
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   currentUser!: UserModel | null;
   private destroy$ = new Subject<void>();
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toastService:ToastService) { }
 
   ngOnInit() {
     this.userService.getCurrentUser().pipe(takeUntil(this.destroy$)).subscribe((user) => {
@@ -38,5 +39,9 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   logout(){
     this.userService.Logout()
+  }
+
+  notAvailable() {
+    this.toastService.presentToastNotAvailable();
   }
 }
