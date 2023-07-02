@@ -225,7 +225,8 @@ export class ConversationComponent implements OnInit {
     return await modal.present();
   }
 
-  async buyOffer(offer: Offre, post:SalePostModel) {
+  async buyOffer(message: Message, post:SalePostModel) {
+      const offer = message.offre
       const modal = await this.modalCtrl.create({
         component: PaymentComponent,
         componentProps: {
@@ -236,7 +237,8 @@ export class ConversationComponent implements OnInit {
 
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
-        this.renderer.setProperty(window, 'location', this.router.url);
+        this.updateOffer(message, 'S')
+        //this.renderer.setProperty(window, 'location', this.router.url);
       }
     });
 
