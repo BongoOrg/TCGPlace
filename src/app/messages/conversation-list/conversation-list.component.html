@@ -1,0 +1,46 @@
+
+
+
+
+
+<ion-refresher mode="ios" slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200"  (ionRefresh)="handleRefresh($event)">
+  <ion-refresher-content pullingIcon="refresh-outline"></ion-refresher-content>
+</ion-refresher>
+<ion-list>
+    <ion-item *ngFor="let conversation of conversations$ | async;"
+       (click)="showConv(conversation, conversation.users[0].id === currentUserId ? conversation.users[1].id : conversation.users[0].id)">
+
+      <ion-avatar slot="start">
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Avatar">
+      </ion-avatar>
+      <ion-label style="padding-left: 10px">
+        <div *ngIf="conversation.users[0].id !== currentUserId">{{ conversation.users[0].userName }}</div>
+        <div *ngIf="conversation.users[1].id !== currentUserId">{{ conversation.users[1].userName }}</div>
+        <!-- <ng-container *ngIf="getSalePostDetails(conversation.merchPostId) | async as salePost">
+          <h3>{{ salePost?.name }} {{ salePost?.libelleExtension }}</h3>
+        </ng-container> -->
+        <p>{{conversation.merchPost.name}} | {{conversation.merchPost.libelleExtension}}</p>
+        <p *ngIf="conversation.messages[conversation.messages.length-1].texte !== ''" class="truncate" style="max-width: 60%;">
+          {{conversation.messages[conversation.messages.length-1].texte}}
+        </p>
+        <p *ngIf="conversation.messages[conversation.messages.length-1].texte === '' && conversation.users[1].id !== currentUserId" class="truncate" style="max-width: 60%;">
+          {{conversation.users[1].userName }} a fait une offre
+        </p>
+        <p *ngIf="conversation.messages[conversation.messages.length-1].texte === '' && conversation.users[0].id !== currentUserId" class="truncate" style="max-width: 60%;">
+          Vous avez fait une offre
+        </p>
+        <div *ngIf="conversation.messages && conversation.messages.length > 0">
+          <div *ngIf="conversation.messages[0].offre">
+            <div *ngSwitch="conversation.messages[0].offre.etat">
+              <div *ngSwitchCase="'A'">Offre de {{conversation.messages[0].offre.prixPropose}} € annulée</div>
+              <div *ngSwitchCase="'C'">Offre de {{conversation.messages[0].offre.prixPropose}} € en cours</div>
+              <div *ngSwitchCase="'Y'">Offre de {{conversation.messages[0].offre.prixPropose}} € acceptée</div>
+              <div *ngSwitchCase="'N'">Offre de {{conversation.messages[0].offre.prixPropose}} € refusée</div>
+              <div *ngSwitchDefault>Offre de {{conversation.messages[0].offre.prixPropose}} €</div>
+            </div>
+          </div>
+        </div>
+      </ion-label>
+      <img [src]="conversation.merchPost.image" style="width: 45px; padding-bottom: 5px">
+    </ion-item>
+</ion-list>

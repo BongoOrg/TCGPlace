@@ -5,70 +5,18 @@ ion-header {
       }
     }
   }
-  
-  ion-content {
-    ion-list {
-      ion-item {
-        padding-top: 10px;    // Je mets padding car margin me générait des border de mort que j'arrivais pas à enlever 
-        padding-bottom: 10px; // Je mets padding car margin me générait des border de mort que j'arrivais pas à enlever
-        --border-width: 0;
-  
-        &.message-sender {
-          .input-wrapper{
-            justify-content: flex-end;
-          }
-  
-          .message-container {
-            display: flex;
-            width: 100%;
-            justify-content: flex-end;
-          }
-  
-          .message-text {
-            word-break: break-all; // Pour gérer le multi-ligne dans un message (ça met à la ligne quand trop de mots en gros)
-            max-width: 80%;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: #0079ff; // Couleur du fond pour les messages de l'expéditeur
-            color: white; // Obligé de changer la couleur du texte comme Apple
-          }
-          
-        }
-  
-        &.message-receiver {
-          .input-wrapper{
-            justify-content: flex-start;
-          }
-  
-          .message-container {
-            display: flex;
-            width: 100%;
-            justify-content: flex-start;
-          }
-  
-          .message-text {
-            word-break: break-all; // Pour gérer le multi-ligne dans un message (ça met à la ligne quand trop de mots en gros)
-            max-width: 80%;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: #f2f2f2; // Couleur du fond pour les messages des autres destinataires
-          }
-        }
-      }
-    }
-  }
-  
+
   ion-footer {
     ion-toolbar {
       --ion-background-color: #f2f2f2;
       --ion-padding-start: 10px;
       --ion-padding-end: 10px;
-  
+
       ion-input {
         flex: 1;
         margin-right: 10px;
       }
-  
+
       ion-button {
         --background: #3880ff;
         --color: white;
@@ -76,8 +24,3 @@ ion-header {
     }
   }
 
-  .truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }

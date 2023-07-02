@@ -8,7 +8,7 @@ import { OfferService } from '../services/OfferService/offer.service';
 import { UserService } from 'src/app/core/services/UserService/user.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { HttpResponse } from '@angular/common/http';
-import { ConversationComponent } from 'src/app/messages/conversation/conversation.component';
+import { ConversationComponent } from 'src/app/messages/conversation-list/conversation/conversation.component';
 import { SalePostService } from '../services/sale-post.service';
 
 @Component({
@@ -60,12 +60,14 @@ export class OfferComponent implements OnInit {
         if (response.status == 201) {
           this.toastService.presentToastSuccess("Offre créée")
           this.loading = false;
-          this.router.navigateByUrl("/tabs/messages")
+          /*this.router.navigateByUrl("/tabs/messages")
           const modal = await this.modalController.create({
             component: ConversationComponent,
             componentProps: { salePostId: salePost.id, idUser: salePost.userId, salePostPrice: salePost.price }
           });
-          await modal.present();
+          await modal.present();*/
+          await this.router.navigate(['/tabs/messages/conversation'], {queryParams: {salePostId: salePost.id, idUser: salePost.userId}});
+
         }
       }
     })

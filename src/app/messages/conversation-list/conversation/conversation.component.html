@@ -2,9 +2,11 @@
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-button (click)="dismiss()">
+        <ion-nav-link routerLink="/tabs/messages" routerDirection="back">
+        <ion-button>
           <ion-icon name="arrow-back-outline"></ion-icon>
         </ion-button>
+        </ion-nav-link>
       </ion-buttons>
       <ion-title *ngIf="conversation.users[0].id !== currentUserId">
         {{conversation.users[0].userName}}
@@ -48,7 +50,13 @@
                 </div>
               </div>
               <div *ngIf="message.offre.etat == 'N'">Refusée</div>
-              <div *ngIf="message.offre.etat == 'Y'">Acceptée</div>
+              <div *ngIf="message.offre.etat == 'Y'">
+                <p>Acceptée</p>
+              <ion-button (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+              </div>
+              <div *ngIf="message.offre.etat == 'S'">
+                Payée
+              </div>
             </div>
           </div>
         </div>

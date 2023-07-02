@@ -6,9 +6,11 @@ import {test} from "@playwright/test";
 import {UserService} from "../../../core/services/UserService/user.service";
 import {takeUntil} from "rxjs/operators";
 import {UserModel} from "../../../core/models/user.model";
-import {Subject} from "rxjs";
+import {of, Subject, switchMap} from "rxjs";
 import {ToastService} from "../../../core/services/toast.service";
 import {Router} from "@angular/router";
+import {OfferService} from "../services/OfferService/offer.service";
+import {Offre} from "../../../messages/models/offre.model";
 
 @Component({
   selector: 'app-payment',
@@ -16,7 +18,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit, OnDestroy{
-  totalPrice?: number;
+  totalPrice: number = 0;
   currentUser!: UserModel | null;
   private destroy$ = new Subject<void>();
   deliveryOptions = [
@@ -34,26 +36,44 @@ export class PaymentComponent implements OnInit, OnDestroy{
   selectedValue?: number = 0;
   loading: boolean = false;
 
-  post? : SalePostModel
-  constructor(private router : Router, private modalCtrl: ModalController, private paymentService : PaymentService, private userService : UserService, private toastService : ToastService) {
+  post!: SalePostModel
+  offer!: Offre;
+  oldPrice: number = 0
+  constructor(private router : Router,
+              private modalCtrl: ModalController,
+              private paymentService : PaymentService,
+              private userService : UserService,
+              private toastService : ToastService,
+              private offerService: OfferService) {
   }
 
   ngOnInit() {
-    this.totalPrice = this.post?.price; // Ajustez cette ligne si nécessaire
+    if (this.offer !== undefined){
+      this.totalPrice = this.offer.prixPropose
+      this.oldPrice = this.post.price
+    }else{
+      this.totalPrice = this.post.price; // Ajustez cette ligne si nécessaire
+    }
+
     this.userService.getCurrentUser().pipe(takeUntil(this.destroy$)).subscribe((user) => {
       this.currentUser = user;
     });
   }
   onRadioChange(event : any) {
     this.selectedValue = parseInt(event.detail.value);
-    if(this.post?.price){
-      this.totalPrice = this.post?.price + this.selectedValue
+
+    if(this.offer !== undefined){
+      this.totalPrice = this.offer.prixPropose + this.selectedValue
+    }else{
+      this.totalPrice = this.post.price + this.selectedValue
     }
+
+
   }
 
   async pay(){
     this.loading = true;
-    const postInfo = {
+    const  postInfo = {
       shipAddress: this.currentUser?.adress,
       merchPostId: this.post?.id,
       sellerId: this.post?.userId,
@@ -62,13 +82,23 @@ export class PaymentComponent implements OnInit, OnDestroy{
       stateId: 'O',
       shipmentFee : this.selectedValue
     };
-    this.paymentService.Pay(postInfo).subscribe({
-      next: async (response) => {
+    this.paymentService.Pay(postInfo).pipe(
+      switchMap((response) => {
         if(response.status == 200){
           this.loading = false;
           this.toastService.presentToastSuccess("Commande effectuée")
-          await this.modalCtrl.dismiss();
-          this.router.navigateByUrl("tabs/home")
+          if(this.offer === undefined){
+            this.router.navigateByUrl("tabs/home")
+          }
+          return this.offerService.updateOffer(this.offer.id, "S")
+        } else {
+          return of(null);
+        }
+      })
+    ).subscribe({
+      next: async (response) => {
+        if(response !== null) {
+          await this.modalCtrl.dismiss({data: 'reload'});
         }
       },
       error: (err) => {

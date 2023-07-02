@@ -1,16 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import {Component, OnInit, Renderer2, ViewChild} from '@angular/core'
 import { ModalController } from '@ionic/angular'
 import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
-import { Message } from '../models/message.model'
-import { BehaviorSubject, Subscription, switchMap, Observable, tap } from 'rxjs'
-import { MessagesService } from '../services/messagesService'
-import { Conversation } from '../models/conversation.model'
+import { Message } from '../../models/message.model'
+import {BehaviorSubject, Subscription, switchMap, Observable, tap, timeout} from 'rxjs'
+import { MessagesService } from '../../services/messagesService'
+import { Conversation } from '../../models/conversation.model'
 import { UserService } from 'src/app/core/services/UserService/user.service'
 import { MESSAGERIE_URL } from 'config'
 import { OfferService } from 'src/app/store/sale/services/OfferService/offer.service'
-import { Offre } from '../models/offre.model'
+import { Offre } from '../../models/offre.model'
 import {ActivatedRoute, Router} from "@angular/router";
-import {ViewSalePostComponent} from "../../store/sale/view-sale-post/view-sale-post.component";
+import {ViewSalePostComponent} from "../../../store/sale/view-sale-post/view-sale-post.component";
+import {SalePostModel} from "../../../core/models/sale-post.model";
+import {PaymentComponent} from "../../../store/sale/payment/payment.component";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-conversation',
@@ -40,24 +43,31 @@ export class ConversationComponent implements OnInit {
     private modalCtrl: ModalController,
     private messagesService: MessagesService,
     private userService: UserService,
-    private offerService: OfferService
+    private offerService: OfferService,
+    private route:ActivatedRoute,
+    private router:Router,
+    private renderer: Renderer2,
   ) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.currentUserId = this.userService.GetCurrentUserID()
+      this.route.queryParams.subscribe(params => {
+        this.salePostId =  params['salePostId'];
+         this.idUser = +params['idUser'];
+        this.loading = true;
+        this.currentUserId = this.userService.GetCurrentUserID()
 
-    this.subscription.add(
-      this.conversationSubject.pipe(
-        switchMap(() => this.getConversation()),
-        tap(() => {
-          this.loading = false;
-          this.content.scrollToBottom();
-        })
-      ).subscribe()
-    );
+        this.subscription.add(
+          this.conversationSubject.pipe(
+            switchMap(() => this.getConversation()),
+            tap(() => {
+              this.loading = false;
+              this.content.scrollToBottom();
+            })
+          ).subscribe()
+        );
+        this.startHubConnection()
+        });
 
-    this.startHubConnection()
   }
 
 
@@ -110,7 +120,7 @@ export class ConversationComponent implements OnInit {
           .catch(err => console.log(err))
       })
       .catch(err => {
-        console.log('Error while connecting to the server')
+        console.log('Error while starting hub connection:', err)
         this.retryHubConnection()
       })
   }
@@ -211,5 +221,23 @@ export class ConversationComponent implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  async buyOffer(offer: Offre, post:SalePostModel) {
+      const modal = await this.modalCtrl.create({
+        component: PaymentComponent,
+        componentProps: {
+          post: post,
+          offer: offer
+        }
+      });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.renderer.setProperty(window, 'location', this.router.url);
+      }
+    });
+
+      return await modal.present();
   }
 }

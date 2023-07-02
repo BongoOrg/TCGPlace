@@ -12,7 +12,7 @@
 <ion-content class="payment-modal">
   <div *ngIf="!loading; else pageLoading">
     <div class="image-container">
-      <ion-img [src]="post?.salePicturePosts" class="payment-image"></ion-img>
+      <ion-img [src]="post.salePicturePosts" class="payment-image"></ion-img>
     </div>
     <ion-item>
       <ion-grid>
@@ -21,7 +21,8 @@
             <h3>Commande</h3>
           </ion-col>
           <ion-col size="6" class="ion-text-right">
-            <h3>{{post?.price}} €</h3>
+            <h3 *ngIf="offer === undefined">{{post.price}} €</h3>
+            <h3 *ngIf="offer !== undefined"><span style="text-decoration: line-through; margin-right: 5px">{{post.price}}€</span>{{offer.prixPropose}} €</h3>
           </ion-col>
         </ion-row>
         <ion-row class="ion-align-items-center">
