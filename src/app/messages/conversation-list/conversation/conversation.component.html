@@ -55,7 +55,7 @@
                 Acceptée
                 <div *ngIf="message.sellerId !== message.idUserEnvoi"> <!-- offre d'un sale post -->
                   <div *ngIf="message.idUserEnvoi === currentUserId"> <!-- offre provenant du current user -->
-                    <ion-button (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+                    <ion-button (click)="buyOffer(message, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
                   </div>
                   <div *ngIf="message.idUserEnvoi !== currentUserId"> <!-- offre provenant de l'autre user -->
 
@@ -66,7 +66,7 @@
 
                   </div>
                   <div *ngIf="message.idUserEnvoi !== currentUserId"> <!-- offre provenant de l'autre user -->
-                    <ion-button *ngIf="message.idUserEnvoi == currentUserId" (click)="buyOffer(message.offre, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
+                    <ion-button (click)="buyOffer(message, conversation.merchPost)" style="margin-top: 5px">Payer</ion-button>
                   </div>
                 </div>
               </div>

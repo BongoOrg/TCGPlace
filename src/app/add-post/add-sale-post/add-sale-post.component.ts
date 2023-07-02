@@ -126,7 +126,8 @@ export class AddSalePostComponent implements OnInit {
         if (response.status == 201) {
           this.toastService.presentToastSuccess("Offre créée");
           this.loading = false;
-          await this.router.navigate(['/tabs/messages/conversation'], {queryParams: {salePostId: salePostIdFromResponse, idUser: salePost.userId}});
+          await this.router.navigate(['/tabs/messages/conversation'], {queryParams: {salePostId: salePostIdFromResponse, idUser: this.searchPost.userId}});
+          await this.modalCtrl.dismiss()
         }
       },
       error: (err) => {
