@@ -35,7 +35,7 @@
           <div>
 
           </div>
-          <div *ngIf="message.offre !== undefined" class="message-text">
+          <div *ngIf="message.offre !== null && message.offre !== undefined" class="message-text">
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row;">
                 <div style="font-weight: bold;">{{message.offre.prixPropose}}€</div>

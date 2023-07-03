@@ -74,7 +74,7 @@ export class ConversationComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
-    this.stopHubConnection()
+     this.stopHubConnection()
   }
 
   private startHubConnection() {
