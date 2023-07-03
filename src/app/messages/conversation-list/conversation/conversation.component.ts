@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ViewSalePostComponent} from "../../../store/sale/view-sale-post/view-sale-post.component";
 import {SalePostModel} from "../../../core/models/sale-post.model";
 import {PaymentComponent} from "../../../store/sale/payment/payment.component";
+import {OverlayEventDetail} from '@ionic/core'
 import {Location} from "@angular/common";
 
 @Component({
@@ -235,7 +236,7 @@ export class ConversationComponent implements OnInit {
         }
       });
 
-    modal.onDidDismiss().then((dataReturned) => {
+    modal.onDidDismiss().then((dataReturned: OverlayEventDetail) => {
       if (dataReturned !== null) {
         this.updateOffer(message, 'S')
         //this.renderer.setProperty(window, 'location', this.router.url);

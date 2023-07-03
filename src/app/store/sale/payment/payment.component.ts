@@ -24,16 +24,16 @@ export class PaymentComponent implements OnInit, OnDestroy{
   deliveryOptions = [
     {
       icon: "location-outline",
-      label: "Point relais",
-      price: 2
+      label: "Basique",
+      price: 0.7
     },
     {
       icon: "home-outline",
-      label: "Domicile",
-      price: 10
+      label: "Authentifiée",
+      price: 4.20
     }
   ];
-  selectedValue?: number = 0;
+  selectedValue: number = 0;
   loading: boolean = false;
 
   post!: SalePostModel
@@ -49,10 +49,10 @@ export class PaymentComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     if (this.offer !== undefined){
-      this.totalPrice = this.offer.prixPropose
+      this.totalPrice = this.offer.prixPropose + 2
       this.oldPrice = this.post.price
     }else{
-      this.totalPrice = this.post.price; // Ajustez cette ligne si nécessaire
+      this.totalPrice = this.post.price + 2
     }
 
     this.userService.getCurrentUser().pipe(takeUntil(this.destroy$)).subscribe((user) => {
@@ -60,15 +60,13 @@ export class PaymentComponent implements OnInit, OnDestroy{
     });
   }
   onRadioChange(event : any) {
-    this.selectedValue = parseInt(event.detail.value);
+    this.selectedValue = parseFloat(event.detail.value);
 
     if(this.offer !== undefined){
-      this.totalPrice = this.offer.prixPropose + this.selectedValue
+      this.totalPrice = (this.offer.prixPropose * 1.07) + this.selectedValue + 2
     }else{
-      this.totalPrice = this.post.price + this.selectedValue
+      this.totalPrice = (this.post.price * 1.07) + this.selectedValue + 2
     }
-
-
   }
 
   async pay(){

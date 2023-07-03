@@ -31,15 +31,18 @@
     <ion-list class="no-border" lines="none">
       <ion-item *ngFor="let message of conversation.messages" [class]="getMessageClass(message.idUserEnvoi)">
         <div class="message-container">
-          <div *ngIf="message.texte != ''" class="message-text">{{ message.texte }}</div>
-          <div *ngIf="message.offre != undefined || message.offre != null" class="message-text">
+          <div *ngIf="message.texte !== ''" class="message-text">{{ message.texte }}</div>
+          <div>
+
+          </div>
+          <div *ngIf="message.offre !== undefined" class="message-text">
             <div style="display: flex; flex-direction: column;">
               <div style="display: flex; flex-direction: row;">
                 <div style="font-weight: bold;">{{message.offre.prixPropose}}€</div>
                 <div style="text-decoration: line-through; margin-left: 5px;">{{this.conversation.merchPost.price}}€</div>
               </div>
-              <div *ngIf="message.offre.etat == 'A'">Annulée</div>
-              <div *ngIf="message.offre.etat == 'C'">
+              <div *ngIf="message.offre.etat === 'A'">Annulée</div>
+              <div *ngIf="message.offre.etat === 'C'">
                   En cours
                 <div *ngIf="message.idUserEnvoi !== currentUserId">
                   <ion-button *ngIf="!updateOfferLoading" (click)="updateOffer(message, 'Y')">Accepter</ion-button>
@@ -47,11 +50,11 @@
                   <ion-spinner *ngIf="updateOfferLoading" style="display: flex; margin:auto;" name="circular"></ion-spinner>
                 </div>
                 </div>
-              <div *ngIf="message.offre.etat == 'N'">Refusée</div>
+              <div *ngIf="message.offre.etat === 'N'">Refusée</div>
              <!-- <p>CurrentUserId : {{currentUserId}}</p>
               <p>idUserEnvoi : {{message.idUserEnvoi}}</p>
               <p>sellerId : {{message.sellerId}}</p> -->
-              <div *ngIf="message.offre.etat == 'Y'"> <!-- offre acceptée -->
+              <div *ngIf="message.offre.etat === 'Y'"> <!-- offre acceptée -->
                 Acceptée
                 <div *ngIf="message.sellerId !== message.idUserEnvoi"> <!-- offre d'un sale post -->
                   <div *ngIf="message.idUserEnvoi === currentUserId"> <!-- offre provenant du current user -->
@@ -70,7 +73,7 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="message.offre.etat == 'S'">
+              <div *ngIf="message.offre.etat === 'S'">
                 Payée
               </div>
               <!--<div *ngIf="message.offre.etat == 'Y' && message.sellerId !== currentUserId ">

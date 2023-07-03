@@ -12,7 +12,7 @@
 <ion-content class="payment-modal">
   <div *ngIf="!loading; else pageLoading">
     <div class="image-container">
-      <ion-img [src]="post.salePicturePosts" class="payment-image"></ion-img>
+      <ion-img [src]="post.salePicturePosts[0]" class="payment-image"></ion-img>
     </div>
     <ion-item>
       <ion-grid>
@@ -27,18 +27,18 @@
         </ion-row>
         <ion-row class="ion-align-items-center">
           <ion-col size="6">
-            <h3>Frais vérification</h3>
+            <h3>Livraison</h3>
           </ion-col>
           <ion-col size="6" class="ion-text-right">
-            <h3>2.00 €</h3>
+            <h3>2 €</h3>
           </ion-col>
         </ion-row>
         <ion-row class="ion-align-items-center last-row">
           <ion-col size="6">
-            <h3>Envoi</h3>
+            <h3>Service</h3>
           </ion-col>
           <ion-col size="6" class="ion-text-right">
-            <h3>{{selectedValue}} €</h3>
+            <h3>{{post.price * 0.07 + selectedValue | number: '1.0-3'}} €</h3>
           </ion-col>
         </ion-row>
         <ion-row class="ion-align-items-center last-row">
@@ -101,7 +101,8 @@
             <ion-icon class="ion-margin-end" name="{{option.icon}}"></ion-icon>
             <div class="livraison-container">
               <h3>{{option.label}}</h3>
-              <h4>Pour {{option.price}} euros</h4>
+              <h3>Pour {{option.price}} €</h3>
+              <h4>+ 7% du prix d'achat</h4>
             </div>
             <ion-radio slot="end" value="{{option.price}}"></ion-radio>
           </ion-item>
