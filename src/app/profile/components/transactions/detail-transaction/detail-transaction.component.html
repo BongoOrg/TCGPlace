@@ -1,108 +1,110 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title align="center">{{transaction?.merchPostName}}</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title align="center">{{ transaction?.merchPostName }}</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="transaction; else loading" class="container">
-    <div class="swiper-container">
-      <swiper-container slides-per-view="auto" free-mode="true">
-        <swiper-slide style="margin: 5px; max-width: 160px;">
-          <ion-img src="{{transaction.merchPostNamePhotos}}" style="width: 150px"></ion-img>
-        </swiper-slide>
-        <swiper-slide *ngFor="let salePostPicture of transaction.merchPostNamePhotos; index as position"
-                      style="margin: 5px; max-width: 160px;">
-          <ion-img src="{{salePostPicture}}" style="width: 150px"></ion-img>
-        </swiper-slide>
-      </swiper-container>
-    </div>
+	<div *ngIf="transaction; else loading" class="container">
+		<div class="swiper-container">
+			<swiper-container slides-per-view="auto" free-mode="true">
+				<swiper-slide style="margin: 5px; max-width: 160px">
+					<ion-img src="{{ transaction.merchPostNamePhotos }}" style="width: 150px"></ion-img>
+				</swiper-slide>
+				<swiper-slide
+					*ngFor="let salePostPicture of transaction.merchPostNamePhotos; index as position"
+					style="margin: 5px; max-width: 160px"
+				>
+					<ion-img src="{{ salePostPicture }}" style="width: 150px"></ion-img>
+				</swiper-slide>
+			</swiper-container>
+		</div>
 
-    <div class="info-commande">
-      <div class="left">
-        <h2>{{transaction.totalWithShip}} €</h2>
-        <h3>Achat à {{transaction.username}}</h3>
-        <h4>{{transaction.buyDate | date:'dd/MM/yyyy'}}</h4>
-      </div>
-      <div class="badge">
-        <ion-chip *ngIf="transaction.received" color="success">Livré</ion-chip>
-        <ion-chip *ngIf="!transaction.received" color="tertiary">En route</ion-chip>
-      </div>
-    </div>
+		<div class="info-commande">
+			<div class="left">
+				<h2>{{ transaction.totalWithShip }} €</h2>
+				<h3>Achat à {{ transaction.username }}</h3>
+				<h4>{{ transaction.buyDate | date : 'dd/MM/yyyy' }}</h4>
+			</div>
+			<div class="badge">
+				<ion-chip *ngIf="transaction.received" color="success">Livré</ion-chip>
+				<ion-chip *ngIf="!transaction.received" color="tertiary">En route</ion-chip>
+			</div>
+		</div>
 
-    <div class="divider"></div>
+		<div class="divider"></div>
 
-    <ion-grid style="padding: 0.5em 1em">
-      <ion-row class="ion-padding-bottom">
-        <ion-col>
-          <h2>Adresse de la livraison</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h3>{{transaction.shipAddress}}</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h4>Numéro de suivi : {{transaction.id}}</h4>
-        </ion-col>
-      </ion-row>
+		<ion-grid style="padding: 0.5em 1em">
+			<ion-row class="ion-padding-bottom">
+				<ion-col>
+					<h2>Adresse de la livraison</h2>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h3>{{ transaction.shipAddress }}</h3>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h4>Numéro de suivi : {{ transaction.id }}</h4>
+				</ion-col>
+			</ion-row>
 
-      <ion-button class="ion-margin-top" expand="block" fill="outline">Suivre le colis
-        <ion-icon class="ion-padding-start" slot="end" name="airplane-outline"></ion-icon>
-      </ion-button>
-    </ion-grid>
+			<ion-button class="ion-margin-top" expand="block" fill="outline"
+				>Suivre le colis
+				<ion-icon class="ion-padding-start" slot="end" name="airplane-outline"></ion-icon>
+			</ion-button>
+		</ion-grid>
 
-    <div class="divider"></div>
+		<div class="divider"></div>
 
-    <ion-grid style="padding: 0.5em 1em">
-      <ion-row class="ion-padding-bottom">
-        <ion-col>
-          <h2>Détail du prix</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="10">
-          <h3>Prix de base</h3>
-        </ion-col>
-        <ion-col size="2">
-          <h3>{{transaction.totalPrice}}</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="10">
-          <h3>Frai de livraison</h3>
-        </ion-col>
-        <ion-col size="2">
-          <h3>{{transaction.shipmentFee}}</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-padding-top">
-        <ion-col size="10">
-          <h2>Total payé</h2>
-        </ion-col>
-        <ion-col size="2">
-          <h2>{{transaction.totalWithShip}} €</h2>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+		<ion-grid style="padding: 0.5em 1em">
+			<ion-row class="ion-padding-bottom">
+				<ion-col>
+					<h2>Détail du prix</h2>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="10">
+					<h3>Prix de base</h3>
+				</ion-col>
+				<ion-col size="2">
+					<h3>{{ transaction.totalPrice }}</h3>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="10">
+					<h3>Frai de livraison</h3>
+				</ion-col>
+				<ion-col size="2">
+					<h3>{{ transaction.shipmentFee }}</h3>
+				</ion-col>
+			</ion-row>
+			<ion-row class="ion-padding-top">
+				<ion-col size="10">
+					<h2>Total payé</h2>
+				</ion-col>
+				<ion-col size="2">
+					<h2>{{ transaction.totalWithShip }} €</h2>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-      </ion-avatar>
-      <ion-label class="ion-padding">
-        <h2>{{transaction.username}} €</h2>
-        <h3>Contacter le vendeur</h3>
-      </ion-label>
-      <ion-icon class="mail" name="mail-outline" slot="end"></ion-icon>
-    </ion-item>
-
-  </div>
-  <ng-template #loading>
-    <div class="spin">
-      <ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
-    </div>
-  </ng-template>
+		<ion-item>
+			<ion-avatar slot="start">
+				<img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+			</ion-avatar>
+			<ion-label class="ion-padding">
+				<h2>{{ transaction.username }} €</h2>
+				<h3>Contacter le vendeur</h3>
+			</ion-label>
+			<ion-icon class="mail" name="mail-outline" slot="end"></ion-icon>
+		</ion-item>
+	</div>
+	<ng-template #loading>
+		<div class="spin">
+			<ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
+		</div>
+	</ng-template>
 </ion-content>

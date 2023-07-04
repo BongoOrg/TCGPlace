@@ -1,34 +1,43 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-button (click)="dismiss()">
-              Annuler
-            </ion-button>
-          </ion-buttons>
-        <ion-title>Faire une offre</ion-title>
-    </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()"> Annuler </ion-button>
+		</ion-buttons>
+		<ion-title>Faire une offre</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <div *ngIf="SalePost$ | async as salePost">
-        
-        <div class="no-border">
-            <ion-item class="ion-no-border">Prix demandé : {{salePost.price}}€</ion-item>
-        </div>
-        
-        <form [formGroup]="form" (ngSubmit)="onSubmit(salePost)">
-            <ion-item>
-                <ion-label position="floating">Prix proposé</ion-label>
-                <ion-input formControlName="price" type="number" (keydown.enter)="$event.preventDefault()" step="any" min="0" placeholder="Entrer un nombre"></ion-input>
-                <ion-note slot="helper">Entrer un nombre supérieur à 0.</ion-note>
-                <ion-note slot="error" *ngIf="form.get('price')!.touched">Entrée invalide</ion-note>
-            </ion-item>
-              
-            <div class="displayButton">
-                <ion-button *ngIf="!loading" class="offerSubmitButton" type="submit" [disabled]="!form.valid">Valider</ion-button>
-                <ion-spinner *ngIf="loading" style="margin-top: 5px;" name="circular"></ion-spinner>
-            </div>
-              
-        </form>
-    </div>
+	<div *ngIf="SalePost$ | async as salePost">
+		<div class="no-border">
+			<ion-item class="ion-no-border">Prix demandé : {{ salePost.price }}€</ion-item>
+		</div>
+
+		<form [formGroup]="form" (ngSubmit)="onSubmit(salePost)">
+			<ion-item>
+				<ion-label position="floating">Prix proposé</ion-label>
+				<ion-input
+					formControlName="price"
+					type="number"
+					(keydown.enter)="$event.preventDefault()"
+					step="any"
+					min="0"
+					placeholder="Entrer un nombre"
+				></ion-input>
+				<ion-note slot="helper">Entrer un nombre supérieur à 0.</ion-note>
+				<ion-note slot="error" *ngIf="form.get('price')!.touched">Entrée invalide</ion-note>
+			</ion-item>
+
+			<div class="displayButton">
+				<ion-button
+					*ngIf="!loading"
+					class="offerSubmitButton"
+					type="submit"
+					[disabled]="!form.valid"
+					>Valider</ion-button
+				>
+				<ion-spinner *ngIf="loading" style="margin-top: 5px" name="circular"></ion-spinner>
+			</div>
+		</form>
+	</div>
 </ion-content>

@@ -1,39 +1,51 @@
 <ion-content *ngIf="UserInfos$ | async as userInfos">
-  <div class="userInfos">
-    <ion-avatar>
-      <img src="https://static.wikia.nocookie.net/pokemon/images/9/91/Lauren_Piplup.png">
-    </ion-avatar>
-    <h2>{{userInfos.username}}</h2>
-    <p>Membre depuis le : {{userInfos.createdDate | date}}</p>
-    <p>Dernière connexion : {{userInfos.lastConnection | date}}</p>
-  </div>
-  <div class="userPosts">
-    <h4 style="margin-left: 20px; padding-bottom: 0; margin-bottom: 0">Annonces en ligne :</h4>
-  </div>
+	<div class="userInfos">
+		<ion-avatar>
+			<img src="https://static.wikia.nocookie.net/pokemon/images/9/91/Lauren_Piplup.png" />
+		</ion-avatar>
+		<h2>{{ userInfos.username }}</h2>
+		<p>Membre depuis le : {{ userInfos.createdDate | date }}</p>
+		<p>Dernière connexion : {{ userInfos.lastConnection | date }}</p>
+	</div>
+	<div class="userPosts">
+		<h4 style="margin-left: 20px; padding-bottom: 0; margin-bottom: 0">Annonces en ligne :</h4>
+	</div>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="openModal()">
-      <ion-icon name="funnel"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-header class="segments">
-    <ion-toolbar>
-      <ion-segment value="sale" mode="md" >
-        <ion-segment-button (click)="saleSelected = true" value="sale">
-          <ion-label>Vente</ion-label>
-        </ion-segment-button>
-        <ion-segment-button (click)="saleSelected = false" value="search">
-          <ion-label>Recherche</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-  </ion-header>
-  <ion-chip *ngFor="let grading of selectedGradings">{{grading.name}}<ion-icon name="close-circle" (click)="unSelectGrading(grading)"></ion-icon></ion-chip>
-  <ion-chip *ngFor="let extension of selectedExtensions">{{extension.id}}<ion-icon name="close-circle" (click)="unSelectExtension(extension)"></ion-icon></ion-chip>
+	<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+		<ion-fab-button (click)="openModal()">
+			<ion-icon name="funnel"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+	<ion-header class="segments">
+		<ion-toolbar>
+			<ion-segment value="sale" mode="md">
+				<ion-segment-button (click)="saleSelected = true" value="sale">
+					<ion-label>Vente</ion-label>
+				</ion-segment-button>
+				<ion-segment-button (click)="saleSelected = false" value="search">
+					<ion-label>Recherche</ion-label>
+				</ion-segment-button>
+			</ion-segment>
+		</ion-toolbar>
+	</ion-header>
+	<ion-chip *ngFor="let grading of selectedGradings"
+		>{{ grading.name }}<ion-icon name="close-circle" (click)="unSelectGrading(grading)"></ion-icon
+	></ion-chip>
+	<ion-chip *ngFor="let extension of selectedExtensions"
+		>{{ extension.id
+		}}<ion-icon name="close-circle" (click)="unSelectExtension(extension)"></ion-icon
+	></ion-chip>
 
-  <app-sale *ngIf="saleSelected" [extensions]="selectedExtensions" [gradings]="selectedGradings" [idUser]="idProfile"></app-sale>
-  <app-search *ngIf="!saleSelected" [extensions]="selectedExtensions" [gradings]="selectedGradings" [idUser]="idProfile"></app-search>
-
-
+	<app-sale
+		*ngIf="saleSelected"
+		[extensions]="selectedExtensions"
+		[gradings]="selectedGradings"
+		[idUser]="idProfile"
+	></app-sale>
+	<app-search
+		*ngIf="!saleSelected"
+		[extensions]="selectedExtensions"
+		[gradings]="selectedGradings"
+		[idUser]="idProfile"
+	></app-search>
 </ion-content>
-

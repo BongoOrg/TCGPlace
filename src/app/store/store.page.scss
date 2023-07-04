@@ -1,77 +1,76 @@
 .search-results {
-  position: absolute;
-  width: 100%;
-  z-index: 3;
-  background: white;
-  overflow-y: auto;
-  max-height: 60vh;
-  /* Autres styles au besoin */
+	position: absolute;
+	width: 100%;
+	z-index: 3;
+	background: white;
+	overflow-y: auto;
+	max-height: 60vh;
+	/* Autres styles au besoin */
 }
-.segments{
-  z-index: 1;
-}
-
-ion-chip{
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  margin-left: 0.5em;
-  padding: 0.5em 0.7em;
-  background-color: rgba(56, 128, 255, 0.3);
+.segments {
+	z-index: 1;
 }
 
-ion-chip ion-icon{
-  padding-left: 0.3em;
+ion-chip {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: 0.5em;
+	padding: 0.5em 0.7em;
+	background-color: rgba(56, 128, 255, 0.3);
 }
 
-.searchMessage{
-  display: flex;
-  justify-content: center;
-  padding: 10px
+ion-chip ion-icon {
+	padding-left: 0.3em;
 }
 
-.searchMessageContent{
-  margin: auto
+.searchMessage {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
 }
 
-.overlay{
-  position: fixed;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2;
-  cursor: pointer;
+.searchMessageContent {
+	margin: auto;
 }
 
-.resultItem{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-top: lightslategray 1px solid;
-  margin-right: 20px;
-  margin-left: 20px;
+.overlay {
+	position: fixed;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 2;
+	cursor: pointer;
 }
 
-.itemInfos{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+.resultItem {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-top: lightslategray 1px solid;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
-.imgResult{
-  padding-bottom: 5px;
-  padding-top: 5px;
+.itemInfos {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
 
+.imgResult {
+	padding-bottom: 5px;
+	padding-top: 5px;
 }
 
 /* Styles pour le reste du contenu pour qu'il soit en dessous de la liste de résultats */
 ion-header:nth-child(3) {
-  position: relative;
-  z-index: 1;
+	position: relative;
+	z-index: 1;
 }

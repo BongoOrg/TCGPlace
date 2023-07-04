@@ -1,23 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-home-banner-slider',
-  templateUrl: './home-banner-slider.component.html',
-  styleUrls: ['./home-banner-slider.component.scss'],
+	selector: 'app-home-banner-slider',
+	templateUrl: './home-banner-slider.component.html',
+	styleUrls: ['./home-banner-slider.component.scss']
 })
 export class HomeBannerSliderComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
+	ngOnInit() {}
 
-  ngOnInit() {}
+	goToEvent = (eventId: number): void => {}
 
-  goToEvent = (eventId: number): void => {
-
-  }
-
-  goToExtension = (extensionId: number): void => {
-
-  }
-
-
+	goToExtension = (extensionId: number): void => {}
 }

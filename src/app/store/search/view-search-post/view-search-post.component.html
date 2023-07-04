@@ -1,95 +1,133 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title align="center">Détails article</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title align="center">Détails article</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="SearchPost$ | async as searchPost; else loading" class="container">
-    <div class="swiper-container">
-      <ion-img src="{{searchPost.image}}"  style="width: 150px"></ion-img>
-    </div>
+	<div *ngIf="SearchPost$ | async as searchPost; else loading" class="container">
+		<div class="swiper-container">
+			<ion-img src="{{ searchPost.image }}" style="width: 150px"></ion-img>
+		</div>
 
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <h2>{{searchPost.username}}</h2>
-      <ion-icon class="mail" name="mail-outline" slot="end" (click)="notAvailable()"></ion-icon>
-    </ion-item>
+		<ion-item>
+			<ion-avatar slot="start">
+				<img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+			</ion-avatar>
+			<h2>{{ searchPost.username }}</h2>
+			<ion-icon class="mail" name="mail-outline" slot="end" (click)="notAvailable()"></ion-icon>
+		</ion-item>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <h2>{{searchPost.name}}</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h3>{{searchPost.grading.name}}</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h3>{{searchPost.price}} €</h3>
-        </ion-col>
-      </ion-row>
-      <div class="divider"></div>
-      <ion-row>
-        <ion-col>
-          <h4>{{searchPost.itemExtension}}</h4>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<h2>{{ searchPost.name }}</h2>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h3>{{ searchPost.grading.name }}</h3>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h3>{{ searchPost.price }} €</h3>
+				</ion-col>
+			</ion-row>
+			<div class="divider"></div>
+			<ion-row>
+				<ion-col>
+					<h4>{{ searchPost.itemExtension }}</h4>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 
-    <div class="btnActions">
-      <div *ngIf="!isOwner">
-        <ion-button class="filled-btn" expand="block" (click)="OpenAddSalePost(searchPost)">Vendez lui la votre<ion-icon slot="end" name="cart-outline"></ion-icon></ion-button>
-        <ion-button expand="block" fill="outline" (click)="notAvailable()">Proposer un échange<ion-icon slot="end" name="swap-horizontal"></ion-icon></ion-button>
-        <div class="group-buttons">
-          <button *ngIf="loadingLike">Favoris<ion-spinner name="circular"></ion-spinner></button>
-          <button *ngIf="!searchPost.liked && !loadingLike" (click)="LikeSearchPost(this.searchPost.id, $event)">Favoris<ion-icon name="heart-outline"></ion-icon></button>
-          <button *ngIf="searchPost.liked && !loadingLike" (click)="UnlikeSearchPost(this.searchPost.id, $event)">Favoris<ion-icon name="heart" color="danger"></ion-icon></button>
-          <div class="vertical-divider"></div>
-          <button (click)="notAvailable()">Signaler<ion-icon color="danger" name="warning"></ion-icon></button>
-        </div>
-      </div>
-      <div *ngIf="isOwner">
-        <ion-button expand="block" (click)="notAvailable()">Modifier<ion-icon slot="end" name="pencil-outline"></ion-icon></ion-button>
-        <ion-button *ngIf="searchPost.isPublic" (click)="switchIsPublic()" expand="block" fill="outline">Passer en privé<ion-icon slot="end" name="lock-closed-outline"></ion-icon></ion-button>
-        <ion-button *ngIf="!searchPost.isPublic" (click)="switchIsPublic()" expand="block" fill="outline">Passer en public<ion-icon slot="end" name="lock-open-outline"></ion-icon></ion-button>
-        <div class="group-buttons">
-          <button>Favoris<ion-icon name="heart-outline"></ion-icon></button>
-          <div class="vertical-divider"></div>
-          <button (click)="deleteSearchPost(searchPost.id)">Supprimer<ion-icon color="danger" name="trash-outline"></ion-icon></button>
-        </div>
-      </div>
-    </div>
+		<div class="btnActions">
+			<div *ngIf="!isOwner">
+				<ion-button class="filled-btn" expand="block" (click)="OpenAddSalePost(searchPost)"
+					>Vendez lui la votre<ion-icon slot="end" name="cart-outline"></ion-icon
+				></ion-button>
+				<ion-button expand="block" fill="outline" (click)="notAvailable()"
+					>Proposer un échange<ion-icon slot="end" name="swap-horizontal"></ion-icon
+				></ion-button>
+				<div class="group-buttons">
+					<button *ngIf="loadingLike">Favoris<ion-spinner name="circular"></ion-spinner></button>
+					<button
+						*ngIf="!searchPost.liked && !loadingLike"
+						(click)="LikeSearchPost(this.searchPost.id, $event)"
+					>
+						Favoris<ion-icon name="heart-outline"></ion-icon>
+					</button>
+					<button
+						*ngIf="searchPost.liked && !loadingLike"
+						(click)="UnlikeSearchPost(this.searchPost.id, $event)"
+					>
+						Favoris<ion-icon name="heart" color="danger"></ion-icon>
+					</button>
+					<div class="vertical-divider"></div>
+					<button (click)="notAvailable()">
+						Signaler<ion-icon color="danger" name="warning"></ion-icon>
+					</button>
+				</div>
+			</div>
+			<div *ngIf="isOwner">
+				<ion-button expand="block" (click)="notAvailable()"
+					>Modifier<ion-icon slot="end" name="pencil-outline"></ion-icon
+				></ion-button>
+				<ion-button
+					*ngIf="searchPost.isPublic"
+					(click)="switchIsPublic()"
+					expand="block"
+					fill="outline"
+					>Passer en privé<ion-icon slot="end" name="lock-closed-outline"></ion-icon
+				></ion-button>
+				<ion-button
+					*ngIf="!searchPost.isPublic"
+					(click)="switchIsPublic()"
+					expand="block"
+					fill="outline"
+					>Passer en public<ion-icon slot="end" name="lock-open-outline"></ion-icon
+				></ion-button>
+				<div class="group-buttons">
+					<button>Favoris<ion-icon name="heart-outline"></ion-icon></button>
+					<div class="vertical-divider"></div>
+					<button (click)="deleteSearchPost(searchPost.id)">
+						Supprimer<ion-icon color="danger" name="trash-outline"></ion-icon>
+					</button>
+				</div>
+			</div>
+		</div>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <h2>Remarques sur l'article</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-row>
-          <h3>{{searchPost.remarks}}</h3>
-        </ion-row>
-      </ion-row>
-    </ion-grid>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<h2>Remarques sur l'article</h2>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-row>
+					<h3>{{ searchPost.remarks }}</h3>
+				</ion-row>
+			</ion-row>
+		</ion-grid>
 
-    <div class="divider"></div>
+		<div class="divider"></div>
 
-    <div class="tile-container">
-      <h2>Dernières annonces de recherche</h2>
-      <a>Tout voir →</a>
-    </div>
-    <swiper-container slides-per-view="auto" free-mode="true" class="pb-5">
-      <swiper-slide *ngFor="let searchPost of UserSearchPost$ | async as user" style="margin: 15px; max-width: 200px;">
-        <app-search-post-card [searchPost]="searchPost"></app-search-post-card>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-  <ng-template #loading ><div class="spin"><ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner></div></ng-template>
+		<div class="tile-container">
+			<h2>Dernières annonces de recherche</h2>
+			<a>Tout voir →</a>
+		</div>
+		<swiper-container slides-per-view="auto" free-mode="true" class="pb-5">
+			<swiper-slide
+				*ngFor="let searchPost of UserSearchPost$ | async as user"
+				style="margin: 15px; max-width: 200px"
+			>
+				<app-search-post-card [searchPost]="searchPost"></app-search-post-card>
+			</swiper-slide>
+		</swiper-container>
+	</div>
+	<ng-template #loading
+		><div class="spin">
+			<ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner></div
+	></ng-template>
 </ion-content>

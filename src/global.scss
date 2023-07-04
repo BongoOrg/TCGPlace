@@ -10,138 +10,137 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
-
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('./assets/fonts/Orbitron-Medium.ttf');
-  font-weight: 400; /* Light */
+	font-family: 'Orbitron';
+	src: url('./assets/fonts/Orbitron-Medium.ttf');
+	font-weight: 400; /* Light */
 }
 
 @font-face {
-  font-family: 'Lato';
-  src: url('./assets/fonts/Lato-Thin.ttf');
-  font-weight: 200; /* Light */
+	font-family: 'Lato';
+	src: url('./assets/fonts/Lato-Thin.ttf');
+	font-weight: 200; /* Light */
 }
 
 @font-face {
-  font-family: 'Lato';
-  src: url('./assets/fonts/Lato-Light.ttf');
-  font-weight: 300; /* Light */
+	font-family: 'Lato';
+	src: url('./assets/fonts/Lato-Light.ttf');
+	font-weight: 300; /* Light */
 }
 
 /* Pour Lato Regular */
 @font-face {
-  font-family: 'Lato';
-  src: url('./assets/fonts/Lato-Regular.ttf');
-  font-weight: 400; /* Regular */
+	font-family: 'Lato';
+	src: url('./assets/fonts/Lato-Regular.ttf');
+	font-weight: 400; /* Regular */
 }
 
 /* Pour Lato Bold */
 @font-face {
-  font-family: 'Lato';
-  src: url('./assets/fonts/Lato-Bold.ttf');
-  font-weight: 500; /* Bold */
+	font-family: 'Lato';
+	src: url('./assets/fonts/Lato-Bold.ttf');
+	font-weight: 500; /* Bold */
 }
 
 /* Pour Lato Bold */
 @font-face {
-  font-family: 'Lato';
-  src: url('./assets/fonts/Lato-Black.ttf');
-  font-weight: 600; /* Bold */
+	font-family: 'Lato';
+	src: url('./assets/fonts/Lato-Black.ttf');
+	font-weight: 600; /* Bold */
 }
 
 * {
-  font-family: 'Lato' !important;
-  margin: 0;
-  padding: 0
+	font-family: 'Lato' !important;
+	margin: 0;
+	padding: 0;
 }
 
-.flex-center{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  height: 100%;
+.flex-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	height: 100%;
 }
 
-ion-title{
-  text-align: center;
+ion-title {
+	text-align: center;
 }
 
-ion-button{
-  text-transform: capitalize;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+ion-button {
+	text-transform: capitalize;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 0.5px;
 }
 
-h2{
-  color : #171717;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0;
-  letter-spacing: 0.5px;
-  line-height: 24px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+h2 {
+	color: #171717;
+	font-size: 18px;
+	font-weight: 500;
+	margin: 0;
+	letter-spacing: 0.5px;
+	line-height: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-h3{
-  color : #4D4D4D; /* Dark gray */
-  font-size: 14px;
-  font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-  letter-spacing: 0.5px;
-  line-height: 18px;
+h3 {
+	color: #4d4d4d; /* Dark gray */
+	font-size: 14px;
+	font-weight: 400;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0;
+	letter-spacing: 0.5px;
+	line-height: 18px;
 }
 
-h4{
-  color : #3880ff;
-  font-size: 12px;
-  font-weight: 400;
-  margin: 0;
-  line-height: 16px;
+h4 {
+	color: #3880ff;
+	font-size: 12px;
+	font-weight: 400;
+	margin: 0;
+	line-height: 16px;
 }
 
 .pb-2 {
-  padding-bottom: 2em;
+	padding-bottom: 2em;
 }
 
 .pb-3 {
-  padding-bottom: 3em;
+	padding-bottom: 3em;
 }
 
 .pb-1 {
-  padding-bottom: 1em;
+	padding-bottom: 1em;
 }
 
 .pt-3 {
-  padding-top: 3em;
+	padding-top: 3em;
 }
 
 .pt-2 {
-  padding-top: 2em;
+	padding-top: 2em;
 }
 
 .pt-1 {
-  padding-top: 1em;
+	padding-top: 1em;
 }

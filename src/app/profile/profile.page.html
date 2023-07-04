@@ -1,40 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Compte</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>Compte</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ng-container *ngIf="isLogged; else loginTemplate">
-    <ion-content mode="ios">
-      <ion-item *ngIf="currentUser" lines="none">
-        <ion-label class="ion-text-center">
-          <h2>Bonjour, {{currentUser.username}}</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/tabs/profil/', currentUser?.id]">
-        <ion-label>Profil</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/tabs/profil/likes']">
-        <ion-label>Favoris</ion-label>
-      </ion-item>
-      <ion-item [routerLink]="['/tabs/profil/transactions']">
-        <ion-label>Transactions</ion-label>
-      </ion-item>
-      <ion-item (click)="notAvailable()">
-        <ion-label>Paramètres</ion-label>
-      </ion-item>
-      <ion-item (click)="notAvailable()">
-        <ion-label>A propos de nous</ion-label>
-      </ion-item>
-      <ion-button expand="block" (click)="logout()">Deconnexion</ion-button>
-    </ion-content>
-  </ng-container>
+	<ng-container *ngIf="isLogged; else loginTemplate">
+		<ion-content mode="ios">
+			<ion-item *ngIf="currentUser" lines="none">
+				<ion-label class="ion-text-center">
+					<h2>Bonjour, {{currentUser.username}}</h2>
+				</ion-label>
+			</ion-item>
+			<ion-item [routerLink]="['/tabs/profil/', currentUser?.id]">
+				<ion-label>Profil</ion-label>
+			</ion-item>
+			<ion-item [routerLink]="['/tabs/profil/likes']">
+				<ion-label>Favoris</ion-label>
+			</ion-item>
+			<ion-item [routerLink]="['/tabs/profil/transactions']">
+				<ion-label>Transactions</ion-label>
+			</ion-item>
+			<ion-item (click)="notAvailable()">
+				<ion-label>Paramètres</ion-label>
+			</ion-item>
+			<ion-item (click)="notAvailable()">
+				<ion-label>A propos de nous</ion-label>
+			</ion-item>
+			<ion-button expand="block" (click)="logout()">Deconnexion</ion-button>
+		</ion-content>
+	</ng-container>
 
-  <ng-template #loginTemplate>
-    <ion-content>
-      <app-login></app-login>
-    </ion-content>
-  </ng-template>
+	<ng-template #loginTemplate>
+		<ion-content>
+			<app-login></app-login>
+		</ion-content>
+	</ng-template>
 </ion-content>
-

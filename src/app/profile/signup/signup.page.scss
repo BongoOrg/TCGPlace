@@ -1,49 +1,48 @@
-ion-modal{
-  --background: rgba(44,39,45,0.2);
-  &::part(content) {
-    backdrop-filter: blur(6px);
-  }
+ion-modal {
+	--background: rgba(44, 39, 45, 0.2);
+	&::part(content) {
+		backdrop-filter: blur(6px);
+	}
 }
 
-.calendar-blur{
-  --background: transparent;
+.calendar-blur {
+	--background: transparent;
 
-  --padding-top: 25vh;
-  --padding-start: 20px;
-  --padding-end: 20px;
+	--padding-top: 25vh;
+	--padding-start: 20px;
+	--padding-end: 20px;
 
-  ion-datetime {
-    border-radius: 8px;
-  }
+	ion-datetime {
+		border-radius: 8px;
+	}
 }
 
 .square-checkbox {
-  --background-checked: var(--ion-color-primary);
-  --border-color: var(--ion-color-primary);
-  --border-radius: 4px;
-  --border-style: solid;
-  --border-width: 2px;
-  --inner-background-checked: var(--ion-color-primary);
-  --inner-border-color: var(--ion-color-primary);
-  --inner-border-radius: 0;
-  --height: 24px;
-  --width: 24px;
+	--background-checked: var(--ion-color-primary);
+	--border-color: var(--ion-color-primary);
+	--border-radius: 4px;
+	--border-style: solid;
+	--border-width: 2px;
+	--inner-background-checked: var(--ion-color-primary);
+	--inner-border-color: var(--ion-color-primary);
+	--inner-border-radius: 0;
+	--height: 24px;
+	--width: 24px;
 }
 
-.paddinglabel{
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-right: 10%;
-  font-size: 16px;
+.paddinglabel {
+	padding-top: 5%;
+	padding-bottom: 5%;
+	padding-right: 10%;
+	font-size: 16px;
 }
 
-.linklabel{
-  all: unset;
-  color:#44a4c7;
-  background-color: none;
+.linklabel {
+	all: unset;
+	color: #44a4c7;
+	background-color: none;
 }
 
 .underline {
-  text-decoration: underline;
+	text-decoration: underline;
 }
-

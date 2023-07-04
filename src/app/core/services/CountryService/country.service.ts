@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
-import {AUTH_URL} from "../../../../../config";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core'
+import { AUTH_URL } from '../../../../../config'
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class CountryService {
-  private apiURL = AUTH_URL;
+	private apiURL = AUTH_URL
 
-  constructor(private httpClient : HttpClient) { }
+	constructor(private httpClient: HttpClient) {}
 
-  GetAllCountry(): Observable<any> {
-    return this.httpClient.get(`${this.apiURL}/Country`);
-  }
+	GetAllCountry(): Observable<any> {
+		return this.httpClient.get(`${this.apiURL}/Country`)
+	}
 }

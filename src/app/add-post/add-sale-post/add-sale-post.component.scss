@@ -1,63 +1,62 @@
 ion-checkbox {
-  --size: 20px;
+	--size: 20px;
 }
 
-ion-grid{
-  width: 100%;
+ion-grid {
+	width: 100%;
 }
 
 ion-checkbox::part(container) {
-  border-radius: 5px;
-  border: 2px solid #3880ff;
+	border-radius: 5px;
+	border: 2px solid #3880ff;
 }
 
 .spin {
-  position: relative;
-  left: 45%;
+	position: relative;
+	left: 45%;
 }
 
 .pageSpin {
-  position: relative;
-  left: 45%;
-  top: 50%;
+	position: relative;
+	left: 45%;
+	top: 50%;
 }
 
 .photos {
-  margin: 8px;
-  padding-left: 5px;
+	margin: 8px;
+	padding-left: 5px;
 }
 
 ion-title {
-  padding-left: 0;
-  padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 ion-img:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .photo-container {
-  position: relative;
-  /* si vos images ne remplissent pas tout l'espace, vous pouvez ajouter : */
-  /* width: 100%; */
-  /* height: 0; */
-  /* padding-bottom: 75%; (ou tout autre pourcentage pour définir l'aspect ratio) */
+	position: relative;
+	/* si vos images ne remplissent pas tout l'espace, vous pouvez ajouter : */
+	/* width: 100%; */
+	/* height: 0; */
+	/* padding-bottom: 75%; (ou tout autre pourcentage pour définir l'aspect ratio) */
 }
 
 .photo-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* pour maintenir l'aspect ratio de l'image */
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* pour maintenir l'aspect ratio de l'image */
 }
 
 .delete-badge {
-  position: absolute;
-  top: -5px; /* ajustez ces valeurs comme vous le souhaitez */
-  right: -5px;
-  border-radius: 50%;
-  font-size: 1.2em;
-  height: 25px;
-  width: 25px;
-  text-align: center;
+	position: absolute;
+	top: -5px; /* ajustez ces valeurs comme vous le souhaitez */
+	right: -5px;
+	border-radius: 50%;
+	font-size: 1.2em;
+	height: 25px;
+	width: 25px;
+	text-align: center;
 }
-

@@ -1,4 +1,4 @@
 export class GradingModel {
-  id!: number;
-  name!: string;
+	id!: number
+	name!: string
 }

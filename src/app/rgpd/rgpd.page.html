@@ -1,49 +1,44 @@
 <!-- rgpd.page.html -->
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="toggleMenu()">
-        <ion-icon slot="icon-only" [name]="menuVisible ? 'close' : 'menu'"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>RGPD</ion-title>
-    <ion-back-button slot="end" fill="clear" text=""></ion-back-button>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="toggleMenu()">
+				<ion-icon slot="icon-only" [name]="menuVisible ? 'close' : 'menu'"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>RGPD</ion-title>
+		<ion-back-button slot="end" fill="clear" text=""></ion-back-button>
+	</ion-toolbar>
 
-  <ion-list lines="full" *ngIf="menuVisible">
+	<ion-list lines="full" *ngIf="menuVisible">
+		<ion-item routerLink="/">
+			<ion-label>Accueil</ion-label>
+			<ion-button slot="end" fill="clear" routerLink="/"> </ion-button>
+		</ion-item>
 
-    <ion-item routerLink="/">
-      <ion-label>Accueil</ion-label>
-      <ion-button slot="end" fill="clear" routerLink="/">
-      </ion-button>
-    </ion-item>
+		<ion-item routerLink="/rgpd/politique-de-confidentialite">
+			<ion-label>Politique de confidentialité</ion-label>
+			<ion-button slot="end" fill="clear" routerLink="/rgpd/politique-de-confidentialite">
+			</ion-button>
+		</ion-item>
 
-    <ion-item routerLink="/rgpd/politique-de-confidentialite">
-      <ion-label>Politique de confidentialité</ion-label>
-      <ion-button slot="end" fill="clear" routerLink="/rgpd/politique-de-confidentialite">
-      </ion-button>
-    </ion-item>
-  
-    <ion-item routerLink="/rgpd/regles-du-catalogue">
-      <ion-label>Règles du catalogue</ion-label>
-      <ion-button slot="end" fill="clear" routerLink="/rgpd/regles-du-catalogue">
-      </ion-button>
-    </ion-item>
-  
-    <ion-item routerLink="/rgpd/politique-de-cookies">
-      <ion-label>Politique de cookies</ion-label>
-      <ion-button slot="end" fill="clear" routerLink="/rgpd/politique-de-cookies">
-      </ion-button>
-    </ion-item>
-  
-    <ion-item routerLink="/rgpd/termes-et-cgu">
-      <ion-label>Termes et CGU</ion-label>
-      <ion-button slot="end" fill="clear" routerLink="/rgpd/termes-et-cgu">
-      </ion-button>
-    </ion-item>
-  </ion-list>
+		<ion-item routerLink="/rgpd/regles-du-catalogue">
+			<ion-label>Règles du catalogue</ion-label>
+			<ion-button slot="end" fill="clear" routerLink="/rgpd/regles-du-catalogue"> </ion-button>
+		</ion-item>
+
+		<ion-item routerLink="/rgpd/politique-de-cookies">
+			<ion-label>Politique de cookies</ion-label>
+			<ion-button slot="end" fill="clear" routerLink="/rgpd/politique-de-cookies"> </ion-button>
+		</ion-item>
+
+		<ion-item routerLink="/rgpd/termes-et-cgu">
+			<ion-label>Termes et CGU</ion-label>
+			<ion-button slot="end" fill="clear" routerLink="/rgpd/termes-et-cgu"> </ion-button>
+		</ion-item>
+	</ion-list>
 </ion-header>
 
 <ion-content>
-  <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </ion-content>

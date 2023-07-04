@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { IonicModule } from '@ionic/angular'
 
-import { AddReferencePostComponent } from './add-reference-post.component';
-import {HttpClientModule} from "@angular/common/http";
+import { AddReferencePostComponent } from './add-reference-post.component'
+import { HttpClientModule } from '@angular/common/http'
 
 describe('AddReferenceSalePostComponent', () => {
-  let component: AddReferencePostComponent;
-  let fixture: ComponentFixture<AddReferencePostComponent>;
+	let component: AddReferencePostComponent
+	let fixture: ComponentFixture<AddReferencePostComponent>
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AddReferencePostComponent ],
-      imports: [IonicModule.forRoot(), HttpClientModule]
-    }).compileComponents();
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [AddReferencePostComponent],
+			imports: [IonicModule.forRoot(), HttpClientModule]
+		}).compileComponents()
 
-    fixture = TestBed.createComponent(AddReferencePostComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+		fixture = TestBed.createComponent(AddReferencePostComponent)
+		component = fixture.componentInstance
+		fixture.detectChanges()
+	}))
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+	it('should create', () => {
+		expect(component).toBeTruthy()
+	})
+})

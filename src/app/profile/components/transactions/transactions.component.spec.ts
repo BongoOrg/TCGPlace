@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { IonicModule } from '@ionic/angular'
 
-import { TransactionsComponent } from './transactions.component';
+import { TransactionsComponent } from './transactions.component'
 
 describe('TransactionsComponent', () => {
-  let component: TransactionsComponent;
-  let fixture: ComponentFixture<TransactionsComponent>;
+	let component: TransactionsComponent
+	let fixture: ComponentFixture<TransactionsComponent>
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TransactionsComponent ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+	beforeEach(waitForAsync(() => {
+		TestBed.configureTestingModule({
+			declarations: [TransactionsComponent],
+			imports: [IonicModule.forRoot()]
+		}).compileComponents()
 
-    fixture = TestBed.createComponent(TransactionsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+		fixture = TestBed.createComponent(TransactionsComponent)
+		component = fixture.componentInstance
+		fixture.detectChanges()
+	}))
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+	it('should create', () => {
+		expect(component).toBeTruthy()
+	})
+})

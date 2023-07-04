@@ -1,53 +1,53 @@
-ion-grid{
-  padding: 0;
-  margin: 0;
+ion-grid {
+	padding: 0;
+	margin: 0;
 }
 
-.row-divider{
-  padding: 2px 0em;
-  border-bottom: 1px solid lightgray;
+.row-divider {
+	padding: 2px 0em;
+	border-bottom: 1px solid lightgray;
 }
 
-.grid-container{
-  padding: 0.5em;
+.grid-container {
+	padding: 0.5em;
 }
 
-.order-detail{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
+.order-detail {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 100%;
 }
 
-.order-icon{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.order-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-ion-label{
-  color : black;
-  font-size: 12px;
-  font-weight: 400;
+ion-label {
+	color: black;
+	font-size: 12px;
+	font-weight: 400;
 }
 
-.order-price{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.order-price {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-ion-icon{
-  color : #3880ff;
-  width: 25px;
+ion-icon {
+	color: #3880ff;
+	width: 25px;
 }
 
-.spin{
-  position: relative;
-  left: 45%;
+.spin {
+	position: relative;
+	left: 45%;
 }
-.pageSpin{
-  position: relative;
-  left: 45%;
-  top: 50%;
+.pageSpin {
+	position: relative;
+	left: 45%;
+	top: 50%;
 }

@@ -1,107 +1,133 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Inscription</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>Inscription</ion-title>
+	</ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-img src="../../assets/img/logo.png" alt="App logo"></ion-img>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title class="ion-text-center ion-text-uppercase">Inscrivez-vous :)</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <ion-item>
-            <ion-label position="floating">Firstname</ion-label>
-            <ion-input formControlName="firstname" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid firstname</ion-note>
-            <ion-note slot="error" *ngIf="form.get('firstname')!.touched">Invalid firstname</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Lastname</ion-label>
-            <ion-input formControlName="lastname" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid lastname</ion-note>
-            <ion-note slot="error" *ngIf="form.get('lastname')!.touched">Invalid lastname</ion-note>
-          </ion-item>
-          <ion-item id="open-modal">
-            <ion-icon icon="calendar-outline" slot="start" color="primary"></ion-icon>
-            <ion-label>Birth date</ion-label>
-            <ion-text slot="end">{{formatedString}}</ion-text>
-          </ion-item>
-          <ion-modal trigger="open-modal">
-            <ng-template>
-              <ion-content class="calendar-blur">
-                <ion-datetime presentation="date"
-                              #datetime
-                              [value]="dateValue"
-                              formControlName="birthDate"
-                              size="cover"
-                              (ionChange)="dateChanged(datetime)"
-                              showDefaultButtons="true">
-                </ion-datetime>
-              </ion-content>
-            </ng-template>
-          </ion-modal>
-          <ion-item>
-            <ion-label position="floating">Adress</ion-label>
-            <ion-input formControlName="adress" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid adress</ion-note>
-            <ion-note slot="error" *ngIf="form.get('adress')!.touched">Invalid adress</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">City</ion-label>
-            <ion-input formControlName="city" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid city</ion-note>
-            <ion-note slot="error" *ngIf="form.get('city')!.touched">Invalid city</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Postal Code</ion-label>
-            <ion-input formControlName="postalCode" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid postalCode</ion-note>
-            <ion-note slot="error" *ngIf="form.get('postalCode')!.touched">Invalid postalCode</ion-note>
-          </ion-item>
-          <ion-list>
-            <ion-item>
-              <ion-select formControlName="countryId" (ionChange)="handleChange($event)" placeholder="Select country">
-                <ion-select-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-          <ion-item>
-            <ion-label position="floating">Username</ion-label>
-            <ion-input formControlName="username" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid username</ion-note>
-            <ion-note slot="error" *ngIf="form.get('username')!.touched">Invalid username</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input type="email" formControlName="email" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid email</ion-note>
-            <ion-note slot="error" *ngIf="form.get('email')!.touched">Invalid email</ion-note>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" formControlName="password" placeholder="Enter text"></ion-input>
-            <ion-note slot="helper">Enter a valid password</ion-note>
-            <ion-note slot="error" *ngIf="form.get('password')!.touched">Invalid password</ion-note>
-          </ion-item>
+	<ion-img src="../../assets/img/logo.png" alt="App logo"></ion-img>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<ion-card>
+			<ion-card-header>
+				<ion-card-title class="ion-text-center ion-text-uppercase"
+					>Inscrivez-vous :)</ion-card-title
+				>
+			</ion-card-header>
+			<ion-card-content>
+				<ion-list>
+					<ion-item>
+						<ion-label position="floating">Firstname</ion-label>
+						<ion-input formControlName="firstname" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid firstname</ion-note>
+						<ion-note slot="error" *ngIf="form.get('firstname')!.touched"
+							>Invalid firstname</ion-note
+						>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Lastname</ion-label>
+						<ion-input formControlName="lastname" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid lastname</ion-note>
+						<ion-note slot="error" *ngIf="form.get('lastname')!.touched">Invalid lastname</ion-note>
+					</ion-item>
+					<ion-item id="open-modal">
+						<ion-icon icon="calendar-outline" slot="start" color="primary"></ion-icon>
+						<ion-label>Birth date</ion-label>
+						<ion-text slot="end">{{formatedString}}</ion-text>
+					</ion-item>
+					<ion-modal trigger="open-modal">
+						<ng-template>
+							<ion-content class="calendar-blur">
+								<ion-datetime
+									presentation="date"
+									#datetime
+									[value]="dateValue"
+									formControlName="birthDate"
+									size="cover"
+									(ionChange)="dateChanged(datetime)"
+									showDefaultButtons="true"
+								>
+								</ion-datetime>
+							</ion-content>
+						</ng-template>
+					</ion-modal>
+					<ion-item>
+						<ion-label position="floating">Adress</ion-label>
+						<ion-input formControlName="adress" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid adress</ion-note>
+						<ion-note slot="error" *ngIf="form.get('adress')!.touched">Invalid adress</ion-note>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">City</ion-label>
+						<ion-input formControlName="city" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid city</ion-note>
+						<ion-note slot="error" *ngIf="form.get('city')!.touched">Invalid city</ion-note>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Postal Code</ion-label>
+						<ion-input formControlName="postalCode" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid postalCode</ion-note>
+						<ion-note slot="error" *ngIf="form.get('postalCode')!.touched"
+							>Invalid postalCode</ion-note
+						>
+					</ion-item>
+					<ion-list>
+						<ion-item>
+							<ion-select
+								formControlName="countryId"
+								(ionChange)="handleChange($event)"
+								placeholder="Select country"
+							>
+								<ion-select-option *ngFor="let country of countries" [value]="country.id"
+									>{{country.name}}</ion-select-option
+								>
+							</ion-select>
+						</ion-item>
+					</ion-list>
+					<ion-item>
+						<ion-label position="floating">Username</ion-label>
+						<ion-input formControlName="username" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid username</ion-note>
+						<ion-note slot="error" *ngIf="form.get('username')!.touched">Invalid username</ion-note>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Email</ion-label>
+						<ion-input type="email" formControlName="email" placeholder="Enter text"></ion-input>
+						<ion-note slot="helper">Enter a valid email</ion-note>
+						<ion-note slot="error" *ngIf="form.get('email')!.touched">Invalid email</ion-note>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Password</ion-label>
+						<ion-input
+							type="password"
+							formControlName="password"
+							placeholder="Enter text"
+						></ion-input>
+						<ion-note slot="helper">Enter a valid password</ion-note>
+						<ion-note slot="error" *ngIf="form.get('password')!.touched">Invalid password</ion-note>
+					</ion-item>
 
-          <ion-item>
-            <ion-label class="ion-text-wrap paddinglabel">
-              En t'inscrivant, tu confirmes que tu acceptes les 
-              <a class="linklabel button-clear underline" [routerLink]="'/rgpd/termes-et-cgu'">Termes et conditions de TCG Place</a>, avoir lu la 
-              <a class="linklabel button-clear underline" [routerLink]="'/rgpd/politique-de-confidentialite'">Politique de confidentialité</a> et avoir au moins 18 ans.
-            </ion-label>
-            <br/>
-            <ion-checkbox formControlName="conditions" class="square-checkbox"></ion-checkbox>
-            <br/>
-            <ion-note slot="error" *ngIf="form.get('conditions')!.touched">Merci de confirmer pour poursuivre</ion-note>
-          </ion-item>
-
-        </ion-list>
-      </ion-card-content>
-      <ion-button expand="block" type="submit" [disabled]="!form.valid">S'inscrire</ion-button>
-    </ion-card>
-  </form>
+					<ion-item>
+						<ion-label class="ion-text-wrap paddinglabel">
+							En t'inscrivant, tu confirmes que tu acceptes les
+							<a class="linklabel button-clear underline" [routerLink]="'/rgpd/termes-et-cgu'"
+								>Termes et conditions de TCG Place</a
+							>, avoir lu la
+							<a
+								class="linklabel button-clear underline"
+								[routerLink]="'/rgpd/politique-de-confidentialite'"
+								>Politique de confidentialité</a
+							>
+							et avoir au moins 18 ans.
+						</ion-label>
+						<br />
+						<ion-checkbox formControlName="conditions" class="square-checkbox"></ion-checkbox>
+						<br />
+						<ion-note slot="error" *ngIf="form.get('conditions')!.touched"
+							>Merci de confirmer pour poursuivre</ion-note
+						>
+					</ion-item>
+				</ion-list>
+			</ion-card-content>
+			<ion-button expand="block" type="submit" [disabled]="!form.valid">S'inscrire</ion-button>
+		</ion-card>
+	</form>
 </ion-content>

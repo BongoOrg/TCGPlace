@@ -1,17 +1,17 @@
 ion-thumbnail {
-  --padding: 0;
-  --margin: 0;
-  --size: 200px;
+	--padding: 0;
+	--margin: 0;
+	--size: 200px;
 }
 ion-item {
-  --margin: 0;
-  --padding: 0;
+	--margin: 0;
+	--padding: 0;
 }
 
-.error-occurred{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  margin-top: 50%;
+.error-occurred {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	margin-top: 50%;
 }

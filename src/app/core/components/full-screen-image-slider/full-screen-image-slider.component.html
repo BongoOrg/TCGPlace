@@ -1,20 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="dismiss()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon slot="icon-only" name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <swiper-container pagination rewind>
-    <swiper-slide>
-      <ion-img [src]="imageReference"></ion-img>
-    </swiper-slide>
-    <swiper-slide *ngFor="let image of images">
-      <ion-img [src]="image"></ion-img>
-    </swiper-slide>
-  </swiper-container>
+	<swiper-container pagination rewind>
+		<swiper-slide>
+			<ion-img [src]="imageReference"></ion-img>
+		</swiper-slide>
+		<swiper-slide *ngFor="let image of images">
+			<ion-img [src]="image"></ion-img>
+		</swiper-slide>
+	</swiper-container>
 </ion-content>

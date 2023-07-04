@@ -1,31 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row class="ion-align-items-center">
-        <ion-col>
-          <ion-img src="./assets/img/logo-navigateur.png"></ion-img>
-        </ion-col>
-        <ion-col size="8">
-          <div class="title">
-            TCGPlace
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-grid>
+			<ion-row class="ion-align-items-center">
+				<ion-col>
+					<ion-img src="./assets/img/logo-navigateur.png"></ion-img>
+				</ion-col>
+				<ion-col size="8">
+					<div class="title">TCGPlace</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="!errorOccurred" style="height: 100%">
-    <app-home-banner-slider></app-home-banner-slider>
-    <app-extension-card-slider></app-extension-card-slider>
-    <app-lastest-sale-post-slider></app-lastest-sale-post-slider>
-  </div>
-  <ng-template [ngIf]="errorOccurred">
-    <div class="error-occurred">
-      <img src="https://pbs.twimg.com/media/D5WVXQHXkAE_Wzn.png" width="150px">
-      <p>Une erreur est survenue</p>
-      <ion-button (click)="refresh()">Recharger la page</ion-button>
-    </div>
-  </ng-template>
+	<div *ngIf="!errorOccurred" style="height: 100%">
+		<app-home-banner-slider></app-home-banner-slider>
+		<app-extension-card-slider></app-extension-card-slider>
+		<app-lastest-sale-post-slider></app-lastest-sale-post-slider>
+	</div>
+	<ng-template [ngIf]="errorOccurred">
+		<div class="error-occurred">
+			<img src="https://pbs.twimg.com/media/D5WVXQHXkAE_Wzn.png" width="150px" />
+			<p>Une erreur est survenue</p>
+			<ion-button (click)="refresh()">Recharger la page</ion-button>
+		</div>
+	</ng-template>
 </ion-content>

@@ -1,136 +1,166 @@
 <ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title align="center">Ajouter une annonce de vente</ion-title>
-    </ion-toolbar>
-  </ion-header>
+	<ion-header>
+		<ion-toolbar>
+			<ion-title align="center">Ajouter une annonce de vente</ion-title>
+		</ion-toolbar>
+	</ion-header>
 
-  <div *ngIf="!loading; else pageLoading">
-    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
-      <div *ngIf="reference$ | async as reference; else loading" align="center" style="margin-top: 10px">
-        <ion-img (click)="openFullscreenImage(reference.image)" src="{{reference.image}}"
-                 style="width: 150px"></ion-img>
-        <h2>{{reference.name}}</h2>
-        <h4>{{reference.libelleExtension}}</h4>
-      </div>
-      <ng-template #loading>
-        <div class="spin">
-          <ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
-        </div>
-      </ng-template>
+	<div *ngIf="!loading; else pageLoading">
+		<form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+			<div
+				*ngIf="reference$ | async as reference; else loading"
+				align="center"
+				style="margin-top: 10px"
+			>
+				<ion-img
+					(click)="openFullscreenImage(reference.image)"
+					src="{{ reference.image }}"
+					style="width: 150px"
+				></ion-img>
+				<h2>{{ reference.name }}</h2>
+				<h4>{{ reference.libelleExtension }}</h4>
+			</div>
+			<ng-template #loading>
+				<div class="spin">
+					<ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
+				</div>
+			</ng-template>
 
-      <ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-label position="fixed">Prix</ion-label>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-input *ngIf="!searchPost" formControlName="price" type="number" inputmode="decimal"
-                         placeholder="0.00">{{'' | number: '1.0-3'}}</ion-input>
-              <ion-input *ngIf="searchPost" formControlName="price" type="number" inputmode="decimal"
-                         [placeholder]="searchPost.price">{{'' | number: '1.0-3'}}</ion-input>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+			<ion-item>
+				<ion-grid>
+					<ion-row>
+						<ion-col>
+							<ion-label position="fixed">Prix</ion-label>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col>
+							<ion-input
+								*ngIf="!searchPost"
+								formControlName="price"
+								type="number"
+								inputmode="decimal"
+								placeholder="0.00"
+								>{{ '' | number : '1.0-3' }}</ion-input
+							>
+							<ion-input
+								*ngIf="searchPost"
+								formControlName="price"
+								type="number"
+								inputmode="decimal"
+								[placeholder]="searchPost.price"
+								>{{ '' | number : '1.0-3' }}</ion-input
+							>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
 
-      <ion-item>
-        <ion-grid>
-          <ion-row class="ion-margin-top">
-            <ion-col>
-              <ion-label position="fixed">Etat</ion-label>
-            </ion-col>
-          </ion-row>
-          <ion-row style="padding: 0.5em;">
-            <ion-col size="12">
-              <ion-select formControlName="grading" interface="popover" placeholder="Choisit un état">
-                <ion-select-option value="1">Neuf</ion-select-option>
-                <ion-select-option value="2">Presque neuf</ion-select-option>
-                <ion-select-option value="3">Jouée</ion-select-option>
-              </ion-select>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+			<ion-item>
+				<ion-grid>
+					<ion-row class="ion-margin-top">
+						<ion-col>
+							<ion-label position="fixed">Etat</ion-label>
+						</ion-col>
+					</ion-row>
+					<ion-row style="padding: 0.5em">
+						<ion-col size="12">
+							<ion-select
+								formControlName="grading"
+								interface="popover"
+								placeholder="Choisit un état"
+							>
+								<ion-select-option value="1">Neuf</ion-select-option>
+								<ion-select-option value="2">Presque neuf</ion-select-option>
+								<ion-select-option value="3">Jouée</ion-select-option>
+							</ion-select>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
 
-      <ion-item>
-        <ion-grid>
-          <ion-row class="ion-margin-top">
-            <ion-col>
-              <ion-label position="fixed">Remarques</ion-label>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="12">
-              <ion-textarea formControlName="remarks"
-                            placeholder="Remarques sur le produit (dégradation, spécificité..)"></ion-textarea>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+			<ion-item>
+				<ion-grid>
+					<ion-row class="ion-margin-top">
+						<ion-col>
+							<ion-label position="fixed">Remarques</ion-label>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="12">
+							<ion-textarea
+								formControlName="remarks"
+								placeholder="Remarques sur le produit (dégradation, spécificité..)"
+							></ion-textarea>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
 
-      <ion-item>
-        <ion-label class="ion-padding-start">Annonce visible</ion-label>
-        <ion-checkbox formControlName="public" slot="start" *ngIf="!searchPost"></ion-checkbox>
-      </ion-item>
-
-    </form>
-    <ion-grid class="photos">
-      <ion-row class="ion-margin-top">
-        <ion-col>
-          <ion-button
-            (click)="addPhotoToGallery()"
-            size="large"
-          >
-            <h3 style="color: white">Ajouter vos photos</h3>
-            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-margin-top">
-        <ion-col size="8" *ngFor="let photo of photoService.photos; index as position">
-            <div class="photo-container">
-              <ion-img [src]="photo.webviewPath" (click)="openFullscreenImage(photo.webviewPath)"
-                       style="object-fit:cover;"></ion-img>
-              <ion-badge color="danger" class="delete-badge" (click)="deletePhoto(photo)">X</ion-badge>
-            </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <ng-template #pageLoading>
-    <div class="pageSpin">
-      <ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
-    </div>
-  </ng-template>
+			<ion-item>
+				<ion-label class="ion-padding-start">Annonce visible</ion-label>
+				<ion-checkbox formControlName="public" slot="start" *ngIf="!searchPost"></ion-checkbox>
+			</ion-item>
+		</form>
+		<ion-grid class="photos">
+			<ion-row class="ion-margin-top">
+				<ion-col>
+					<ion-button (click)="addPhotoToGallery()" size="large">
+						<h3 style="color: white">Ajouter vos photos</h3>
+						<ion-icon slot="icon-only" name="add-outline"></ion-icon>
+					</ion-button>
+				</ion-col>
+			</ion-row>
+			<ion-row class="ion-margin-top">
+				<ion-col size="8" *ngFor="let photo of photoService.photos; index as position">
+					<div class="photo-container">
+						<ion-img
+							[src]="photo.webviewPath"
+							(click)="openFullscreenImage(photo.webviewPath)"
+							style="object-fit: cover"
+						></ion-img>
+						<ion-badge color="danger" class="delete-badge" (click)="deletePhoto(photo)"
+							>X</ion-badge
+						>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+	<ng-template #pageLoading>
+		<div class="pageSpin">
+			<ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
+		</div>
+	</ng-template>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar *ngIf="!loading">
-    <ion-button *ngIf="!searchPost"
-      type="submit"
-      (click)="submitForm()"
-      [disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
-      expand="full"
-      size="large"
-      color="primary"
-      class="ion-activatable ripple-parent rectangle">
-      Envoyer
-      <ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
-    </ion-button>
-    <ion-button *ngIf="searchPost"
-                type="submit"
-                (click)="submitOffer()"
-                [disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
-                expand="full"
-                size="large"
-                color="primary"
-                class="ion-activatable ripple-parent rectangle">
-      Proposer
-      <ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+	<ion-toolbar *ngIf="!loading">
+		<ion-button
+			*ngIf="!searchPost"
+			type="submit"
+			(click)="submitForm()"
+			[disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
+			expand="full"
+			size="large"
+			color="primary"
+			class="ion-activatable ripple-parent rectangle"
+		>
+			Envoyer
+			<ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
+		</ion-button>
+		<ion-button
+			*ngIf="searchPost"
+			type="submit"
+			(click)="submitOffer()"
+			[disabled]="!ionicForm.valid || !isPhotoNotEmpty()"
+			expand="full"
+			size="large"
+			color="primary"
+			class="ion-activatable ripple-parent rectangle"
+		>
+			Proposer
+			<ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
 </ion-footer>

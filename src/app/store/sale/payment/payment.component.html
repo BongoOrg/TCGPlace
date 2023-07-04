@@ -1,123 +1,129 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-button (click)="dismiss()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Paiement</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-button (click)="dismiss()">
+				<ion-icon slot="icon-only" name="close"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>Paiement</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content class="payment-modal">
-  <div *ngIf="!loading; else pageLoading">
-    <div class="image-container">
-      <ion-img [src]="post.salePicturePosts[0]" class="payment-image"></ion-img>
-    </div>
-    <ion-item>
-      <ion-grid>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="6">
-            <h3>Commande</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3 *ngIf="offer === undefined">{{post.price}} €</h3>
-            <h3 *ngIf="offer !== undefined"><span style="text-decoration: line-through; margin-right: 5px">{{post.price}}€</span>{{offer.prixPropose}} €</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="6">
-            <h3>Livraison</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3>2 €</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center last-row">
-          <ion-col size="6">
-            <h3>Service</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3>{{post.price * 0.07 + selectedValue | number: '1.0-3'}} €</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center last-row">
-          <ion-col size="6">
-            <h2>Total</h2>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h2>{{totalPrice}} €</h2>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+	<div *ngIf="!loading; else pageLoading">
+		<div class="image-container">
+			<ion-img [src]="post.salePicturePosts[0]" class="payment-image"></ion-img>
+		</div>
+		<ion-item>
+			<ion-grid>
+				<ion-row class="ion-align-items-center">
+					<ion-col size="6">
+						<h3>Commande</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3 *ngIf="offer === undefined">{{ post.price }} €</h3>
+						<h3 *ngIf="offer !== undefined">
+							<span style="text-decoration: line-through; margin-right: 5px">{{ post.price }}€</span
+							>{{ offer.prixPropose }} €
+						</h3>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center">
+					<ion-col size="6">
+						<h3>Livraison</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3>2 €</h3>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center last-row">
+					<ion-col size="6">
+						<h3>Service</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3>{{ post.price * 0.07 + selectedValue | number : '1.0-3' }} €</h3>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center last-row">
+					<ion-col size="6">
+						<h2>Total</h2>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h2>{{ totalPrice }} €</h2>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
 
-    <ion-item>
-      <ion-grid>
-        <ion-row class="ion-align-items-center ion-margin-top">
-          <ion-col size="12">
-            <h4>Adresse</h4>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="6">
-            <h3>Nom</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3>{{currentUser?.lastname}}</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="6">
-            <h3>Adresse</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3>{{currentUser?.adress}}</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center">
-          <ion-col size="6">
-            <h3>Code postal</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3>{{currentUser?.postalCode}}</h3>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-align-items-center last-row">
-          <ion-col size="6">
-            <h3>Ville</h3>
-          </ion-col>
-          <ion-col size="6" class="ion-text-right">
-            <h3>{{currentUser?.city}}</h3>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+		<ion-item>
+			<ion-grid>
+				<ion-row class="ion-align-items-center ion-margin-top">
+					<ion-col size="12">
+						<h4>Adresse</h4>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center">
+					<ion-col size="6">
+						<h3>Nom</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3>{{ currentUser?.lastname }}</h3>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center">
+					<ion-col size="6">
+						<h3>Adresse</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3>{{ currentUser?.adress }}</h3>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center">
+					<ion-col size="6">
+						<h3>Code postal</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3>{{ currentUser?.postalCode }}</h3>
+					</ion-col>
+				</ion-row>
+				<ion-row class="ion-align-items-center last-row">
+					<ion-col size="6">
+						<h3>Ville</h3>
+					</ion-col>
+					<ion-col size="6" class="ion-text-right">
+						<h3>{{ currentUser?.city }}</h3>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
 
-    <ion-grid>
-      <ion-list>
-        <ion-radio-group (ionChange)="onRadioChange($event)" [value]="deliveryOptions[0].price">
-          <ion-item *ngFor="let option of deliveryOptions; let i = index">
-            <ion-icon class="ion-margin-end" name="{{option.icon}}"></ion-icon>
-            <div class="livraison-container">
-              <h3>{{option.label}}</h3>
-              <h3>Pour {{option.price}} €</h3>
-              <h4>+ 7% du prix d'achat</h4>
-            </div>
-            <ion-radio slot="end" value="{{option.price}}"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-    </ion-grid>
-  </div>
-  <ng-template #pageLoading>
-    <div class="pageSpin"><ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner></div>
-  </ng-template>
+		<ion-grid>
+			<ion-list>
+				<ion-radio-group (ionChange)="onRadioChange($event)" [value]="deliveryOptions[0].price">
+					<ion-item *ngFor="let option of deliveryOptions; let i = index">
+						<ion-icon class="ion-margin-end" name="{{ option.icon }}"></ion-icon>
+						<div class="livraison-container">
+							<h3>{{ option.label }}</h3>
+							<h3>Pour {{ option.price }} €</h3>
+							<h4>+ 7% du prix d'achat</h4>
+						</div>
+						<ion-radio slot="end" value="{{ option.price }}"></ion-radio>
+					</ion-item>
+				</ion-radio-group>
+			</ion-list>
+		</ion-grid>
+	</div>
+	<ng-template #pageLoading>
+		<div class="pageSpin">
+			<ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
+		</div>
+	</ng-template>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-button expand="block" [disabled]="!selectedValue" (click)="pay()">Payer {{totalPrice}} €</ion-button>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-button expand="block" [disabled]="!selectedValue" (click)="pay()"
+			>Payer {{ totalPrice }} €</ion-button
+		>
+	</ion-toolbar>
 </ion-footer>
-

@@ -1,10 +1,10 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'com.tcgplace.app',
-  appName: 'TCGPlace',
-  webDir: 'www',
-  bundledWebRuntime: false
-};
+	appId: 'com.tcgplace.app',
+	appName: 'TCGPlace',
+	webDir: 'www',
+	bundledWebRuntime: false
+}
 
-export default config;
+export default config

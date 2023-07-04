@@ -1,16 +1,16 @@
-export class OrderModel{
-  id!: number
-  buyDate!: string
-  shipDate!: string
-  deliveryDate!: string
-  serviceFee!: number
-  shipmentFee!: number
-  totalPrice!: number
-  received!: boolean
-  shipAddress!: string
-  merchPostName!: string
-  merchPostId!: number;
-  totalWithShip!: number;
-  username!: string;
-  merchPostNamePhotos! : string[]
+export class OrderModel {
+	id!: number
+	buyDate!: string
+	shipDate!: string
+	deliveryDate!: string
+	serviceFee!: number
+	shipmentFee!: number
+	totalPrice!: number
+	received!: boolean
+	shipAddress!: string
+	merchPostName!: string
+	merchPostId!: number
+	totalWithShip!: number
+	username!: string
+	merchPostNamePhotos!: string[]
 }

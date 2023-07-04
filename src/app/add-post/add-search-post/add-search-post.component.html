@@ -1,62 +1,83 @@
 <ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title align="center">Ajouter une annonce de recherche</ion-title>
-    </ion-toolbar>
-  </ion-header>
+	<ion-header>
+		<ion-toolbar>
+			<ion-title align="center">Ajouter une annonce de recherche</ion-title>
+		</ion-toolbar>
+	</ion-header>
 
+	<div *ngIf="!loading; else pageLoading">
+		<form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+			<div
+				*ngIf="reference$ | async as reference; else loading"
+				align="center"
+				style="margin-top: 10px"
+			>
+				<ion-img
+					(click)="openFullscreenImage(reference.image)"
+					src="{{ reference.image }}"
+					style="width: 150px"
+				></ion-img>
+				<p>{{ reference.name }} | {{ reference.idExtension }}</p>
+			</div>
+			<ng-template #loading
+				><div class="spin">
+					<ion-spinner
+						name="crescent"
+						color="secondary"
+						style="margin-top: 10px"
+					></ion-spinner></div
+			></ng-template>
 
-<div *ngIf="!loading; else pageLoading">
-  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
-    <div *ngIf="reference$ | async as reference; else loading" align="center" style="margin-top: 10px">
-      <ion-img (click)="openFullscreenImage(reference.image)" src="{{reference.image}}" style="width: 150px"></ion-img>
-      <p>{{reference.name}} | {{reference.idExtension}}</p>
-    </div>
-    <ng-template #loading ><div class="spin"><ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner></div></ng-template>
+			<ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
+				<ion-label position="fixed">Prix</ion-label>
+				<ion-input formControlName="price" type="number" inputmode="decimal" placeholder="0.00">{{
+					'' | number : '1.0-3'
+				}}</ion-input>
+				<ion-label position="fixed"></ion-label>
+			</ion-item>
 
-    <ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
-      <ion-label position="fixed">Prix</ion-label>
-      <ion-input formControlName="price" type="number" inputmode="decimal" placeholder="0.00" >{{'' | number: '1.0-3'}}</ion-input>
-      <ion-label position="fixed"></ion-label>
-    </ion-item>
+			<ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
+				<ion-label position="floating" style="size: 20px">Etat</ion-label>
+				<ion-select formControlName="grading" interface="popover" placeholder="Choisit un état">
+					<ion-select-option value="1">Neuf</ion-select-option>
+					<ion-select-option value="2">Presque neuf</ion-select-option>
+					<ion-select-option value="3">Jouée</ion-select-option>
+				</ion-select>
+			</ion-item>
 
-    <ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
-      <ion-label position="floating" style="size: 20px">Etat</ion-label>
-      <ion-select formControlName="grading"  interface="popover" placeholder="Choisit un état">
-        <ion-select-option value="1">Neuf</ion-select-option>
-        <ion-select-option value="2">Presque neuf</ion-select-option>
-        <ion-select-option value="3">Jouée</ion-select-option>
-      </ion-select>
-    </ion-item>
+			<ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
+				<ion-label position="stacked">Remarques</ion-label>
+				<ion-textarea
+					formControlName="remarks"
+					placeholder="Remarques sur le produit (dégradation, spécificité..)"
+				></ion-textarea>
+			</ion-item>
 
-    <ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
-      <ion-label position="stacked">Remarques</ion-label>
-      <ion-textarea formControlName="remarks"  placeholder="Remarques sur le produit (dégradation, spécificité..)"></ion-textarea>
-    </ion-item>
-
-    <ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px;">
-      <ion-checkbox formControlName="public" slot="start" [value]="true"></ion-checkbox>
-      <ion-label>Annonce visible</ion-label>
-    </ion-item>
-  </form>
-</div>
-  <ng-template #pageLoading>
-    <div class="pageSpin"><ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner></div>
-  </ng-template>
+			<ion-item style="padding-left: 40px; padding-right: 40px; padding-bottom: 20px">
+				<ion-checkbox formControlName="public" slot="start" [value]="true"></ion-checkbox>
+				<ion-label>Annonce visible</ion-label>
+			</ion-item>
+		</form>
+	</div>
+	<ng-template #pageLoading>
+		<div class="pageSpin">
+			<ion-spinner name="crescent" color="secondary" style="margin-top: 10px"></ion-spinner>
+		</div>
+	</ng-template>
 </ion-content>
 <ion-footer>
-  <ion-toolbar *ngIf="!loading">
-    <ion-button
-      type="submit"
-      (click)="ionicForm.valid && submitForm()"
-      [disabled]="!ionicForm.valid "
-      expand="full"
-      size="large"
-      color="primary"
-      class="ion-activatable ripple-parent rectangle">
-      Envoyer
-      <ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+	<ion-toolbar *ngIf="!loading">
+		<ion-button
+			type="submit"
+			(click)="ionicForm.valid && submitForm()"
+			[disabled]="!ionicForm.valid"
+			expand="full"
+			size="large"
+			color="primary"
+			class="ion-activatable ripple-parent rectangle"
+		>
+			Envoyer
+			<ion-icon slot="end" name="chevron-forward-circle-outline"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
 </ion-footer>
-

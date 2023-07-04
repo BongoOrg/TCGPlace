@@ -1,34 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Favoris</ion-title>
-    <ion-segment value="sale" mode="md" >
-      <ion-segment-button (click)="saleSelected = true" value="sale">
-        <ion-label>Vente</ion-label>
-      </ion-segment-button>
-      <ion-segment-button (click)="saleSelected = false" value="search">
-        <ion-label>Recherche</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>Favoris</ion-title>
+		<ion-segment value="sale" mode="md">
+			<ion-segment-button (click)="saleSelected = true" value="sale">
+				<ion-label>Vente</ion-label>
+			</ion-segment-button>
+			<ion-segment-button (click)="saleSelected = false" value="search">
+				<ion-label>Recherche</ion-label>
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
 </ion-header>
-  <ion-grid [fixed]="true" *ngIf="saleSelected; else salePost">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" *ngFor="let post of likedSalePosts$ | async ; index as position">
-          <app-sale-post-card [salePost]="post.salePost"></app-sale-post-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-grid>
+<ion-grid [fixed]="true" *ngIf="saleSelected; else salePost">
+	<ion-grid>
+		<ion-row>
+			<ion-col size="6" *ngFor="let post of likedSalePosts$ | async; index as position">
+				<app-sale-post-card [salePost]="post.salePost"></app-sale-post-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-grid>
 <ng-template #salePost>
-  <ion-grid [fixed]="true">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" *ngFor="let post of likedSearchPosts$ | async ; index as position">
-          <app-search-post-card [searchPost]="post.searchPost"></app-search-post-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-grid>
+	<ion-grid [fixed]="true">
+		<ion-grid>
+			<ion-row>
+				<ion-col size="6" *ngFor="let post of likedSearchPosts$ | async; index as position">
+					<app-search-post-card [searchPost]="post.searchPost"></app-search-post-card>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-grid>
 </ng-template>
-

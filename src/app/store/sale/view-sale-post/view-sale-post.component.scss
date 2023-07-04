@@ -1,104 +1,104 @@
-.container{
-  padding: 0.5em;
+.container {
+	padding: 0.5em;
 }
 
-.spin{
-  position: relative;
-  left: 45%;
+.spin {
+	position: relative;
+	left: 45%;
 }
-.pageSpin{
-  position: relative;
-  left: 45%;
-  top: 50%;
-}
-
-.mail{
-  color: #3880ff;
+.pageSpin {
+	position: relative;
+	left: 45%;
+	top: 50%;
 }
 
-.fav-signal{
-  padding: 0px;
+.mail {
+	color: #3880ff;
 }
 
-.group-buttons{
-  display: flex;
-  width: 100%;
-  height: 50px;
-  border-bottom: 1px solid #dedede;
+.fav-signal {
+	padding: 0px;
 }
 
-button{
-  display: flex;
-  padding: 0 2em;
-  align-items: center;
-  justify-content: space-evenly;
-  text-transform: capitalize;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  width: 50%;
-  background-color: transparent;
+.group-buttons {
+	display: flex;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid #dedede;
 }
 
-button ion-icon{
-  font-size: 25px;
+button {
+	display: flex;
+	padding: 0 2em;
+	align-items: center;
+	justify-content: space-evenly;
+	text-transform: capitalize;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+	width: 50%;
+	background-color: transparent;
 }
 
-.swiper-container{
-  display: flex;
-  margin: 0.5em 0;
+button ion-icon {
+	font-size: 25px;
 }
 
-ion-avatar{
-  margin-right: 0.5em;
+.swiper-container {
+	display: flex;
+	margin: 0.5em 0;
 }
 
-ion-item{
-  border-top: 1px solid #dedede;
+ion-avatar {
+	margin-right: 0.5em;
 }
 
-ion-grid{
-  margin-top: 0.5em;
-  padding: 0.5em;
+ion-item {
+	border-top: 1px solid #dedede;
 }
 
-.divider{
-  padding: 0.3em;
-  border-bottom: 1px solid #dedede;
+ion-grid {
+	margin-top: 0.5em;
+	padding: 0.5em;
 }
 
-.vertical-divider{
-    padding: 1em 0;
-    border-left: 1px solid #dedede;
+.divider {
+	padding: 0.3em;
+	border-bottom: 1px solid #dedede;
 }
 
-.btnActions{
-  padding: 0.5em;
+.vertical-divider {
+	padding: 1em 0;
+	border-left: 1px solid #dedede;
 }
 
-ion-button{
-  margin-bottom: 0.4em;
+.btnActions {
+	padding: 0.5em;
 }
 
-.tile-container{
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0.5em;
-  align-items: center;
-  margin-top: 0.5em;
+ion-button {
+	margin-bottom: 0.4em;
 }
 
-h2{
-  font-weight: 400 !important;
+.tile-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 0.5em;
+	align-items: center;
+	margin-top: 0.5em;
 }
 
-h4{
-  margin-top: 0.5em !important;
+h2 {
+	font-weight: 400 !important;
 }
 
-a{
-  color: #3880ff;
-  font-size: 14px;
-  font-weight: 400;
-  margin: 0;
+h4 {
+	margin-top: 0.5em !important;
+}
+
+a {
+	color: #3880ff;
+	font-size: 14px;
+	font-weight: 400;
+	margin: 0;
 }

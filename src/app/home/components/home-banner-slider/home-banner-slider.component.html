@@ -1,21 +1,31 @@
 <swiper-container pagination autoplay rewind>
-  <swiper-slide style="background-image: url('https://pokegraph.com/wp-content/uploads/2023/01/SV01-Ecarlate-Violet-Scarlet-ex.jpg')">
-
-    <app-home-banner
-      [title]="'EV01 est disponible !'"
-      [description]="'Achetez, vendez et recherchez des cartes de l\'extension Ecarlate et Violet dès à présent !'"
-      [btnUrlRedirect]="''"></app-home-banner>
-  </swiper-slide>
-  <swiper-slide style="background-image: url('https://images.nintendolife.com/d83fc32839e2f/1280x720.jpg')">
-    <app-home-banner
-      [title]="'Nouvel échange mystère !'"
-      [description]="'L\'événement échange mystère ouvre ses inscriptions jusqu\'au 10/05/2023 !'"
-      [btnUrlRedirect]="''"></app-home-banner>
-  </swiper-slide>
-  <swiper-slide style="background-image: url('assets/img/pointsX2.png')">
-    <app-home-banner
-      [title]="'Points gagnés doublés !'"
-      [description]="'Jusqu\'au 20/04/2023, vos points bonus gagnés seront doublés !'"
-      [btnUrlRedirect]="''"></app-home-banner>
-  </swiper-slide>
+	<swiper-slide
+		style="
+			background-image: url('https://pokegraph.com/wp-content/uploads/2023/01/SV01-Ecarlate-Violet-Scarlet-ex.jpg');
+		"
+	>
+		<app-home-banner
+			[title]="'EV01 est disponible !'"
+			[description]="
+				'Achetez, vendez et recherchez des cartes de l\'extension Ecarlate et Violet dès à présent !'
+			"
+			[btnUrlRedirect]="''"
+		></app-home-banner>
+	</swiper-slide>
+	<swiper-slide
+		style="background-image: url('https://images.nintendolife.com/d83fc32839e2f/1280x720.jpg')"
+	>
+		<app-home-banner
+			[title]="'Nouvel échange mystère !'"
+			[description]="'L\'événement échange mystère ouvre ses inscriptions jusqu\'au 10/05/2023 !'"
+			[btnUrlRedirect]="''"
+		></app-home-banner>
+	</swiper-slide>
+	<swiper-slide style="background-image: url('assets/img/pointsX2.png')">
+		<app-home-banner
+			[title]="'Points gagnés doublés !'"
+			[description]="'Jusqu\'au 20/04/2023, vos points bonus gagnés seront doublés !'"
+			[btnUrlRedirect]="''"
+		></app-home-banner>
+	</swiper-slide>
 </swiper-container>

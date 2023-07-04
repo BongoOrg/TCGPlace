@@ -1,7 +1,7 @@
 {
-  "name": "tcg-poc",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
+	"name": "tcg-poc",
+	"integrations": {
+		"capacitor": {}
+	},
+	"type": "angular"
 }

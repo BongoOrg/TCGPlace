@@ -1,37 +1,61 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancell()" >X</ion-button>
-    </ion-buttons>
-    <ion-title>Filtrer par</ion-title>
-    <ion-buttons slot="end">
-      <ion-button  [strong]="true" (click)="confirm()">✔</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-button color="medium" (click)="cancell()">X</ion-button>
+		</ion-buttons>
+		<ion-title>Filtrer par</ion-title>
+		<ion-buttons slot="end">
+			<ion-button [strong]="true" (click)="confirm()">✔</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-accordion-group>
-    <ion-accordion value="extensions">
-      <ion-item slot="header">
-        <ion-label>Extensions</ion-label>
-      </ion-item>
-      <ion-item slot="content" *ngFor="let extension of (extensions$ | async)" style="padding-left: 40px; padding-right: 40px;">
-        <ion-checkbox slot="start" [value]="true" (ionChange)="checkboxExtensionChanged($event, extension)"></ion-checkbox>
-        <ion-label>
-          <img src="{{this.extension.symbole ===null ? 'assets/img/extensions/not-found.png' : this.extension.symbole}}" style="width: 20px" alt="{{this.extension.id}}"/>
-          {{extension.libelle}}</ion-label>
-      </ion-item>
-    </ion-accordion>
-    <ion-accordion value="gradings" *ngIf="!isReference">
-      <ion-item slot="header">
-        <ion-label>Etats</ion-label>
-      </ion-item>
-      <ion-item slot="content"  *ngFor="let grading of (gradings$ | async)" style="padding-left: 40px; padding-right: 40px;">
-        <ion-checkbox slot="start" [value]="true" (ionChange)="checkboxGradingChanged($event, grading)"></ion-checkbox>
-        <ion-label>{{grading.name}}</ion-label>
-      </ion-item>
-    </ion-accordion>
-  </ion-accordion-group>
-  <!--<ion-title style="padding-left: 40px; padding-right: 40px;">Extensions</ion-title>-->
-
+	<ion-accordion-group>
+		<ion-accordion value="extensions">
+			<ion-item slot="header">
+				<ion-label>Extensions</ion-label>
+			</ion-item>
+			<ion-item
+				slot="content"
+				*ngFor="let extension of extensions$ | async"
+				style="padding-left: 40px; padding-right: 40px"
+			>
+				<ion-checkbox
+					slot="start"
+					[value]="true"
+					(ionChange)="checkboxExtensionChanged($event, extension)"
+				></ion-checkbox>
+				<ion-label>
+					<img
+						src="{{
+							this.extension.symbole === null
+								? 'assets/img/extensions/not-found.png'
+								: this.extension.symbole
+						}}"
+						style="width: 20px"
+						alt="{{ this.extension.id }}"
+					/>
+					{{ extension.libelle }}</ion-label
+				>
+			</ion-item>
+		</ion-accordion>
+		<ion-accordion value="gradings" *ngIf="!isReference">
+			<ion-item slot="header">
+				<ion-label>Etats</ion-label>
+			</ion-item>
+			<ion-item
+				slot="content"
+				*ngFor="let grading of gradings$ | async"
+				style="padding-left: 40px; padding-right: 40px"
+			>
+				<ion-checkbox
+					slot="start"
+					[value]="true"
+					(ionChange)="checkboxGradingChanged($event, grading)"
+				></ion-checkbox>
+				<ion-label>{{ grading.name }}</ion-label>
+			</ion-item>
+		</ion-accordion>
+	</ion-accordion-group>
+	<!--<ion-title style="padding-left: 40px; padding-right: 40px;">Extensions</ion-title>-->
 </ion-content>

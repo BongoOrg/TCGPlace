@@ -1,3 +1,1 @@
-export class ItemSearchResponseModel{
-
-}
+export class ItemSearchResponseModel {}
