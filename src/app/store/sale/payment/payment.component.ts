@@ -50,10 +50,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		if (this.offer !== undefined) {
-			this.totalPrice = this.offer.prixPropose + 2
+			this.totalPrice = (Math.round(this.offer.prixPropose * 100) / 100) + 2
 			this.oldPrice = this.post.price
 		} else {
-			this.totalPrice = this.post.price + 2
+			this.totalPrice = (Math.round(this.post.price * 100) / 100) + 2
 		}
 
 		this.userService
@@ -65,11 +65,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
 	}
 	onRadioChange(event: any) {
 		this.selectedValue = parseFloat(event.detail.value)
-
 		if (this.offer !== undefined) {
-			this.totalPrice = this.offer.prixPropose * 1.07 + this.selectedValue + 2
+			this.totalPrice = (Math.round(this.offer.prixPropose * 1.07 + this.selectedValue * 100) / 100) + 2
 		} else {
-			this.totalPrice = this.post.price * 1.07 + this.selectedValue + 2
+			this.totalPrice = (Math.round(this.post.price * 1.07 + this.selectedValue * 100) / 100) + 2
 		}
 	}
 
@@ -92,9 +91,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
 						this.loading = false
 						this.toastService.presentToastSuccess('Commande effectuée')
 						if (this.offer === undefined) {
-							this.router.navigateByUrl('tabs/home')
-						}
-						return this.offerService.updateOffer(this.offer.id, 'S')
+							return this.router.navigateByUrl('tabs/home')
+						}else{
+              return this.offerService.updateOffer(this.offer.id, 'S')
+            }
+
 					} else {
 						return of(null)
 					}
