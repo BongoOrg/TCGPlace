@@ -4,7 +4,7 @@ import { PokemonService } from '../../core/services/PokemonService/pokemon.servi
 import { PokemonItemReferenceModel } from '../../core/models/pokemon-item-reference.model'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Observable, switchMap, tap } from 'rxjs'
-import { ModalController } from '@ionic/angular'
+import {ModalController, NavController} from '@ionic/angular'
 import { FullScreenImageComponent } from 'src/app/core/components/full-screen-image/full-screen-image.component'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { SalePostModel } from 'src/app/core/models/sale-post.model'
@@ -36,7 +36,7 @@ export class AddSalePostComponent implements OnInit {
 		private userService: UserService,
 		private modalCtrl: ModalController,
 		private route: ActivatedRoute,
-		private offerService: OfferService
+		private offerService: OfferService,
 	) {}
 
 	idBuyer!: number
@@ -179,4 +179,8 @@ export class AddSalePostComponent implements OnInit {
 	isPhotoNotEmpty() {
 		return this.photoService.photos.length > 0
 	}
+
+  async dismiss() {
+    await this.modalCtrl.dismiss()
+  }
 }

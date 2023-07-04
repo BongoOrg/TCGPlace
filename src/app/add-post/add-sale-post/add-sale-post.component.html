@@ -1,6 +1,9 @@
 <ion-content>
 	<ion-header>
 		<ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button *ngIf="searchPost" (click)="dismiss()"> Annuler </ion-button>
+      </ion-buttons>
 			<ion-title align="center">Ajouter une annonce de vente</ion-title>
 		</ion-toolbar>
 	</ion-header>

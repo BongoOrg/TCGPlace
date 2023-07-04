@@ -251,6 +251,8 @@ export class ConversationComponent implements OnInit {
 
 	async buyOffer(message: Message, post: SalePostModel) {
 		const offer = message.offre
+    console.log(offer)
+    console.log(post)
 		const modal = await this.modalCtrl.create({
 			component: PaymentComponent,
 			componentProps: {
@@ -260,7 +262,7 @@ export class ConversationComponent implements OnInit {
 		})
 
 		modal.onDidDismiss().then((dataReturned: OverlayEventDetail) => {
-			if (dataReturned !== null) {
+			if (dataReturned.data !== undefined) {
 				this.updateOffer(message, 'S')
 				//this.renderer.setProperty(window, 'location', this.router.url);
 			}

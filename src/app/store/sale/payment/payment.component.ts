@@ -55,6 +55,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
 		} else {
 			this.totalPrice = (Math.round(this.post.price * 100) / 100) + 2
 		}
+    this.totalPrice = Math.round(this.totalPrice * 100) / 100
 
 		this.userService
 			.getCurrentUser()
@@ -64,12 +65,14 @@ export class PaymentComponent implements OnInit, OnDestroy {
 			})
 	}
 	onRadioChange(event: any) {
-		this.selectedValue = parseFloat(event.detail.value)
+
+		this.selectedValue = parseFloat(parseFloat(event.detail.value).toFixed(2));
 		if (this.offer !== undefined) {
-			this.totalPrice = (Math.round(this.offer.prixPropose * 1.07 + this.selectedValue * 100) / 100) + 2
+			this.totalPrice = (Math.round(this.offer.prixPropose * 1.07* 100) / 100) + this.selectedValue + 2
 		} else {
-			this.totalPrice = (Math.round(this.post.price * 1.07 + this.selectedValue * 100) / 100) + 2
-		}
+			this.totalPrice = (Math.round(this.post.price * 1.07* 100) / 100) + this.selectedValue  + 2
+    }
+    this.totalPrice = Math.round(this.totalPrice * 100) / 100
 	}
 
 	async pay() {

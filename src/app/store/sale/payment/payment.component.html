@@ -12,7 +12,7 @@
 <ion-content class="payment-modal">
 	<div *ngIf="!loading; else pageLoading">
 		<div class="image-container">
-			<ion-img [src]="post.salePicturePosts[0]" class="payment-image"></ion-img>
+			<ion-img [src]="post.image" class="payment-image"></ion-img>
 		</div>
 		<ion-item>
 			<ion-grid>
@@ -49,7 +49,7 @@
 						<h2>Total</h2>
 					</ion-col>
 					<ion-col size="6" class="ion-text-right">
-						<h2>{{ totalPrice }} €</h2>
+						<h2>{{ totalPrice | number}} €</h2>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
