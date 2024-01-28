@@ -8,11 +8,11 @@ import { ToastController } from '@ionic/angular'
 export class ToastService {
 	constructor(private toastController: ToastController) {}
 
-	public async presentToastSuccess(message: string, duration: number = 2000) {
+	public async presentToastSuccess(message: string, duration: number = 2000, position: 'top' | 'bottom' | 'middle' = 'top') {
 		const toast = await this.toastController.create({
 			message: message,
 			duration: duration,
-			position: 'top',
+			position: position,
 			color: 'success',
 			icon: 'checkmark-circle'
 		})
@@ -51,4 +51,15 @@ export class ToastService {
 		})
 		await toast.present()
 	}
+
+  public async presentInfoToast(message: string, duration: number = 5000) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: duration,
+      position: 'bottom',
+      color: 'light',
+      icon: 'checkmark-done-outline'
+    })
+    await toast.present()
+  }
 }

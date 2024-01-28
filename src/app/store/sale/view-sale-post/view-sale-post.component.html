@@ -44,7 +44,8 @@
 		<ion-grid>
 			<ion-row>
 				<ion-col>
-					<h2>{{ salePost.name }}</h2>
+					<h2>{{ salePost.name }} <ion-icon *ngIf="!salePost.isPublic" slot="end" name="lock-closed-outline"></ion-icon
+          ></h2>
 				</ion-col>
 			</ion-row>
 			<ion-row>
@@ -98,10 +99,17 @@
 					>
 						Favoris<ion-icon name="heart" color="danger"></ion-icon>
 					</button>
+
 					<div class="vertical-divider"></div>
 					<button (click)="notAvailable()">
 						Signaler<ion-icon color="danger" name="warning"></ion-icon>
 					</button>
+          <div class="vertical-divider"></div>
+          <button
+            (click)="CopyToClipboard()"
+          >
+            Partager<ion-icon name="arrow-redo-outline" color="green"></ion-icon>
+          </button>
 				</div>
 			</div>
 			<div *ngIf="isOwner">
@@ -111,23 +119,28 @@
 				<ion-button
 					*ngIf="salePost.isPublic"
 					expand="block"
-					(click)="switchIsPublic()"
+					(click)="switchToPrivate()"
 					fill="outline"
 					>Passer en privé<ion-icon slot="end" name="lock-closed-outline"></ion-icon
 				></ion-button>
 				<ion-button
 					*ngIf="!salePost.isPublic"
 					expand="block"
-					(click)="switchIsPublic()"
+					(click)="switchToPublic()"
 					fill="outline"
 					>Passer en public<ion-icon slot="end" name="lock-open-outline"></ion-icon
 				></ion-button>
 				<div class="group-buttons">
-					<button>Favoris<ion-icon name="heart-outline"></ion-icon></button>
-					<div class="vertical-divider"></div>
+
 					<button (click)="deleteSalePost(salePost.id)">
 						Supprimer<ion-icon color="danger" name="trash-outline"></ion-icon>
 					</button>
+          <div class="vertical-divider"></div>
+          <button
+            (click)="CopyToClipboard()"
+          >
+            Partager<ion-icon name="arrow-redo-outline" color="green"></ion-icon>
+          </button>
 				</div>
 			</div>
 		</div>

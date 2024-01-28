@@ -100,9 +100,9 @@
 				</ion-grid>
 			</ion-item>
 
-			<ion-item>
+			<ion-item *ngIf="!searchPost">
 				<ion-label class="ion-padding-start">Annonce visible</ion-label>
-				<ion-checkbox formControlName="public" slot="start" *ngIf="!searchPost"></ion-checkbox>
+				<ion-checkbox formControlName="public" slot="start" ></ion-checkbox>
 			</ion-item>
 		</form>
 		<ion-grid class="photos">

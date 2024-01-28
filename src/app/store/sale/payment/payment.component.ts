@@ -23,22 +23,21 @@ export class PaymentComponent implements OnInit, OnDestroy {
 	private destroy$ = new Subject<void>()
 	deliveryOptions = [
 		{
-			icon: 'location-outline',
+			icon: 'leaf-outline',
 			label: 'Basique',
 			price: 0.7
 		},
 		{
-			icon: 'home-outline',
+			icon: 'search-circle-outline',
 			label: 'Authentifiée',
 			price: 4.2
 		}
 	]
-	selectedValue: number = 0
+  selectedValue: number = this.deliveryOptions[0].price;
 	loading: boolean = false
 
 	post!: SalePostModel
 	offer!: Offre
-	oldPrice: number = 0
 	constructor(
 		private router: Router,
 		private modalCtrl: ModalController,
@@ -49,13 +48,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit() {
-		if (this.offer !== undefined) {
-			this.totalPrice = (Math.round(this.offer.prixPropose * 100) / 100) + 2
-			this.oldPrice = this.post.price
-		} else {
-			this.totalPrice = (Math.round(this.post.price * 100) / 100) + 2
-		}
-    this.totalPrice = Math.round(this.totalPrice * 100) / 100
+    this.calculateFees()
 
 		this.userService
 			.getCurrentUser()
@@ -65,15 +58,18 @@ export class PaymentComponent implements OnInit, OnDestroy {
 			})
 	}
 	onRadioChange(event: any) {
-
 		this.selectedValue = parseFloat(parseFloat(event.detail.value).toFixed(2));
-		if (this.offer !== undefined) {
-			this.totalPrice = (Math.round(this.offer.prixPropose * 1.07* 100) / 100) + this.selectedValue + 2
-		} else {
-			this.totalPrice = (Math.round(this.post.price * 1.07* 100) / 100) + this.selectedValue  + 2
+		this.calculateFees()
+	}
+
+  calculateFees(){
+    if (this.offer !== undefined) {
+      this.totalPrice = (Math.round(this.offer.prixPropose * 1.07* 100) / 100) + this.selectedValue + 2
+    } else {
+      this.totalPrice = (Math.round(this.post.price * 1.07* 100) / 100) + this.selectedValue  + 2
     }
     this.totalPrice = Math.round(this.totalPrice * 100) / 100
-	}
+  }
 
 	async pay() {
 		this.loading = true

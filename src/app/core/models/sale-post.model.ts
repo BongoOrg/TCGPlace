@@ -14,6 +14,7 @@ export class SalePostModel extends MerchPostModel {
 	itemId!: string
 	image!: string
 	isPublic!: boolean
+  accessCode!: string
 	name!: string
 	price!: number
 	remarks!: string

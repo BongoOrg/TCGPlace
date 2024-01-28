@@ -13,6 +13,7 @@ export class SearchPostModel extends MerchPostModel {
 	price!: number
 	remarks!: string
 	isPublic!: boolean
+  accessCode!: string
 	statePostId!: string
 	userId!: number
 	name!: string
@@ -21,6 +22,7 @@ export class SearchPostModel extends MerchPostModel {
 	itemExtension!: string
 	itemNumber!: string
 	itemName!: string
+  createdAt!: Date
 	grading!: GradingModel
 	username!: string
 	liked!: boolean

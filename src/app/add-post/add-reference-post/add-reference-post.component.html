@@ -3,7 +3,8 @@
 		<ion-row>
 			<ion-col size="6" *ngFor="let reference of SearchedReferences">
 				<ion-card (click)="SelectReference(reference)">
-					<ion-img src="{{ reference.image }}"></ion-img>
+					<ion-img *ngIf="reference.image != undefined" src="{{ reference.image }}"></ion-img>
+					<ion-img *ngIf="reference.image == undefined" src="../../../assets/img/noref.png"></ion-img>
 					<ion-card-content>
 						<ion-grid>
 							<ion-row class="ion-align-items-center" style="margin-bottom: 0.3em">

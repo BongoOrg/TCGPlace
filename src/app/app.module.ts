@@ -14,11 +14,13 @@ import { StorePageModule } from './store/store.module'
 import { ViewSearchPostComponent } from './store/search/view-search-post/view-search-post.component'
 import { ViewSalePostComponent } from './store/sale/view-sale-post/view-sale-post.component'
 import { FilterModalComponent } from './core/components/filter-modal/filter-modal.component'
+import { PrivateInfoModalComponent } from './core/components/private-info-modal/private-info-modal.component'
 import { ViewProfileComponent } from './profile/components/view-profile/view-profile.component'
 import { TransactionsComponent } from './profile/components/transactions/transactions.component'
 import { BuyedTransactionsComponent } from './profile/components/transactions/buyed-transactions/buyed-transactions.component'
 import { SelledTransactionsComponent } from './profile/components/transactions/selled-transactions/selled-transactions.component'
 import { DetailTransactionComponent } from './profile/components/transactions/detail-transaction/detail-transaction.component'
+import { NgOptimizedImage } from '@angular/common'
 
 @NgModule({
 	declarations: [
@@ -27,20 +29,22 @@ import { DetailTransactionComponent } from './profile/components/transactions/de
 		ViewSearchPostComponent,
 		ViewSalePostComponent,
 		FilterModalComponent,
+    PrivateInfoModalComponent,
 		ViewProfileComponent,
 		TransactionsComponent,
 		BuyedTransactionsComponent,
 		SelledTransactionsComponent,
 		DetailTransactionComponent
 	],
-	imports: [
-		BrowserModule,
-		IonicModule.forRoot(),
-		AppRoutingModule,
-		HttpClientModule,
-		CoreModule,
-		StorePageModule
-	],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    CoreModule,
+    StorePageModule,
+    NgOptimizedImage
+  ],
 	providers: [
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 		{ provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },

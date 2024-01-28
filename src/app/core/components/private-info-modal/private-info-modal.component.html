@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Information</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="dismiss()">X</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="private-info">
+    <img ngSrc="../../../../assets/img/private-squirtle.png" height="250" width="250" />
+    <ion-title>Votre annonce est privée</ion-title>
+    <p style="margin-top: 10%">Vous pouvez toujours la partager en copiant son lien</p>
+    <ion-button style="margin-top: 5px; margin-bottom: 5px" (click)="copyToClipboard()">Copier le lien</ion-button>
+    <p style="font-size: 0.8rem; color: #72706a">
+      Seules les personnes en possession du lien pourront voir votre annonce
+    </p>
+  </div>
+</ion-content>

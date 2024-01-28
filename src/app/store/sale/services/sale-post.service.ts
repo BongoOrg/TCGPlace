@@ -39,11 +39,11 @@ export class SalePostService {
 		)
 	}
 
-	getSingleSalePost(id: any): Observable<HttpResponse<SalePostModel>> {
-		return this.http.get<SalePostModel>(`${this.apiURL}/SalePost/${id}`, {
-			observe: 'response'
-		})
-	}
+  getSingleSalePost(id: any, accessCode:any=""): Observable<HttpResponse<SalePostModel>> {
+    return this.http.get<SalePostModel>(`${this.apiURL}/SalePost/${id}/${accessCode}`, {
+      observe: 'response'
+    })
+  }
 
 	getSomeSalePostForUser(
 		userId: number,
@@ -54,7 +54,7 @@ export class SalePostService {
 		})
 	}
 
-	switchIsPublic(salePostId: any, token: string): Observable<HttpResponse<any>> {
+	switchIsPublic(salePostId: any, token: string): Observable<string> {
 		const headers = new HttpHeaders({
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${token}`

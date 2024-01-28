@@ -21,7 +21,8 @@
 		<ion-grid>
 			<ion-row>
 				<ion-col>
-					<h2>{{ searchPost.name }}</h2>
+					<h2>{{ searchPost.name }} <ion-icon *ngIf="!searchPost.isPublic" slot="end" name="lock-closed-outline"></ion-icon
+          ></h2>
 				</ion-col>
 			</ion-row>
 			<ion-row>
@@ -40,6 +41,14 @@
 					<h4>{{ searchPost.itemExtension }}</h4>
 				</ion-col>
 			</ion-row>
+      <ion-row>
+        <ion-col>
+          <h4>
+            Mise en ligne le {{ searchPost.createdAt | date : 'dd/MM/yyyy' }} à
+            {{ searchPost.createdAt | date : 'HH' }}h{{ searchPost.createdAt | date : 'mm' }}
+          </h4>
+        </ion-col>
+      </ion-row>
 		</ion-grid>
 
 		<div class="btnActions">
@@ -68,6 +77,12 @@
 					<button (click)="notAvailable()">
 						Signaler<ion-icon color="danger" name="warning"></ion-icon>
 					</button>
+          <div class="vertical-divider"></div>
+          <button
+            (click)="CopyToClipboard()"
+          >
+            Partager<ion-icon name="arrow-redo-outline" color="green"></ion-icon>
+          </button>
 				</div>
 			</div>
 			<div *ngIf="isOwner">
@@ -76,24 +91,28 @@
 				></ion-button>
 				<ion-button
 					*ngIf="searchPost.isPublic"
-					(click)="switchIsPublic()"
+					(click)="switchToPrivate()"
 					expand="block"
 					fill="outline"
 					>Passer en privé<ion-icon slot="end" name="lock-closed-outline"></ion-icon
 				></ion-button>
 				<ion-button
 					*ngIf="!searchPost.isPublic"
-					(click)="switchIsPublic()"
+					(click)="switchToPublic()"
 					expand="block"
 					fill="outline"
 					>Passer en public<ion-icon slot="end" name="lock-open-outline"></ion-icon
 				></ion-button>
 				<div class="group-buttons">
-					<button>Favoris<ion-icon name="heart-outline"></ion-icon></button>
-					<div class="vertical-divider"></div>
 					<button (click)="deleteSearchPost(searchPost.id)">
 						Supprimer<ion-icon color="danger" name="trash-outline"></ion-icon>
 					</button>
+          <div class="vertical-divider"></div>
+          <button
+            (click)="CopyToClipboard()"
+          >
+            Partager<ion-icon name="arrow-redo-outline" color="green"></ion-icon>
+          </button>
 				</div>
 			</div>
 		</div>

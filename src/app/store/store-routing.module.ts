@@ -28,7 +28,7 @@ const routes: Routes = [
 		component: StorePage
 	},
 	{
-		path: 'search/:id',
+		path: 'search/view/:id',
 		component: ViewSearchPostComponent
 	}
 ]

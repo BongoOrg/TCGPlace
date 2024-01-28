@@ -99,7 +99,7 @@
 
 		<ion-grid>
 			<ion-list>
-				<ion-radio-group (ionChange)="onRadioChange($event)" [value]="deliveryOptions[0].price">
+				<ion-radio-group (ionChange)="onRadioChange($event)" value="{{selectedValue}}">
 					<ion-item *ngFor="let option of deliveryOptions; let i = index">
 						<ion-icon class="ion-margin-end" name="{{ option.icon }}"></ion-icon>
 						<div class="livraison-container">

@@ -8,7 +8,7 @@
 					<h3>{{ salePost.name }}</h3>
 				</ion-col>
 				<ion-col size="3">
-					<div>
+					<div *ngIf="!isOwner">
 						<ion-icon
 							*ngIf="!this.salePost.liked"
 							name="heart-outline"

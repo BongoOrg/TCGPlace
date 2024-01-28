@@ -128,18 +128,19 @@ export class PhotoService {
 				path: photo.filepath,
 				directory: Directory.Data
 			})
+      if (typeof readFile.data === 'string') {
+        const base64 = readFile.data
 
-			const base64 = readFile.data
+        const min = Math.ceil(0)
+        const max = Math.floor(99999)
+        const rdm = Math.floor(Math.random() * (max - min)) + min
+        const maDate: string = new Date().toISOString().substring(0, 10)
+        const nomFic = rdm + '_' + maDate
 
-			const min = Math.ceil(0)
-			const max = Math.floor(99999)
-			const rdm = Math.floor(Math.random() * (max - min)) + min
-			const maDate: string = new Date().toISOString().substring(0, 10)
-			const nomFic = rdm + '_' + maDate
+        const pic = new PictureModel(nomFic, base64)
 
-			const pic = new PictureModel(nomFic, base64)
-
-			pictures.push(pic)
+        pictures.push(pic)
+      }
 		}
 		return pictures
 	}

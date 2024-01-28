@@ -37,8 +37,8 @@ export class SearchPostService {
 		)
 	}
 
-	getSingleSearchPost(id: any): Observable<HttpResponse<SearchPostModel>> {
-		return this.http.get<SearchPostModel>(`${this.apiURL}/SearchPost/${id}`, {
+	getSingleSearchPost(id: any, accessCode:any=""): Observable<HttpResponse<SearchPostModel>> {
+		return this.http.get<SearchPostModel>(`${this.apiURL}/SearchPost/${id}/${accessCode}`, {
 			observe: 'response'
 		})
 	}
@@ -52,7 +52,7 @@ export class SearchPostService {
 		})
 	}
 
-	switchIsPublic(searchPostId: any, token: string): Observable<HttpResponse<any>> {
+	switchIsPublic(searchPostId: any, token: string): Observable<string> {
 		const headers = new HttpHeaders({
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${token}`
