@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core'
 import { SearchPostModel } from '../../../core/models/search-post.model'
 import { Observable, map } from 'rxjs'
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http'
-import { POST_URL } from '../../../../../config'
 import { ExtensionModel } from '../../../home/components/extension-card-slider/models/extension.model'
 import { GradingModel } from '../../../core/models/grading.model'
+import { environment } from '../../../../environments/environment'
 
 @Injectable()
 export class SearchPostService {
 	constructor(private http: HttpClient) {}
-	private apiURL = POST_URL
+	private apiURL = environment.POST_URL
 
 	getPublicSearchPosts(
 		idReference: string | undefined = 'null',

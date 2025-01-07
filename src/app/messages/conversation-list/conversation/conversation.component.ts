@@ -6,7 +6,6 @@ import { BehaviorSubject, Subscription, switchMap, Observable, tap, timeout } fr
 import { MessagesService } from '../../services/messagesService'
 import { Conversation } from '../../models/conversation.model'
 import { UserService } from 'src/app/core/services/UserService/user.service'
-import { MESSAGERIE_URL } from 'config'
 import { OfferService } from 'src/app/store/sale/services/OfferService/offer.service'
 import { Offre } from '../../models/offre.model'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -15,6 +14,7 @@ import { SalePostModel } from '../../../core/models/sale-post.model'
 import { PaymentComponent } from '../../../store/sale/payment/payment.component'
 import { OverlayEventDetail } from '@ionic/core'
 import { Location } from '@angular/common'
+import { environment } from '../../../../environments/environment'
 
 @Component({
 	selector: 'app-conversation',
@@ -24,8 +24,9 @@ import { Location } from '@angular/common'
 export class ConversationComponent implements OnInit {
 	private hubConnectionBuilder!: HubConnection
 	private subscription: Subscription = new Subscription()
+  private apiURL = environment.MESSAGERIE_URL
 
-	salePostId?: string = ''
+  salePostId?: string = ''
 	salePostPrice?: number = undefined
 	idUser!: number
 	conversation: Conversation = new Conversation()
@@ -80,7 +81,7 @@ export class ConversationComponent implements OnInit {
 
 	private startHubConnection() {
 		this.hubConnectionBuilder = new HubConnectionBuilder()
-			.withUrl(`${MESSAGERIE_URL}/chatHub`)
+			.withUrl(`${this.apiURL}/chatHub`)
 			.configureLogging(LogLevel.Information)
 			.build()
 

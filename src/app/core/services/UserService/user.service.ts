@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core'
-import { AUTH_URL } from '../../../../../config'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { BehaviorSubject, Observable, tap } from 'rxjs'
 import { UserModel } from '../../models/user.model'
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class UserService {
-	private apiURL = AUTH_URL
+	private apiURL = environment.AUTH_URL
 	private currentUserSubject = new BehaviorSubject<UserModel | null>(null)
 	private isLoggedIn = new BehaviorSubject<boolean>(false)
 

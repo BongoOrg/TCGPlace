@@ -1,14 +1,14 @@
 import { HttpClient, HttpResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 
-import { POST_URL } from 'config'
 import { Observable } from 'rxjs'
+import { environment } from '../../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class OfferService {
-	private apiURL = POST_URL
+	private apiURL = environment.POST_URL
 
 	constructor(private httpClient: HttpClient) {}
 

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { HttpClient, HttpResponse } from '@angular/common/http'
-import { MESSAGERIE_URL } from 'config'
 import { Conversation } from '../models/conversation.model'
 import { Subject } from '@microsoft/signalr'
+import { environment } from '../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class MessagesService {
-	private apiURL = MESSAGERIE_URL
+	private apiURL = environment.MESSAGERIE_URL
 
 	constructor(private http: HttpClient) {}
 

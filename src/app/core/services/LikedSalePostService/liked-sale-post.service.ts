@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpResponse } from '@angular/common/http'
 import { UserService } from '../UserService/user.service'
-import { POST_URL } from '../../../../../config'
 import { Observable } from 'rxjs'
 import { LikedSalePostModel, LikedSalePostResponseModel } from '../../models/liked-sale-post.model'
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LikedSalePostService {
 	constructor(private http: HttpClient, private userService: UserService) {}
-	private apiURL = POST_URL
+	private apiURL = environment.POST_URL
 
 	LikeSalePost(postId: string): Observable<HttpResponse<any>> {
 		type GUID = string & { isGuid: true }

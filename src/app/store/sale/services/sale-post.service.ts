@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http'
-import { POST_URL } from '../../../../../config'
 import { Observable } from 'rxjs'
 import { SalePostModel } from '../../../core/models/sale-post.model'
 import { ExtensionModel } from '../../../home/components/extension-card-slider/models/extension.model'
 import { GradingModel } from '../../../core/models/grading.model'
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class SalePostService {
 	constructor(private http: HttpClient) {}
-	private apiURL = POST_URL
+	private apiURL = environment.POST_URL
 
 	getPublicSalePosts(
 		idReference: string | undefined = 'null',

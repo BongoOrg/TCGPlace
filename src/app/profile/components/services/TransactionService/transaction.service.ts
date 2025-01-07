@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core'
-import { INVOICE_URL } from '../../../../../../config'
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { SalePostModel } from '../../../../core/models/sale-post.model'
 import { OrderModel } from '../../../../core/models/order.model'
+import { environment } from '../../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class TransactionService {
-	private apiURL = INVOICE_URL
+	private apiURL = environment.INVOICE_URL
 	private selectedTransactionSource = new BehaviorSubject<OrderModel | null>(null)
 	selectedTransaction$ = this.selectedTransactionSource.asObservable()
 	constructor(private httpClient: HttpClient) {}

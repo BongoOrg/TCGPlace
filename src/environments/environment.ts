@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-	production: false
+	production: false,
+  CATALOG_URL : 'http://localhost:5195',
+  POST_URL : 'http://localhost:5079',
+  AUTH_URL : 'http://localhost:5161',
+  INVOICE_URL : 'http://localhost:5191',
+  MESSAGERIE_URL : 'http://localhost:5177',
 }
 
 /*

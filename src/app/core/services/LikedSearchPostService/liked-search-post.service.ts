@@ -1,5 +1,4 @@
 import { HttpClient, HttpResponse } from '@angular/common/http'
-import { POST_URL } from '../../../../../config'
 import { Observable } from 'rxjs'
 import { SearchPostModel } from '../../models/search-post.model'
 import { UserService } from '../UserService/user.service'
@@ -8,13 +7,14 @@ import {
 	LikedSearchPostResponseModel
 } from '../../models/liked-search-post.model'
 import { Injectable } from '@angular/core'
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LikedSearchPostService {
 	constructor(private http: HttpClient, private userService: UserService) {}
-	private apiURL = POST_URL
+	private apiURL = environment.POST_URL
 	LikeSearchPost(postId: string): Observable<HttpResponse<any>> {
 		type GUID = string & { isGuid: true }
 		function guid(guid: string): GUID {

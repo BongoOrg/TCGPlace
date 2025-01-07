@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { CATALOG_URL, POST_URL } from '../../../../../config'
 import { ItemSearchResponseModel } from '../../models/item-search-response.model'
 import { PokemonItemReferenceModel } from '../../models/pokemon-item-reference.model'
 import { ExtensionModel } from '../../../home/components/extension-card-slider/models/extension.model'
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
@@ -12,7 +12,7 @@ import { ExtensionModel } from '../../../home/components/extension-card-slider/m
 export class SearchService {
 	constructor(private http: HttpClient) {}
 
-	private apiURL = CATALOG_URL
+	private apiURL = environment.CATALOG_URL
 	SearchReference(
 		query: string,
 		extensions: ExtensionModel[] | undefined = undefined,

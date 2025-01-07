@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core'
-import { POST_URL } from '../../../../../config'
 import { Observable } from 'rxjs'
 import { GradingModel } from '../../models/grading.model'
 import { LikedSalePostResponseModel } from '../../models/liked-sale-post.model'
 import { HttpClient } from '@angular/common/http'
 import { UserService } from '../UserService/user.service'
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
 	providedIn: 'root'
 })
 export class GradingService {
-	private apiURL = POST_URL
+	private apiURL = environment.POST_URL
 
 	constructor(private http: HttpClient) {}
 
