@@ -1,0 +1,11 @@
+ion-tab-bar {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: var(--color-solid-main);
+}
+
+ion-tab-button {
+  background-color: transparent;
+  color: var(--color-grey-button);
+  height: 35px !important;
+}

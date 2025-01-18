@@ -64,6 +64,13 @@
 	font-weight: 600; /* Bold */
 }
 
+:root {
+  --color-solid-main : #4E00C8;
+  --color-title: #311B74;
+  --color-secondary-title: #6635E8;
+  --color-grey-button : #FCFCFC;
+}
+
 * {
 	font-family: 'Lato' !important;
 	margin: 0;
@@ -90,8 +97,8 @@ ion-button {
 }
 
 h2 {
-	color: #171717;
-	font-size: 18px;
+	color: var(--color-title);
+	font-size: 19px;
 	font-weight: 500;
 	margin: 0;
 	letter-spacing: 0.5px;
@@ -143,4 +150,12 @@ h4 {
 
 .pt-1 {
 	padding-top: 1em;
+}
+
+.pl-1 {
+  padding-left: 0.8em;
+}
+
+.pr-1 {
+  padding-right: 0.8em;
 }

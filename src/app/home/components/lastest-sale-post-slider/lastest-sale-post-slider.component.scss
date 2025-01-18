@@ -1,3 +1,7 @@
+ion-icon {
+  width: 30px;
+}
+
 swiper-slide {
 	width: 50%;
 }
@@ -7,10 +11,10 @@ swiper-slide {
 	justify-content: space-between;
 	padding: 0 0.5em;
 	align-items: center;
-}
 
-h2 {
-	line-height: 34px !important;
+  ion-icon {
+    color: var(--color-title);
+  }
 }
 
 a {

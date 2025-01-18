@@ -1,5 +1,15 @@
+ion-icon {
+  width: 30px;
+}
+
+swiper-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 8px;
+}
+
 swiper-slide {
-	max-width: 60%;
+  width: auto;
 }
 
 .tile-container {
@@ -7,11 +17,14 @@ swiper-slide {
 	justify-content: space-between;
 	padding: 0 0.5em;
 	align-items: center;
+
+  ion-icon {
+    color: var(--color-title);
+  }
 }
 
-h2 {
-	line-height: 34px !important;
-	color: #171717 !important;
+img > .logo{
+  width: 100px !important;
 }
 
 a {

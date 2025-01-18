@@ -8,8 +8,10 @@ import { ExtensionModel } from '../models/extension.model'
 })
 export class ExtensionCardComponent implements OnInit {
 	@Input() extension!: ExtensionModel
-
+  notFoundImagePath : string = '../../../../assets/img/extensions/not-found.png'
 	constructor() {}
 
-	ngOnInit() {}
+	ngOnInit() {
+
+  }
 }

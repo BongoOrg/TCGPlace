@@ -6,15 +6,18 @@
 					<ion-img src="./assets/img/logo-navigateur.png"></ion-img>
 				</ion-col>
 				<ion-col size="8">
-					<div class="title">TCGPlace</div>
+					<div class="title ion-text-center">TCGPlace</div>
 				</ion-col>
+        <ion-col>
+          <ion-icon name="notifications-outline"></ion-icon>
+        </ion-col>
 			</ion-row>
 		</ion-grid>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<div *ngIf="!errorOccurred" style="height: 100%">
+	<div *ngIf="!errorOccurred" class="pl-1 pr-1" style="height: 100%">
 		<app-home-banner-slider></app-home-banner-slider>
 		<app-extension-card-slider></app-extension-card-slider>
 		<app-lastest-sale-post-slider></app-lastest-sale-post-slider>

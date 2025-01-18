@@ -4,8 +4,14 @@ swiper-slide {
 	background-size: 100%;
 }
 
+.container {
+  height: 30%;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
 swiper-container {
-	height: 30%;
+	height: 100%;
 }
 
 .slideContent ion-title {

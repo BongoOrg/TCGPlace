@@ -1,11 +1,15 @@
 <ion-header>
 	<ion-toolbar>
 		<ion-buttons slot="start">
-			<ion-button color="medium" (click)="cancell()">X</ion-button>
+			<ion-button color="medium" (click)="cancell()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
 		</ion-buttons>
 		<ion-title>Filtrer par</ion-title>
 		<ion-buttons slot="end">
-			<ion-button [strong]="true" (click)="confirm()">✔</ion-button>
+			<ion-button [strong]="true" (click)="confirm()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
@@ -18,18 +22,18 @@
 			<ion-item
 				slot="content"
 				*ngFor="let extension of extensions$ | async"
-				style="padding-left: 40px; padding-right: 40px"
+				class="store-padding"
 			>
 				<ion-checkbox
 					slot="start"
 					[value]="true"
 					(ionChange)="checkboxExtensionChanged($event, extension)"
 				></ion-checkbox>
-				<ion-label>
+				<ion-label class="store-item-filter">
 					<img
 						src="{{
-							this.extension.symbole === null
-								? 'assets/img/extensions/not-found.png'
+							this.extension.symbole !?
+								'assets/img/extensions/not-found.png'
 								: this.extension.symbole
 						}}"
 						style="width: 20px"
@@ -46,14 +50,14 @@
 			<ion-item
 				slot="content"
 				*ngFor="let grading of gradings$ | async"
-				style="padding-left: 40px; padding-right: 40px"
+        class="store-padding"
 			>
 				<ion-checkbox
 					slot="start"
 					[value]="true"
 					(ionChange)="checkboxGradingChanged($event, grading)"
 				></ion-checkbox>
-				<ion-label>{{ grading.name }}</ion-label>
+				<ion-label class="store-item-filter">{{ grading.name }}</ion-label>
 			</ion-item>
 		</ion-accordion>
 	</ion-accordion-group>

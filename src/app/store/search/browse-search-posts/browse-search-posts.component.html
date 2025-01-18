@@ -9,7 +9,7 @@
 	>
 		<ion-refresher-content pullingIcon="refresh-outline"></ion-refresher-content>
 	</ion-refresher>
-	<ion-grid [fixed]="true">
+	<ion-grid class="store-padding" [fixed]="true">
 		<ion-grid>
 			<ng-container *ngIf="SearchPostlist && SearchPostlist.length; else noPosts">
 				<ion-row *ngIf="SearchPostlist.length; else noPosts">

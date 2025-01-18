@@ -1,6 +1,8 @@
 <div class="tile-container">
 	<h2>Dernières annonces de vente</h2>
-	<a (click)="navigateTo()">Tout voir →</a>
+	<a (click)="navigateTo()">
+    <ion-icon size="large" name="chevron-forward-outline"></ion-icon>
+  </a>
 </div>
 <swiper-container slides-per-view="auto" free-mode="true" *ngIf="!isLoading">
 	<swiper-slide *ngFor="let post of salePost | async; index as position">

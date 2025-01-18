@@ -1,15 +1,8 @@
 <ion-card>
+  <ion-card-header>
+    <img class="logo" [src]="this.extension.logo ? this.extension.logo : this.notFoundImagePath"  alt="">
+  </ion-card-header>
 	<ion-card-content>
-		<div class="cardContent">
-			<img
-				src="{{
-					this.extension.symbole === null
-						? 'assets/img/extensions/not-found.png'
-						: this.extension.symbole
-				}}"
-				alt="{{ this.extension.id }}"
-			/>
-			<div>{{ this.extension.libelle }}</div>
-		</div>
+			<p>{{ this.extension.libelle }}</p>
 	</ion-card-content>
 </ion-card>
